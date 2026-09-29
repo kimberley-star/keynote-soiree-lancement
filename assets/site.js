@@ -1,9 +1,9 @@
 // Infos clés de l'événement : à modifier ici, elles alimentent le compte à rebours et le lien agenda.
 const EVENT = {
   title: "Flatchr — Keynote & soirée de lancement",
-  start: "2026-11-05T18:30:00+01:00", // heure à confirmer
-  end: "2026-11-05T23:00:00+01:00",   // heure à confirmer
-  location: "Lieu à confirmer, Paris",
+  start: "2026-11-05T18:30:00+01:00",
+  end: "2026-11-05T23:00:00+01:00",  
+  location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
   details: "Keynote, démo et soirée networking avec l'équipe Flatchr. Programme : voir le site de l'événement.",
   rsvpUrl: "" // Lien du formulaire d'inscription (ex. formulaire HubSpot). Vide = bouton pointant vers la section infos.
 };
