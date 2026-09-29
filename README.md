@@ -7,6 +7,7 @@ Site statique (HTML/CSS/JS, sans build) aux couleurs de Flatchr.
 | `index.html` | Invitation, compte à rebours, infos pratiques, inscription |
 | `programme.html` | Déroulé détaillé de la soirée |
 | `intervenants.html` | Présentation des intervenants |
+| `evenement.html` | Page simple : l'essentiel de l'événement + lien vers le site (à partager par e-mail, LinkedIn…) |
 
 ## Mettre à jour
 - **Date, horaires, lieu, lien d'inscription, vidéo** : objet `EVENT` en haut de `assets/site.js` (alimente le compte à rebours et le bouton « Ajouter à mon agenda »), puis les textes des pages.

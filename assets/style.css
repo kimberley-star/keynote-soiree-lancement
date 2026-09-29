@@ -264,3 +264,23 @@ p { margin: 0; }
   .slot-body { padding-left: 0.75rem; }
   .slot-time b { font-size: var(--step-0); }
 }
+
+/* Page simple (evenement.html) : une colonne, lecture de haut en bas */
+.simple { padding-block: clamp(2rem, 6vw, 4rem); }
+.simple .wrap { max-width: 44rem; display: grid; gap: 2.5rem; }
+.simple-head { display: grid; gap: 1rem; }
+.simple-head h1 { font-size: clamp(2.4rem, 7vw, 3.8rem); font-weight: 800; }
+.simple-head p:last-child { color: var(--muted); font-size: var(--step-1); }
+.simple-list { margin: 0; border-top: 1px solid var(--navy-line); }
+.simple-list > div { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1rem; padding-block: 1.1rem; border-bottom: 1px solid var(--navy-line); }
+.simple-list dt { font-family: var(--font-mono); font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.12em; color: var(--teal); padding-top: 0.2rem; }
+.simple-list dd { margin: 0; font-weight: 600; font-size: 1.1rem; min-width: 0; }
+.simple-list dd span { display: block; font-weight: 400; font-size: var(--step-0); color: var(--muted); margin-top: 0.2rem; }
+.simple-agenda { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; font-weight: 500; font-size: var(--step-0); }
+.simple-agenda li { display: grid; grid-template-columns: 3.75rem minmax(0, 1fr); }
+.simple-agenda time { font-family: var(--font-mono); color: var(--teal); font-variant-numeric: tabular-nums; }
+.simple-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.simple-end { background: var(--navy); border: 1px solid var(--navy-line); border-radius: var(--radius); padding: clamp(1.5rem, 5vw, 2.25rem); display: grid; gap: 0.75rem; justify-items: start; }
+.simple-end h2 { font-size: var(--step-2); }
+.simple-end p { color: var(--muted); }
+@media (max-width: 34rem) { .simple-list > div { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; } }
