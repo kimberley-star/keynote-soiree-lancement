@@ -5,7 +5,8 @@ const EVENT = {
   end: "2026-11-05T23:00:00+01:00",  
   location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
   details: "Keynote, démo et soirée networking avec l'équipe Flatchr. Programme : voir le site de l'événement.",
-  rsvpUrl: "" // Lien du formulaire d'inscription (ex. formulaire HubSpot). Vide = bouton pointant vers la section infos.
+  rsvpUrl: "", // Lien du formulaire d'inscription (ex. formulaire HubSpot). Vide = bouton pointant vers la section infos.
+  videoUrl: "" // Lien YouTube, Vimeo ou fichier .mp4 (ex. "assets/teaser.mp4"). Vide = encart "Vidéo à venir".
 };
 
 (function () {
@@ -24,6 +25,18 @@ const EVENT = {
   document.querySelectorAll("[data-gcal]").forEach(function (a) {
     a.href = gcal; a.target = "_blank"; a.rel = "noopener";
   });
+
+  // Encart vidéo
+  var frame = document.querySelector("[data-video]");
+  if (frame && EVENT.videoUrl) {
+    var url = EVENT.videoUrl, yt = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/), vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (/\.(mp4|webm)(\?|$)/i.test(url)) {
+      frame.innerHTML = '<video controls playsinline preload="metadata" src="' + url + '"></video>';
+    } else if (yt || vimeo) {
+      var src = yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0" : "https://player.vimeo.com/video/" + vimeo[1];
+      frame.innerHTML = '<iframe src="' + src + '" title="Vidéo de présentation de la soirée" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+    }
+  }
 
   // Compte à rebours
   var box = document.querySelector("[data-countdown]");
