@@ -8,7 +8,7 @@ const EVENT = {
   rsvpUrl: "", // Lien externe d'inscription. Vide = les boutons pointent vers le formulaire Refiner de la page d'accueil.
   refinerProjectId: "e11f2bc0-3922-11ef-b9c5-e7579e0921d7", // ID du projet Refiner (visiteurs anonymes : pas d'identifyUser)
   refinerSurveyId: "9df24c90-bcb1-11f1-837b-a1a698ac21ed", // Questionnaire d'inscription
-  videoUrl: "" // Lien YouTube, Vimeo ou fichier .mp4 (ex. "assets/teaser.mp4"). Vide = encart "Vidéo à venir".
+  videoUrl: "https://drive.google.com/file/d/1WSR2bUBtCTJqu_py-Oo6P8JuzydeLC_B/view" // Lien Google Drive (partagé « Tous les utilisateurs disposant du lien »), YouTube, Vimeo ou fichier .mp4. Vide = encart "Vidéo à venir".
 };
 
 (function () {
@@ -44,11 +44,13 @@ const EVENT = {
   // Encart vidéo
   var frame = document.querySelector("[data-video]");
   if (frame && EVENT.videoUrl) {
-    var url = EVENT.videoUrl, yt = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/), vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    var url = EVENT.videoUrl, yt = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/), vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/), drive = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
     if (/\.(mp4|webm)(\?|$)/i.test(url)) {
       frame.innerHTML = '<video controls playsinline preload="metadata" src="' + url + '"></video>';
-    } else if (yt || vimeo) {
-      var src = yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0" : "https://player.vimeo.com/video/" + vimeo[1];
+    } else if (yt || vimeo || drive) {
+      var src = yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0"
+        : vimeo ? "https://player.vimeo.com/video/" + vimeo[1]
+        : "https://drive.google.com/file/d/" + drive[1] + "/preview";
       frame.innerHTML = '<iframe src="' + src + '" title="Vidéo de présentation de la soirée" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
     }
   }
