@@ -17,5 +17,9 @@ Site statique (HTML/CSS/JS, sans build) aux couleurs de Flatchr.
 - **Contenus provisoires** : repérés par la classe `a-completer` (soulignés en orange). Une fois validés, retirer la classe et le bandeau `draft-note` en haut de chaque page.
 - **Couleurs** : variables en haut de `assets/style.css`.
 
+## Mise en ligne
+GitHub Pages via `.github/workflows/pages.yml` (publie `index.html`, `evenement.html` et `assets/` à chaque push). Activation unique : *Settings > Pages > Source : GitHub Actions*.
+Adresse : https://kimberley-star.github.io/keynote-soiree-lancement/
+
 ## Aperçu local
 Ouvrir `index.html` dans un navigateur. Hébergement possible tel quel (GitHub Pages, Netlify, HubSpot…).
