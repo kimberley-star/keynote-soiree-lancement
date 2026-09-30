@@ -210,8 +210,11 @@ p { margin: 0; }
 .signup { background: linear-gradient(140deg, var(--teal-deep), var(--navy)); border-radius: var(--radius); padding: clamp(1.5rem, 5vw, 3rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 5vw, 3rem); align-items: start; scroll-margin-top: 5rem; }
 .signup .section-head { margin-bottom: 0; }
 .signup .section-head p:last-child { color: var(--ink); opacity: 0.85; }
-.signup-form { background: #ffffff; color: #12435e; border-radius: 12px; min-height: 12rem; padding: 0.5rem; min-width: 0; }
-.signup-fallback { display: grid; place-items: center; min-height: 11rem; text-align: center; color: #016d7d; font-weight: 600; padding: 1rem; }
+.signup-form { position: relative; background: #ffffff; color: #12435e; border-radius: 12px; min-height: 12rem; overflow: hidden; min-width: 0; }
+.signup-form iframe { display: block; }
+/* Message d'attente : hors du flux pour ne pas décaler le formulaire, masqué dès que Refiner l'a chargé */
+.signup-fallback { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #016d7d; font-weight: 600; padding: 1rem; margin: 0; }
+.signup-form:has(iframe) .signup-fallback { display: none; }
 
 /* En-tête de page intérieure */
 .page-hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) 2rem; }
