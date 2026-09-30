@@ -1,6 +1,6 @@
 // Infos clés de l'événement : à modifier ici, elles alimentent le compte à rebours et le lien agenda.
 const EVENT = {
-  title: "Flatchr — Keynote & soirée de lancement",
+  title: "Flatchr — Soirée de lancement agent IA",
   start: "2026-11-05T18:30:00+01:00",
   end: "2026-11-05T23:00:00+01:00",  
   location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
