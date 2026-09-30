@@ -83,7 +83,8 @@ p { margin: 0; }
 }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-block: 0.9rem; }
 .brand { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; color: var(--ink); text-decoration: none; letter-spacing: -0.03em; }
-.brand span { color: var(--teal); }
+.brand { display: inline-flex; line-height: 0; }
+.brand img { height: 2.1rem; width: auto; display: block; }
 .nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
 .nav a {
   color: var(--muted);
@@ -268,6 +269,7 @@ p { margin: 0; }
 /* Page simple (evenement.html) : une colonne, lecture de haut en bas */
 .simple { padding-block: clamp(2rem, 6vw, 4rem); }
 .simple .wrap { max-width: 44rem; display: grid; gap: 2.5rem; }
+.simple .brand { justify-self: start; }
 .simple-head { display: grid; gap: 1rem; }
 .simple-head h1 { font-size: clamp(2.4rem, 7vw, 3.8rem); font-weight: 800; }
 .simple-head p:last-child { color: var(--muted); font-size: var(--step-1); }
