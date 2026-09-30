@@ -5,9 +5,7 @@ const EVENT = {
   end: "2026-11-05T23:00:00+01:00",  
   location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
   details: "Découverte de la nouvelle version de l'ATS Flatchr et soirée des 10 ans : roadmap agentique, DJ set, traiteur italien et invité surprise.",
-  rsvpUrl: "", // Lien externe d'inscription. Vide = les boutons pointent vers le formulaire Refiner de la page d'accueil.
-  refinerProjectId: "e11f2bc0-3922-11ef-b9c5-e7579e0921d7", // ID du projet Refiner (visiteurs anonymes : pas d'identifyUser)
-  refinerSurveyId: "9df24c90-bcb1-11f1-837b-a1a698ac21ed", // Questionnaire d'inscription
+  rsvpUrl: "https://survey.refiner.io/mqggze-m46jk0", // Questionnaire d'inscription Refiner : tous les boutons « Je confirme ma venue » y mènent.
   videoUrl: "https://drive.google.com/file/d/1WSR2bUBtCTJqu_py-Oo6P8JuzydeLC_B/view" // Lien Google Drive (partagé « Tous les utilisateurs disposant du lien »), YouTube, Vimeo ou fichier .mp4. Vide = encart "Vidéo à venir".
 };
 
@@ -27,19 +25,6 @@ const EVENT = {
   document.querySelectorAll("[data-gcal]").forEach(function (a) {
     a.href = gcal; a.target = "_blank"; a.rel = "noopener";
   });
-
-  // Formulaire d'inscription Refiner (embed)
-  var signup = document.getElementById("lancement-soiree");
-  if (signup && EVENT.refinerProjectId && EVENT.refinerSurveyId) {
-    window._refinerQueue = window._refinerQueue || [];
-    window._refiner = window._refiner || function () { window._refinerQueue.push(arguments); };
-    _refiner("setProject", EVENT.refinerProjectId);
-    _refiner("embed", EVENT.refinerSurveyId, "lancement-soiree");
-    var rs = document.createElement("script");
-    rs.async = true;
-    rs.src = "https://js.refiner.io/v001/client.js";
-    document.head.appendChild(rs);
-  }
 
   // Encart vidéo
   var frame = document.querySelector("[data-video]");
