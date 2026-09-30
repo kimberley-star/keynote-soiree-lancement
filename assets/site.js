@@ -29,14 +29,14 @@ const EVENT = {
   });
 
   // Formulaire d'inscription Refiner (embed)
-  var signup = document.getElementById("refiner-inscription");
+  var signup = document.getElementById("lancement-soiree");
   if (signup && EVENT.refinerProjectId && EVENT.refinerSurveyId) {
     window._refinerQueue = window._refinerQueue || [];
     window._refiner = window._refiner || function () { window._refinerQueue.push(arguments); };
     _refiner("setProject", EVENT.refinerProjectId);
     var fallback = signup.querySelector("[data-refiner-fallback]");
     if (fallback) fallback.remove();
-    _refiner("embed", EVENT.refinerSurveyId, "refiner-inscription");
+    _refiner("embed", EVENT.refinerSurveyId, "lancement-soiree");
     var rs = document.createElement("script");
     rs.async = true;
     rs.src = "https://js.refiner.io/v001/client.js";
