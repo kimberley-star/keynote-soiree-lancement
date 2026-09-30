@@ -4,7 +4,7 @@ const EVENT = {
   start: "2026-11-05T18:30:00+01:00",
   end: "2026-11-05T23:00:00+01:00",  
   location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
-  details: "Keynote, démo et soirée networking avec l'équipe Flatchr. Programme : voir le site de l'événement.",
+  details: "Découverte de la nouvelle version de l'ATS Flatchr et soirée des 10 ans : roadmap agentique, DJ set, traiteur italien et invité surprise.",
   rsvpUrl: "", // Lien du formulaire d'inscription (ex. formulaire HubSpot). Vide = bouton pointant vers la section infos.
   videoUrl: "" // Lien YouTube, Vimeo ou fichier .mp4 (ex. "assets/teaser.mp4"). Vide = encart "Vidéo à venir".
 };
