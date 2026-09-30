@@ -40,7 +40,7 @@
           <div><b data-m>—</b><span>minutes</span></div>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#infos" data-rsvp>Je confirme ma venue</a>
+          <a class="btn btn-primary" href="#inscription" data-rsvp>Je confirme ma venue</a>
           <a class="btn btn-ghost" href="#" data-gcal>Ajouter à mon agenda</a>
         </div>
       </div>
@@ -111,12 +111,19 @@
           <h3>Chez Flatchr</h3>
           <p><strong>79 rue Marcel Dassault<br>92100 Boulogne-Billancourt</strong></p>
           <p><a href="https://www.google.com/maps/search/?api=1&amp;query=79+rue+Marcel+Dassault+92100+Boulogne-Billancourt" target="_blank" rel="noopener">Voir sur Google Maps</a></p>
-          <p class="a-completer">Accès : métro et stationnement à préciser</p>
+          <p><strong>Métro</strong> Marcel Sembat (ligne 9), à 3-5 min à pied</p>
+          <p><strong>Bus</strong> (en journée)</p>
+          <ul class="bus-list">
+            <li><b>42</b> Cours de l'Île Seguin ↔ Gare Saint-Lazare</li>
+            <li><b>123</b> Porte d'Auteuil ↔ Mairie d'Issy</li>
+            <li><b>126</b> Parc de Saint-Cloud ↔ Porte d'Orléans</li>
+            <li><b>175</b> Porte de Saint-Cloud ↔ Bois-Colombes–Les Bruyères</li>
+          </ul>
         </article>
         <article class="info">
           <p class="eyebrow">Inscription</p>
           <h3>Gratuite, places limitées</h3>
-          <p>Merci de confirmer votre présence <strong class="a-completer">avant le 12 octobre</strong>. Vous recevrez votre confirmation par e-mail.</p>
+          <p>Merci de confirmer votre présence <strong class="a-completer">avant le 12 octobre</strong>.</p>
         </article>
         <article class="info">
           <p class="eyebrow">Sur place</p>
@@ -150,12 +157,15 @@
 
   <section class="section">
     <div class="wrap">
-      <div class="cta-band">
-        <div>
+      <div class="signup" id="inscription">
+        <div class="section-head">
+          <p class="eyebrow">Inscription</p>
           <h2>On vous garde une place ?</h2>
-          <p>L'inscription prend moins d'une minute.</p>
+          <p>Les places sont limitées : réservez la vôtre en quelques clics.</p>
         </div>
-        <a class="btn btn-primary" href="#infos" data-rsvp>Je confirme ma venue</a>
+        <div class="signup-form" id="refiner-inscription">
+          <p class="signup-fallback" data-refiner-fallback>Le formulaire d'inscription s'affiche ici.</p>
+        </div>
       </div>
     </div>
   </section>

@@ -5,7 +5,9 @@ const EVENT = {
   end: "2026-11-05T23:00:00+01:00",  
   location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
   details: "Découverte de la nouvelle version de l'ATS Flatchr et soirée des 10 ans : roadmap agentique, DJ set, traiteur italien et invité surprise.",
-  rsvpUrl: "", // Lien du formulaire d'inscription (ex. formulaire HubSpot). Vide = bouton pointant vers la section infos.
+  rsvpUrl: "", // Lien externe d'inscription. Vide = les boutons pointent vers le formulaire Refiner de la page d'accueil.
+  refinerProjectId: "", // ID du projet Refiner (Refiner > Settings > JavaScript SDK, ligne setProject). À RENSEIGNER.
+  refinerSurveyId: "9df24c90-bcb1-11f1-837b-a1a698ac21ed", // Questionnaire d'inscription
   videoUrl: "" // Lien YouTube, Vimeo ou fichier .mp4 (ex. "assets/teaser.mp4"). Vide = encart "Vidéo à venir".
 };
 
@@ -25,6 +27,21 @@ const EVENT = {
   document.querySelectorAll("[data-gcal]").forEach(function (a) {
     a.href = gcal; a.target = "_blank"; a.rel = "noopener";
   });
+
+  // Formulaire d'inscription Refiner (embed)
+  var signup = document.getElementById("refiner-inscription");
+  if (signup && EVENT.refinerProjectId && EVENT.refinerSurveyId) {
+    window._refinerQueue = window._refinerQueue || [];
+    window._refiner = window._refiner || function () { window._refinerQueue.push(arguments); };
+    _refiner("setProject", EVENT.refinerProjectId);
+    var fallback = signup.querySelector("[data-refiner-fallback]");
+    if (fallback) fallback.remove();
+    _refiner("embed", EVENT.refinerSurveyId, "refiner-inscription");
+    var rs = document.createElement("script");
+    rs.async = true;
+    rs.src = "https://js.refiner.io/v001/client.js";
+    document.head.appendChild(rs);
+  }
 
   // Encart vidéo
   var frame = document.querySelector("[data-video]");

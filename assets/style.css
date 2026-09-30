@@ -202,6 +202,17 @@ p { margin: 0; }
 .play { width: 4.5rem; height: 4.5rem; border-radius: 50%; background: var(--orange); position: relative; }
 .play::after { content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 0.8rem 0 0.8rem 1.3rem; border-color: transparent transparent transparent var(--night); }
 
+.bus-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; color: var(--muted); font-size: 0.9rem; line-height: 1.4; }
+.bus-list li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.4rem; }
+.bus-list b { font-family: var(--font-mono); color: var(--ink); background: var(--navy-line); border-radius: 5px; text-align: center; font-size: 0.8rem; padding: 0.05rem 0; align-self: start; }
+
+/* Inscription (formulaire Refiner) */
+.signup { background: linear-gradient(140deg, var(--teal-deep), var(--navy)); border-radius: var(--radius); padding: clamp(1.5rem, 5vw, 3rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 5vw, 3rem); align-items: start; scroll-margin-top: 5rem; }
+.signup .section-head { margin-bottom: 0; }
+.signup .section-head p:last-child { color: var(--ink); opacity: 0.85; }
+.signup-form { background: #ffffff; color: #12435e; border-radius: 12px; min-height: 12rem; padding: 0.5rem; min-width: 0; }
+.signup-fallback { display: grid; place-items: center; min-height: 11rem; text-align: center; color: #016d7d; font-weight: 600; padding: 1rem; }
+
 /* En-tête de page intérieure */
 .page-hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) 2rem; }
 .page-hero .wrap { display: grid; gap: 1rem; }
@@ -254,7 +265,7 @@ p { margin: 0; }
 .ticket { animation: settle 0.9s cubic-bezier(.2,.8,.2,1) both; }
 
 @media (max-width: 52rem) {
-  .hero .wrap, .invitation-letter, .video-block { grid-template-columns: minmax(0, 1fr); }
+  .hero .wrap, .invitation-letter, .video-block, .signup { grid-template-columns: minmax(0, 1fr); }
   .ticket { transform: none; animation: none; }
   .teaser li { border-right: 0; border-bottom: 1px solid var(--navy-line); }
   .teaser li:last-child { border-bottom: 0; }
