@@ -1,10 +1,10 @@
 // Infos clés de l'événement : à modifier ici, elles alimentent le compte à rebours et le lien agenda.
 const EVENT = {
-  title: "Flatchr — Soirée de lancement agent IA",
+  title: "Flatchr — Soirée de lancement",
   start: "2026-11-05T18:30:00+01:00",
   end: "2026-11-05T23:00:00+01:00",  
   location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
-  details: "Découverte de la nouvelle version de l'ATS Flatchr et soirée des 10 ans : roadmap agentique, DJ set, traiteur italien et invité surprise.",
+  details: "Découverte de la nouvelle version de l'IA agentique Flatchr et soirée pour célébrer nos 10 ans : roadmap agentique, DJ set, traiteur italien et invité surprise.",
   rsvpUrl: "https://survey.refiner.io/mqggze-m46jk0", // Questionnaire d'inscription Refiner : tous les boutons « Je confirme ma venue » y mènent.
   videoUrl: "https://drive.google.com/file/d/1WSR2bUBtCTJqu_py-Oo6P8JuzydeLC_B/view" // Lien Google Drive (partagé « Tous les utilisateurs disposant du lien »), YouTube, Vimeo ou fichier .mp4. Vide = encart "Vidéo à venir".
 };
