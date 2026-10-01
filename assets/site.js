@@ -31,12 +31,13 @@ const EVENT = {
   if (frame && EVENT.videoUrl) {
     var url = EVENT.videoUrl, yt = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/), vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/), drive = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
     if (/\.(mp4|webm)(\?|$)/i.test(url)) {
-      frame.innerHTML = '<video controls playsinline preload="metadata" src="' + url + '"></video>';
+      frame.innerHTML = '<video controls playsinline autoplay muted loop src="' + url + '"></video>';
     } else if (yt || vimeo || drive) {
-      var src = yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0"
-        : vimeo ? "https://player.vimeo.com/video/" + vimeo[1]
+      // Lecture automatique : les navigateurs ne l'autorisent qu'en muet (le visiteur active le son d'un clic)
+      var src = yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=" + yt[1]
+        : vimeo ? "https://player.vimeo.com/video/" + vimeo[1] + "?autoplay=1&muted=1&loop=1"
         : "https://drive.google.com/file/d/" + drive[1] + "/preview";
-      frame.innerHTML = '<iframe src="' + src + '" title="Vidéo de présentation de la soirée" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+      frame.innerHTML = '<iframe src="' + src + '" title="Vidéo de présentation de la soirée" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>';
     }
   }
 
