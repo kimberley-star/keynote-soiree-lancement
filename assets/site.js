@@ -34,10 +34,29 @@ const EVENT = {
       frame.innerHTML = '<video controls playsinline autoplay muted loop src="' + url + '"></video>';
     } else if (yt || vimeo || drive) {
       // Lecture automatique : les navigateurs ne l'autorisent qu'en muet (le visiteur active le son d'un clic)
-      var src = yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=" + yt[1]
+      var src = yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0&autoplay=1&mute=1&playsinline=1&loop=1&enablejsapi=1&playlist=" + yt[1]
         : vimeo ? "https://player.vimeo.com/video/" + vimeo[1] + "?autoplay=1&muted=1&loop=1"
         : "https://drive.google.com/file/d/" + drive[1] + "/preview";
       frame.innerHTML = '<iframe src="' + src + '" title="Vidéo de présentation de la soirée" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    }
+    // Son : activé au premier clic/touche du visiteur sur la page, ou via le bouton « Activer le son »
+    if (yt) {
+      var player = frame.querySelector("iframe");
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "sound-btn";
+      btn.textContent = "🔊 Activer le son";
+      frame.appendChild(btn);
+      var unmute = function () {
+        ["unMute", "playVideo"].forEach(function (f) {
+          player.contentWindow.postMessage(JSON.stringify({ event: "command", func: f, args: [] }), "*");
+        });
+        player.contentWindow.postMessage(JSON.stringify({ event: "command", func: "setVolume", args: [100] }), "*");
+        btn.remove();
+        ["pointerdown", "keydown"].forEach(function (ev) { document.removeEventListener(ev, unmute, true); });
+      };
+      btn.addEventListener("click", unmute);
+      ["pointerdown", "keydown"].forEach(function (ev) { document.addEventListener(ev, unmute, true); });
     }
   }
 

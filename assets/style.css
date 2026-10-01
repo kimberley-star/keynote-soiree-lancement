@@ -192,6 +192,7 @@ p { margin: 0; }
 .cta-band p { color: var(--muted); margin-top: 0.5rem; }
 
 /* Encart vidéo */
+.sound-btn { position: absolute; left: 50%; bottom: 4.5rem; transform: translateX(-50%); z-index: 2; border: 0; cursor: pointer; font: 600 0.95rem var(--font-body); padding: 0.6rem 1.1rem; border-radius: 999px; background: var(--orange); color: var(--night); box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.6); white-space: nowrap; }
 /* Format vertical (9:16) pour le teaser */
 .video-frame.hero-video { aspect-ratio: 9 / 16; width: min(100%, 20rem); justify-self: center; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7); }
 .video-block { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
