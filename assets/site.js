@@ -6,7 +6,7 @@ const EVENT = {
   location: "Flatchr, 79 rue Marcel Dassault, 92100 Boulogne-Billancourt, France",
   details: "Découverte de la nouvelle version de l'IA agentique Flatchr et soirée pour célébrer nos 10 ans : roadmap agentique, DJ set, traiteur italien et invité surprise.",
   rsvpUrl: "https://survey.refiner.io/mqggze-m46jk0", // Questionnaire d'inscription Refiner : tous les boutons « Je confirme ma venue » y mènent.
-  videoUrl: "https://www.youtube.com/shorts/XbYt7-mBWto" // Lien YouTube (vidéo, Short), Vimeo, Google Drive (partagé « Tous les utilisateurs disposant du lien ») ou fichier .mp4. Vide = encart "Vidéo à venir".
+  videoUrl: "https://www.youtube.com/shorts/G93r_8_lBD0" // Lien YouTube (vidéo, Short), Vimeo, Google Drive (partagé « Tous les utilisateurs disposant du lien ») ou fichier .mp4. Vide = encart "Vidéo à venir".
 };
 
 (function () {
