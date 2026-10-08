@@ -1,0 +1,48 @@
+<section class="aia-hero" data-url="{{ module.cta_url }}">
+  <div class="aia-wrap">
+    {% if module.badge %}<span class="aia-badge">{{ module.badge }}</span>{% endif %}
+    <h1 class="aia-h1">{{ module.title }} <span class="aia-hl">{{ module.title_highlight }}</span>.</h1>
+    <p class="aia-lead">{{ module.lead }}</p>
+    <form class="aia-prompt" data-aia-form>
+      <label class="aia-sr" for="aia-prompt-{{ name }}">Décrivez votre besoin de recrutement</label>
+      <textarea id="aia-prompt-{{ name }}" rows="2" placeholder="{{ module.placeholder }}" required></textarea>
+      <div class="aia-prompt-bar">
+        <span class="aia-hint">{{ module.hint }}</span>
+        <button class="aia-send" type="submit" aria-label="Envoyer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+      </div>
+    </form>
+    {% if module.chips %}<div class="aia-chips">{% for c in module.chips %}<button class="aia-chip" type="button">{{ c.label }}</button>{% endfor %}</div>{% endif %}
+    <div class="aia-cta">
+      <a class="aia-btn" href="{{ module.cta_url }}" target="_blank" rel="noopener">{{ module.cta_text }}</a>
+      {% if module.note %}<small>{{ module.note }}</small>{% endif %}
+    </div>
+  </div>
+</section>
+<style>
+.aia-hero{background:radial-gradient(60rem 30rem at 50% -10%,#dbfaff,#fff 70%);padding:clamp(3.5rem,9vw,6.5rem) 0 clamp(3rem,7vw,5rem);text-align:center;font-family:Poppins,'Segoe UI',system-ui,sans-serif;color:#182534}
+.aia-hero .aia-wrap{max-width:72rem;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+.aia-hero .aia-badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid #dee5ed;color:#016d7d;font-size:.85rem;font-weight:600;padding:.4rem .9rem;border-radius:999px;box-shadow:0 2px 10px rgba(24,37,52,.05)}
+.aia-hero .aia-badge:before{content:"";width:8px;height:8px;border-radius:50%;background:#ff9c11}
+.aia-hero .aia-h1{font-size:clamp(2.1rem,5.6vw,3.8rem);font-weight:800;line-height:1.15;margin:1.25rem auto 0;max-width:20ch;color:#182534;text-wrap:balance}
+.aia-hero .aia-hl{color:#01aec8}
+.aia-hero .aia-lead{font-size:clamp(1.05rem,2vw,1.25rem);color:#5b6b7d;max-width:40rem;margin:1.1rem auto 0}
+.aia-hero .aia-prompt{max-width:46rem;margin:2.25rem auto 0;background:#fff;border:1px solid #dee5ed;border-radius:26px;box-shadow:0 12px 40px rgba(1,109,125,.12);padding:.9rem .9rem .9rem 1.25rem;text-align:left}
+.aia-hero .aia-prompt:focus-within{border-color:#01aec8}
+.aia-hero .aia-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.aia-hero textarea{width:100%;border:0!important;outline:0;resize:none;font:400 1.05rem/1.5 Poppins,sans-serif;color:#182534;min-height:3.2rem;background:transparent!important;box-shadow:none!important;padding:0!important}
+.aia-hero .aia-prompt-bar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:.4rem}
+.aia-hero .aia-hint{font-size:.8rem;color:#5b6b7d}
+.aia-hero .aia-send{width:44px;height:44px;flex:none;border-radius:50%;border:0;background:#01aec8;color:#fff;display:grid;place-items:center;cursor:pointer;padding:0}
+.aia-hero .aia-send:hover{background:#016d7d}
+.aia-hero .aia-send svg{width:20px;height:20px}
+.aia-hero .aia-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1.1rem auto 0;max-width:46rem}
+.aia-hero .aia-chip{font:500 .85rem Poppins,sans-serif;color:#016d7d;background:#fff;border:1px solid #dee5ed;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+.aia-hero .aia-chip:hover{border-color:#01aec8;background:#dbfaff}
+.aia-hero .aia-cta{margin-top:2rem;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.aia-hero .aia-cta small{color:#5b6b7d;font-size:.85rem}
+.aia-hero .aia-btn{display:inline-flex;font:600 1rem/1 Poppins,sans-serif;padding:.95rem 1.6rem;border-radius:999px;background:#ff9c11;color:#fff;text-decoration:none}
+.aia-hero .aia-btn:hover{background:#ea8f10;color:#fff}
+</style>
+<script>
+(function(){document.querySelectorAll('.aia-hero').forEach(function(h){if(h.dataset.ready)return;h.dataset.ready=1;var url=h.dataset.url,f=h.querySelector('[data-aia-form]'),t=f.querySelector('textarea');f.addEventListener('submit',function(e){e.preventDefault();var q=t.value.trim();if(!q){t.focus();return;}window.open(url+(url.indexOf('?')<0?'?':'&')+'prompt='+encodeURIComponent(q),'_blank','noopener');});t.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();f.requestSubmit();}});h.querySelectorAll('.aia-chip').forEach(function(c){c.addEventListener('click',function(){t.value=c.textContent;t.focus();});});});})();
+</script>

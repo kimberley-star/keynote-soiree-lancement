@@ -1,0 +1,85 @@
+[
+  {
+    "name": "badge",
+    "type": "text",
+    "label": "Badge",
+    "default": "Nouveau · L'agent IA Flatchr"
+  },
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Titre (début)",
+    "default": "Votre recrutement, en"
+  },
+  {
+    "name": "title_highlight",
+    "type": "text",
+    "label": "Titre (partie en couleur)",
+    "default": "une conversation"
+  },
+  {
+    "name": "lead",
+    "type": "textarea",
+    "label": "Texte d'accroche",
+    "default": "Dites à l'agent IA Flatchr ce dont vous avez besoin. Il rédige l'annonce, la diffuse, trie les candidats et cale les entretiens. Vous, vous gérez votre équipe."
+  },
+  {
+    "name": "placeholder",
+    "type": "text",
+    "label": "Texte d'exemple du champ",
+    "default": "Ex. : Je cherche 2 vendeurs en CDI pour mon magasin de Lyon, dispo dès lundi…"
+  },
+  {
+    "name": "hint",
+    "type": "text",
+    "label": "Mention sous le champ",
+    "default": "✨ L'agent IA Flatchr démarre votre recrutement"
+  },
+  {
+    "name": "chips",
+    "type": "group",
+    "label": "Exemples de demandes",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "label",
+        "type": "text",
+        "label": "Exemple",
+        "default": "Recruter un serveur pour ce week-end"
+      }
+    ],
+    "default": [
+      {
+        "label": "Recruter un serveur pour ce week-end"
+      },
+      {
+        "label": "Ouvrir un poste dans mes 12 franchises"
+      },
+      {
+        "label": "Trier les candidats de la semaine"
+      }
+    ]
+  },
+  {
+    "name": "cta_text",
+    "type": "text",
+    "label": "Texte du bouton",
+    "default": "Essayer gratuitement"
+  },
+  {
+    "name": "cta_url",
+    "type": "text",
+    "label": "Lien de l'accès gratuit (la demande saisie est ajoutée en ?prompt=)",
+    "default": "https://app.flatchr.io/signup"
+  },
+  {
+    "name": "note",
+    "type": "text",
+    "label": "Mention sous le bouton",
+    "default": "Sans carte bancaire · Accès gratuit"
+  }
+]
