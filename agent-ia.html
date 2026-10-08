@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent IA Flatchr — Recrutez en une conversation</title>
+<meta name="description" content="L'agent IA Flatchr : vos managers terrain recrutent depuis WhatsApp, en une conversation. Disponible le 1er janvier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<style>
+/* Page « Agent IA » — calquée sur le design de flatchr.io : fond blanc, Poppins, texte bleu nuit, teal en accent, orange pour l'action.
+   Palette Flatchr : primaires #01AEC8 #019BB2 #016D7D, orange #FF9C11, navy #12435E. */
+:root {
+  --ink: #182534;        /* texte principal du site flatchr.io */
+  --navy: #12435e;
+  --muted: #5b6b7d;
+  --line: #dee5ed;
+  --bg-soft: #f1f4f8;
+  --bg-teal: #dbfaff;
+  --teal: #01aec8;
+  --teal-mid: #019bb2;
+  --teal-deep: #016d7d;
+  --orange: #ff9c11;
+  --orange-dark: #ea8f10;
+  --wa-green: #25d366;
+  --wa-bg: #efeae2;
+  --wa-out: #d9fdd3;
+
+  --font: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --wrap: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --radius: 20px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { margin: 0; background: #fff; color: var(--ink); font-family: var(--font); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: var(--teal-mid); }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.hl { color: var(--teal); }
+
+/* Contenu provisoire : retirer la classe .a-completer une fois le texte validé */
+.a-completer { text-decoration: underline dotted var(--orange); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Boutons (pilules, comme sur flatchr.io) */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font: 600 1rem/1 var(--font); padding: .95rem 1.6rem; border-radius: 999px; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background .15s, color .15s, transform .15s; }
+.btn-primary { background: var(--orange); color: #fff; }
+.btn-primary:hover { background: var(--orange-dark); color: #fff; transform: translateY(-1px); }
+.btn-outline { border-color: var(--teal); color: var(--teal-mid); background: #fff; }
+.btn-outline:hover { background: var(--teal); color: #fff; }
+.btn-sm { padding: .65rem 1.15rem; font-size: .9rem; }
+
+/* En-tête */
+.site-header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .8rem; }
+.brand img { display: block; height: 34px; width: auto; }
+.nav { display: flex; align-items: center; gap: 1.5rem; font-weight: 500; font-size: .95rem; }
+.nav a { color: var(--ink); text-decoration: none; }
+.nav a:hover { color: var(--teal-mid); }
+.nav .btn { color: #fff; }
+@media (max-width: 760px) { .nav .hide-sm { display: none; } }
+
+/* Hero : champ de prompt façon ChatGPT */
+.hero { background: radial-gradient(60rem 30rem at 50% -10%, var(--bg-teal), #fff 70%); padding-block: clamp(3.5rem, 9vw, 6.5rem) clamp(3rem, 7vw, 5rem); text-align: center; }
+.badge { display: inline-flex; align-items: center; gap: .5rem; background: #fff; border: 1px solid var(--line); color: var(--teal-deep); font-size: .85rem; font-weight: 600; padding: .4rem .9rem; border-radius: 999px; box-shadow: 0 2px 10px rgba(24,37,52,.05); }
+.badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.hero h1 { font-size: clamp(2.1rem, 5.6vw, 3.8rem); font-weight: 800; margin-top: 1.25rem; }
+.hero .lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--muted); max-width: 40rem; margin: 1.1rem auto 0; }
+
+.prompt { max-width: 46rem; margin: 2.25rem auto 0; background: #fff; border: 1px solid var(--line); border-radius: 26px; box-shadow: 0 12px 40px rgba(1,109,125,.12); padding: .9rem .9rem .9rem 1.25rem; text-align: left; transition: border-color .15s, box-shadow .15s; }
+.prompt:focus-within { border-color: var(--teal); box-shadow: 0 12px 40px rgba(1,174,200,.22); }
+.prompt label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.prompt textarea { width: 100%; border: 0; outline: 0; resize: none; font: 400 1.05rem/1.5 var(--font); color: var(--ink); min-height: 3.2rem; background: transparent; }
+.prompt textarea::placeholder { color: #8a98a8; }
+.prompt-bar { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .4rem; }
+.prompt-hint { font-size: .8rem; color: var(--muted); display: flex; align-items: center; gap: .4rem; }
+.send { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 0; background: var(--teal); color: #fff; display: grid; place-items: center; cursor: pointer; transition: background .15s, transform .15s; }
+.send:hover { background: var(--teal-deep); transform: scale(1.05); }
+.send svg { width: 20px; height: 20px; }
+
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin: 1.1rem auto 0; max-width: 46rem; }
+.chip { font: 500 .85rem var(--font); color: var(--teal-deep); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: .45rem .9rem; cursor: pointer; transition: border-color .15s, background .15s; }
+.chip:hover { border-color: var(--teal); background: var(--bg-teal); }
+
+.hero-cta { margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+.hero-cta small { color: var(--muted); font-size: .85rem; }
+
+/* Sections */
+.section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+.section.soft { background: var(--bg-soft); }
+.section-head { text-align: center; max-width: 44rem; margin: 0 auto clamp(2rem, 5vw, 3rem); }
+.eyebrow { font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); }
+.section-head h2 { font-size: clamp(1.75rem, 3.8vw, 2.6rem); font-weight: 700; margin-top: .5rem; }
+.section-head p:not(.eyebrow) { color: var(--muted); margin-top: .8rem; font-size: 1.05rem; }
+
+/* Vidéo de vision */
+.video { max-width: 60rem; margin-inline: auto; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: var(--navy); box-shadow: 0 20px 50px rgba(24,37,52,.18); position: relative; }
+.video iframe, .video video { width: 100%; height: 100%; border: 0; display: block; }
+.video-placeholder { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1rem; color: #fff; text-align: center; background: linear-gradient(135deg, var(--teal-deep), var(--navy)); }
+.play { width: 76px; height: 76px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; }
+.play::after { content: ""; border-left: 22px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 6px; }
+
+/* Démo WhatsApp */
+.demo { display: grid; grid-template-columns: 1fr minmax(0, 380px); gap: clamp(2rem, 6vw, 4.5rem); align-items: center; }
+.demo-text h2 { font-size: clamp(1.75rem, 3.8vw, 2.6rem); font-weight: 700; margin-top: .5rem; }
+.demo-text > p { color: var(--muted); margin-top: 1rem; font-size: 1.05rem; }
+.demo-list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .75rem; }
+.demo-list li { display: flex; gap: .75rem; align-items: flex-start; }
+.demo-list li::before { content: "✓"; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--bg-teal); color: var(--teal-deep); font-weight: 700; font-size: .8rem; display: grid; place-items: center; margin-top: .1rem; }
+.replay { margin-top: 1.75rem; }
+@media (max-width: 860px) { .demo { grid-template-columns: 1fr; } .phone { margin-inline: auto; } }
+
+.phone { width: 100%; max-width: 360px; border-radius: 40px; background: #0f1a24; padding: 12px; box-shadow: 0 24px 60px rgba(24,37,52,.25); }
+.screen { border-radius: 30px; overflow: hidden; background: var(--wa-bg); display: flex; flex-direction: column; height: 600px; }
+.wa-top { background: #075e54; color: #fff; display: flex; align-items: center; gap: .7rem; padding: 1.1rem 1rem .8rem; }
+.wa-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--teal); display: grid; place-items: center; font-weight: 700; font-size: .9rem; flex: none; }
+.wa-top strong { display: block; font-size: .95rem; line-height: 1.2; }
+.wa-top span { font-size: .75rem; opacity: .8; }
+.wa-chat { flex: 1; overflow-y: auto; padding: 1rem .8rem; display: flex; flex-direction: column; gap: .5rem; scroll-behavior: smooth; }
+.msg { max-width: 85%; padding: .5rem .7rem .35rem; border-radius: 10px; font-size: .86rem; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,.08); opacity: 0; transform: translateY(8px); animation: pop .3s ease forwards; }
+.msg.out { align-self: flex-end; background: var(--wa-out); border-top-right-radius: 2px; }
+.msg.in { align-self: flex-start; background: #fff; border-top-left-radius: 2px; }
+.msg time { display: block; text-align: right; font-size: .66rem; color: #667781; margin-top: .15rem; }
+.msg .card { margin-top: .4rem; padding: .5rem .6rem; border-left: 3px solid var(--teal); background: var(--bg-soft); border-radius: 6px; font-size: .8rem; }
+.typing { align-self: flex-start; background: #fff; border-radius: 10px; padding: .6rem .8rem; display: flex; gap: 4px; }
+.typing i { width: 6px; height: 6px; border-radius: 50%; background: #9aa5ad; animation: blink 1s infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+.wa-input { background: #f0f2f5; padding: .6rem .8rem; display: flex; gap: .5rem; align-items: center; }
+.wa-input span { flex: 1; background: #fff; border-radius: 999px; padding: .5rem .9rem; font-size: .82rem; color: #8696a0; }
+.wa-input b { width: 36px; height: 36px; border-radius: 50%; background: #00a884; flex: none; }
+@keyframes pop { to { opacity: 1; transform: none; } }
+@keyframes blink { 50% { opacity: .3; } }
+
+/* Bénéfices */
+.benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; }
+.benefit { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.75rem; transition: transform .2s, box-shadow .2s; }
+.benefit:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(24,37,52,.08); }
+.benefit .icon { width: 52px; height: 52px; border-radius: 14px; background: var(--bg-teal); display: grid; place-items: center; font-size: 1.5rem; }
+.benefit .who { display: inline-block; margin-top: 1.25rem; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--orange-dark); }
+.benefit h3 { font-size: 1.25rem; font-weight: 700; margin-top: .35rem; }
+.benefit p { color: var(--muted); margin-top: .6rem; }
+
+/* Comment ça marche */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; counter-reset: step; }
+.step { position: relative; padding: 2rem 1.75rem; background: #fff; border-radius: var(--radius); border: 1px solid var(--line); counter-increment: step; }
+.step::before { content: counter(step); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 700; font-size: 1.1rem; }
+.step h3 { font-size: 1.2rem; font-weight: 700; margin-top: 1.1rem; }
+.step p { color: var(--muted); margin-top: .5rem; }
+
+/* Disponible le 1er janvier */
+.launch { background: linear-gradient(120deg, var(--teal-deep), var(--navy)); color: #fff; border-radius: 28px; padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; overflow: hidden; position: relative; }
+.launch::after { content: ""; position: absolute; right: -6rem; top: -6rem; width: 18rem; height: 18rem; border-radius: 50%; background: var(--teal); opacity: .25; }
+.launch .eyebrow { color: var(--bg-teal); }
+.launch h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; margin-top: .5rem; }
+.launch h2 em { font-style: normal; color: var(--orange); }
+.launch p { margin-top: .8rem; opacity: .9; max-width: 34rem; }
+.launch-cta { position: relative; z-index: 1; display: flex; flex-direction: column; gap: .75rem; align-items: stretch; }
+.launch .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.launch .btn-outline:hover { background: #fff; color: var(--teal-deep); }
+.countdown { display: flex; gap: .75rem; margin-top: 1.5rem; }
+.countdown div { background: rgba(255,255,255,.12); border-radius: 12px; padding: .6rem .9rem; text-align: center; min-width: 4.5rem; }
+.countdown b { display: block; font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
+.countdown span { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; opacity: .8; }
+@media (max-width: 760px) { .launch { grid-template-columns: 1fr; } }
+
+/* Pied de page */
+.site-footer { background: var(--ink); color: #c7d2dd; padding-block: 2rem; font-size: .9rem; margin-top: clamp(3.5rem, 8vw, 6rem); }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+.site-footer a { color: #fff; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="https://www.flatchr.io/"><img src="https://www.flatchr.io/hs-fs/hubfs/Logo%20(3).png?width=301&amp;height=91&amp;name=Logo%20(3).png" alt="Flatchr" width="151" height="46"></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="hide-sm" href="#vision">Vision</a>
+      <a class="hide-sm" href="#demo">Démo</a>
+      <a class="hide-sm" href="#comment">Comment ça marche</a>
+      <a class="btn btn-primary btn-sm" href="#" data-free>Accès gratuit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HEADER : champ de prompt -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge">Nouveau · L'agent IA Flatchr</span>
+      <h1>Votre recrutement,<br>en <span class="hl">une conversation</span>.</h1>
+      <p class="lead">Dites à l'agent IA Flatchr ce dont vous avez besoin. Il rédige l'annonce, la diffuse, trie les candidats et cale les entretiens. Vous, vous gérez votre équipe.</p>
+
+      <form class="prompt" data-prompt-form>
+        <label for="prompt">Décrivez votre besoin de recrutement</label>
+        <textarea id="prompt" name="prompt" rows="2" placeholder="Ex. : Je cherche 2 vendeurs en CDI pour mon magasin de Lyon, dispo dès lundi…" required></textarea>
+        <div class="prompt-bar">
+          <span class="prompt-hint">✨ L'agent IA Flatchr démarre votre recrutement</span>
+          <button class="send" type="submit" aria-label="Envoyer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="chips" aria-label="Exemples de demandes">
+        <button class="chip" type="button">Recruter un serveur pour ce week-end</button>
+        <button class="chip" type="button">Ouvrir un poste dans mes 12 franchises</button>
+        <button class="chip" type="button">Trier les candidats de la semaine</button>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#" data-free>Essayer gratuitement</a>
+        <small class="a-completer">Sans carte bancaire · Accès gratuit</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDÉO DE VISION -->
+  <section class="section" id="vision">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Notre vision</p>
+        <h2>Le RH pilote, le manager recrute, <span class="hl">l'IA accélère</span></h2>
+        <p>Pourquoi nous avons construit un agent IA pour celles et ceux qui recrutent sur le terrain.</p>
+      </div>
+      <div class="video" data-video="vision">
+        <div class="video-placeholder">
+          <span class="play" aria-hidden="true"></span>
+          <p><strong>Vidéo de vision</strong><br>Bientôt disponible</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÉMO WHATSAPP -->
+  <section class="section soft" id="demo">
+    <div class="wrap demo">
+      <div class="demo-text">
+        <p class="eyebrow">Démo</p>
+        <h2>Recruter depuis WhatsApp, entre deux clients</h2>
+        <p>Pas de nouveau logiciel à apprendre : vos managers écrivent à l'agent comme à un collègue, depuis l'appli qu'ils utilisent déjà.</p>
+        <ul class="demo-list">
+          <li>L'agent rédige et publie l'annonce sur les bons jobboards</li>
+          <li>Il présélectionne les candidats selon vos critères</li>
+          <li>Il propose les créneaux d'entretien et relance pour vous</li>
+        </ul>
+        <button class="btn btn-outline replay" type="button" data-replay>↻ Rejouer la démo</button>
+      </div>
+
+      <div class="phone" aria-label="Démonstration d'une conversation WhatsApp avec l'agent IA Flatchr">
+        <div class="screen">
+          <div class="wa-top">
+            <div class="wa-avatar">F</div>
+            <div><strong>Agent IA Flatchr</strong><span>en ligne</span></div>
+          </div>
+          <div class="wa-chat" data-chat aria-live="polite"></div>
+          <div class="wa-input"><span>Écrire un message</span><b aria-hidden="true"></b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 BÉNÉFICES -->
+  <section class="section" id="benefices">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Pour le terrain</p>
+        <h2>Pensé pour les managers terrain et les réseaux de franchise</h2>
+      </div>
+      <div class="benefits">
+        <article class="benefit">
+          <div class="icon" aria-hidden="true">⏱️</div>
+          <span class="who">Managers terrain</span>
+          <h3>Du temps rendu au terrain</h3>
+          <p>Annonce, tri, prise de rendez-vous : l'agent s'occupe de l'administratif. Le manager garde la main sur la décision finale.</p>
+        </article>
+        <article class="benefit">
+          <div class="icon" aria-hidden="true">💬</div>
+          <span class="who">Managers terrain</span>
+          <h3>Zéro formation</h3>
+          <p>Un message WhatsApp suffit. Pas de logiciel à ouvrir, pas de mot de passe à retenir : l'adoption est immédiate.</p>
+        </article>
+        <article class="benefit">
+          <div class="icon" aria-hidden="true">🏬</div>
+          <span class="who">Réseaux de franchise</span>
+          <h3>Un réseau autonome, une marque cohérente</h3>
+          <p>Chaque point de vente recrute en autonomie, avec vos modèles d'annonces et vos process. Le siège garde une vision consolidée.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="section soft" id="comment">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Comment ça marche</p>
+        <h2>3 étapes pour recruter avec l'agent IA</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3>Exprimez votre besoin</h3>
+          <p>Par WhatsApp ou depuis Flatchr, décrivez le poste en quelques mots, comme vous le feriez à un collègue.</p>
+        </li>
+        <li class="step">
+          <h3>L'agent passe à l'action</h3>
+          <p>Il rédige l'annonce, la diffuse, analyse les candidatures et vous présente une shortlist.</p>
+        </li>
+        <li class="step">
+          <h3>Vous choisissez, vous recrutez</h3>
+          <p>Validez les profils, l'agent organise les entretiens. Vous rencontrez les bons candidats, sans perte de temps.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- DISPONIBLE LE 1ER JANVIER -->
+  <section class="section" id="lancement">
+    <div class="wrap">
+      <div class="launch">
+        <div>
+          <p class="eyebrow">Lancement</p>
+          <h2>Disponible le <em>1<sup>er</sup> janvier</em></h2>
+          <p>Activez votre accès gratuit dès maintenant et soyez parmi les premiers à recruter avec l'agent IA Flatchr.</p>
+          <div class="countdown" data-countdown aria-label="Temps restant avant le lancement">
+            <div><b data-d>—</b><span>jours</span></div>
+            <div><b data-h>—</b><span>heures</span></div>
+            <div><b data-m>—</b><span>min</span></div>
+          </div>
+        </div>
+        <div class="launch-cta">
+          <a class="btn btn-primary" href="#" data-free>Obtenir mon accès gratuit</a>
+          <a class="btn btn-outline" href="https://www.flatchr.io/demo">Demander une démo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Flatchr · Le logiciel de recrutement des managers de terrain</span>
+    <span><a href="https://www.flatchr.io/">flatchr.io</a> · <a href="mailto:contact@flatchr.io">contact@flatchr.io</a></span>
+  </div>
+</footer>
+
+<script>
+// Réglages de la page : à modifier ici.
+const AGENT = {
+  freeUrl: "https://app.flatchr.io/signup",  // À VÉRIFIER : lien de l'accès gratuit (le prompt saisi est transmis en paramètre ?prompt=)
+  launch: "2027-01-01T00:00:00+01:00",       // Date de disponibilité (compte à rebours)
+  visionVideoUrl: "",                        // Lien YouTube / Vimeo / .mp4 de la vidéo de vision. Vide = encart "Bientôt disponible".
+};
+
+// Scénario de la démo WhatsApp (out = manager, in = agent)
+const DEMO = [
+  { from: "out", text: "Salut ! J'ai besoin de 2 vendeurs en CDI pour le magasin de Lyon Part-Dieu, dispo vite 🙏", t: "09:12" },
+  { from: "in",  text: "C'est noté 👍 J'ai préparé l'annonce à partir de votre modèle « Vendeur·se ». Je la publie ?", card: "📄 Vendeur·se H/F – CDI 35h – Lyon Part-Dieu", t: "09:12" },
+  { from: "out", text: "Oui, vas-y", t: "09:13" },
+  { from: "in",  text: "Publiée sur Indeed, France Travail et votre page carrière ✅ Je vous préviens dès que j'ai des profils.", t: "09:13" },
+  { from: "in",  text: "Bonne nouvelle : 14 candidatures depuis hier. Voici les 3 profils qui collent le mieux :", card: "⭐ Sarah M. — 3 ans en retail<br>⭐ Yanis B. — dispo immédiatement<br>⭐ Léa D. — vente + caisse", t: "18:40" },
+  { from: "out", text: "Top, je veux voir Sarah et Yanis", t: "18:42" },
+  { from: "in",  text: "Entretiens calés jeudi à 10h et 11h, invitations envoyées 📅 Bonne soirée !", t: "18:42" },
+];
+
+(function () {
+  // Liens d'accès gratuit
+  document.querySelectorAll("[data-free]").forEach(function (a) { a.href = AGENT.freeUrl; });
+
+  // Prompt : redirige vers l'accès gratuit avec la demande saisie
+  var form = document.querySelector("[data-prompt-form]"), ta = form.querySelector("textarea");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var q = ta.value.trim();
+    if (!q) { ta.focus(); return; }
+    var sep = AGENT.freeUrl.indexOf("?") === -1 ? "?" : "&";
+    window.location.href = AGENT.freeUrl + sep + "prompt=" + encodeURIComponent(q);
+  });
+  ta.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
+  });
+  document.querySelectorAll(".chip").forEach(function (c) {
+    c.addEventListener("click", function () { ta.value = c.textContent; ta.focus(); });
+  });
+
+  // Vidéo de vision
+  var frame = document.querySelector('[data-video="vision"]'), url = AGENT.visionVideoUrl;
+  if (frame && url) {
+    var yt = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/), vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    frame.innerHTML = /\.(mp4|webm)(\?|$)/i.test(url)
+      ? '<video controls playsinline src="' + url + '"></video>'
+      : '<iframe src="' + (yt ? "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0" : "https://player.vimeo.com/video/" + (vimeo && vimeo[1])) + '" title="Vidéo de vision de l\'agent IA Flatchr" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+  }
+
+  // Démo WhatsApp animée, lancée quand elle devient visible
+  var chat = document.querySelector("[data-chat]"), timers = [];
+  function play() {
+    timers.forEach(clearTimeout); timers = []; chat.innerHTML = "";
+    var delay = 400;
+    DEMO.forEach(function (m) {
+      if (m.from === "in") {
+        timers.push(setTimeout(function () {
+          var t = document.createElement("div"); t.className = "typing"; t.innerHTML = "<i></i><i></i><i></i>";
+          chat.appendChild(t); chat.scrollTop = chat.scrollHeight;
+        }, delay));
+        delay += 1100;
+      }
+      timers.push(setTimeout(function () {
+        var t = chat.querySelector(".typing"); if (t) t.remove();
+        var d = document.createElement("div"); d.className = "msg " + m.from;
+        d.innerHTML = m.text + (m.card ? '<div class="card">' + m.card + "</div>" : "") + "<time>" + m.t + "</time>";
+        chat.appendChild(d); chat.scrollTop = chat.scrollHeight;
+      }, delay));
+      delay += m.from === "out" ? 1300 : 1600;
+    });
+  }
+  var started = false;
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries, obs) {
+      if (entries[0].isIntersecting && !started) { started = true; play(); obs.disconnect(); }
+    }, { threshold: 0.35 }).observe(chat);
+  } else { play(); }
+  document.querySelector("[data-replay]").addEventListener("click", play);
+
+  // Compte à rebours jusqu'au lancement
+  var cd = document.querySelector("[data-countdown]"), target = new Date(AGENT.launch).getTime();
+  function tick() {
+    var s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    cd.querySelector("[data-d]").textContent = Math.floor(s / 86400);
+    cd.querySelector("[data-h]").textContent = Math.floor(s % 86400 / 3600);
+    cd.querySelector("[data-m]").textContent = Math.floor(s % 3600 / 60);
+  }
+  tick(); setInterval(tick, 30000);
+})();
+</script>
+</body>
+</html>

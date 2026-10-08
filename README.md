@@ -8,6 +8,7 @@ Site statique (HTML/CSS/JS, sans build) aux couleurs de Flatchr.
 | `programme.html` | Déroulé détaillé de la soirée |
 | `intervenants.html` | Présentation des intervenants |
 | `evenement.html` | Page simple : l'essentiel de l'événement + lien vers le site (à partager par e-mail, LinkedIn…) |
+| `agent-ia.html` | Page de lancement de l'agent IA (design clair flatchr.io) : prompt, vidéo de vision, démo WhatsApp, bénéfices, 3 étapes, « Disponible le 1er janvier ». Réglages (lien accès gratuit, vidéo, date) dans l'objet `AGENT` en bas du fichier ; scénario de la démo dans `DEMO`. |
 
 ## Pages masquées
 `programme.html` et `intervenants.html` existent toujours mais ne sont plus liées. Pour les réafficher, retirer les commentaires `<!-- MASQUÉ … -->` dans `index.html` (menu et résumé du programme).

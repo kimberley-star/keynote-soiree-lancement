@@ -27,7 +27,7 @@ jobs:
       - name: Préparer les fichiers publics
         run: |
           mkdir _site
-          cp index.html evenement.html _site/
+          cp index.html evenement.html agent-ia.html _site/
           cp -r assets _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
