@@ -39,48 +39,48 @@
     },
     "children": [
       {
-        "name": "icon",
+        "name": "card_icon",
         "label": "Icône (emoji, ignorée si numérotée)",
         "type": "text",
         "default": ""
       },
       {
-        "name": "tag",
+        "name": "card_tag",
         "label": "Étiquette (facultatif)",
         "type": "text",
         "default": ""
       },
       {
-        "name": "title",
-        "label": "Titre",
+        "name": "card_title",
+        "label": "Titre de la carte",
         "type": "text",
         "default": ""
       },
       {
-        "name": "text",
-        "label": "Texte",
+        "name": "card_text",
+        "label": "Texte de la carte",
         "type": "text",
         "default": ""
       }
     ],
     "default": [
       {
-        "icon": "⏱️",
-        "tag": "Managers terrain",
-        "title": "Du temps rendu au terrain",
-        "text": "Annonce, tri, prise de rendez-vous : l'agent s'occupe de l'administratif. Le manager garde la main sur la décision finale."
+        "card_icon": "⏱️",
+        "card_tag": "Managers terrain",
+        "card_title": "Du temps rendu au terrain",
+        "card_text": "Annonce, tri, prise de rendez-vous : l'agent s'occupe de l'administratif. Le manager garde la main sur la décision finale."
       },
       {
-        "icon": "💬",
-        "tag": "Managers terrain",
-        "title": "Zéro formation",
-        "text": "Un message WhatsApp suffit. Pas de logiciel à ouvrir, pas de mot de passe à retenir : l'adoption est immédiate."
+        "card_icon": "💬",
+        "card_tag": "Managers terrain",
+        "card_title": "Zéro formation",
+        "card_text": "Un message WhatsApp suffit. Pas de logiciel à ouvrir, pas de mot de passe à retenir : l'adoption est immédiate."
       },
       {
-        "icon": "🏬",
-        "tag": "Réseaux de franchise",
-        "title": "Un réseau autonome, une marque cohérente",
-        "text": "Chaque point de vente recrute en autonomie, avec vos modèles d'annonces et vos process. Le siège garde une vision consolidée."
+        "card_icon": "🏬",
+        "card_tag": "Réseaux de franchise",
+        "card_title": "Un réseau autonome, une marque cohérente",
+        "card_text": "Chaque point de vente recrute en autonomie, avec vos modèles d'annonces et vos process. Le siège garde une vision consolidée."
       }
     ]
   }

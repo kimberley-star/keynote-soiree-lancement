@@ -8,10 +8,10 @@
     <ol class="aia-cards{% if module.numbered %} aia-numbered{% endif %}">
       {% for item in module.cards %}
       <li class="aia-card-item">
-        {% if not module.numbered and item.icon %}<div class="aia-icon" aria-hidden="true">{{ item.icon }}</div>{% endif %}
-        {% if item.tag %}<span class="aia-tag">{{ item.tag }}</span>{% endif %}
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.text }}</p>
+        {% if not module.numbered and item.card_icon %}<div class="aia-icon" aria-hidden="true">{{ item.card_icon }}</div>{% endif %}
+        {% if item.card_tag %}<span class="aia-tag">{{ item.card_tag }}</span>{% endif %}
+        <h3>{{ item.card_title }}</h3>
+        <p>{{ item.card_text }}</p>
       </li>
       {% endfor %}
     </ol>

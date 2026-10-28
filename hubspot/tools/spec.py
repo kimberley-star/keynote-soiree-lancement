@@ -36,21 +36,21 @@ MODULES = [
  ("agent-ia-whatsapp", "Agent IA - Démo WhatsApp", "Téléphone avec conversation animée manager / agent", [
    T("eyebrow", "Surtitre", "Démo"),
    T("title", "Titre", "Recruter depuis WhatsApp, entre deux clients"),
-   TA("text", "Texte", "Pas de nouveau logiciel à apprendre : vos managers écrivent à l'agent comme à un collègue, depuis l'appli qu'ils utilisent déjà."),
+   TA("intro", "Texte d'introduction", "Pas de nouveau logiciel à apprendre : vos managers écrivent à l'agent comme à un collègue, depuis l'appli qu'ils utilisent déjà."),
    R("points", "Points clés", ["L'agent rédige et publie l'annonce sur les bons jobboards", "Il présélectionne les candidats selon vos critères", "Il propose les créneaux d'entretien et relance pour vous"]),
    T("agent_name", "Nom affiché dans WhatsApp", "Agent IA Flatchr"),
    G("messages", "Messages de la conversation", [
        CH("sender", "Envoyé par", [["manager", "Manager (bulle verte, à droite)"], ["agent", "Agent IA (bulle blanche, à gauche)"]], "manager"),
-       T("text", "Message"),
+       T("message", "Message"),
        T("card", "Encadré sous le message (facultatif, <br> pour aller à la ligne)"),
        T("time", "Heure", "09:12")],
-     [{"sender": "manager", "text": "Salut ! J'ai besoin de 2 vendeurs en CDI pour le magasin de Lyon Part-Dieu, dispo vite 🙏", "card": "", "time": "09:12"},
-      {"sender": "agent", "text": "C'est noté 👍 J'ai préparé l'annonce à partir de votre modèle « Vendeur·se ». Je la publie ?", "card": "📄 Vendeur·se H/F – CDI 35h – Lyon Part-Dieu", "time": "09:12"},
-      {"sender": "manager", "text": "Oui, vas-y", "card": "", "time": "09:13"},
-      {"sender": "agent", "text": "Publiée sur Indeed, France Travail et votre page carrière ✅ Je vous préviens dès que j'ai des profils.", "card": "", "time": "09:13"},
-      {"sender": "agent", "text": "Bonne nouvelle : 14 candidatures depuis hier. Voici les 3 profils qui collent le mieux :", "card": "⭐ Sarah M. — 3 ans en retail<br>⭐ Yanis B. — dispo immédiatement<br>⭐ Léa D. — vente + caisse", "time": "18:40"},
-      {"sender": "manager", "text": "Top, je veux voir Sarah et Yanis", "card": "", "time": "18:42"},
-      {"sender": "agent", "text": "Entretiens calés jeudi à 10h et 11h, invitations envoyées 📅 Bonne soirée !", "card": "", "time": "18:42"}]),
+     [{"sender": "manager", "message": "Salut ! J'ai besoin de 2 vendeurs en CDI pour le magasin de Lyon Part-Dieu, dispo vite 🙏", "card": "", "time": "09:12"},
+      {"sender": "agent", "message": "C'est noté 👍 J'ai préparé l'annonce à partir de votre modèle « Vendeur·se ». Je la publie ?", "card": "📄 Vendeur·se H/F – CDI 35h – Lyon Part-Dieu", "time": "09:12"},
+      {"sender": "manager", "message": "Oui, vas-y", "card": "", "time": "09:13"},
+      {"sender": "agent", "message": "Publiée sur Indeed, France Travail et votre page carrière ✅ Je vous préviens dès que j'ai des profils.", "card": "", "time": "09:13"},
+      {"sender": "agent", "message": "Bonne nouvelle : 14 candidatures depuis hier. Voici les 3 profils qui collent le mieux :", "card": "⭐ Sarah M. — 3 ans en retail<br>⭐ Yanis B. — dispo immédiatement<br>⭐ Léa D. — vente + caisse", "time": "18:40"},
+      {"sender": "manager", "message": "Top, je veux voir Sarah et Yanis", "card": "", "time": "18:42"},
+      {"sender": "agent", "message": "Entretiens calés jeudi à 10h et 11h, invitations envoyées 📅 Bonne soirée !", "card": "", "time": "18:42"}]),
  ]),
  ("agent-ia-cartes", "Agent IA - Cartes", "3 cartes : bénéfices (icônes) ou étapes (numérotées)", [
    T("eyebrow", "Surtitre", "Pour le terrain"),
@@ -58,10 +58,10 @@ MODULES = [
    T("subtitle", "Sous-titre (facultatif)", ""),
    B("numbered", "Cartes numérotées (étapes) au lieu des icônes", False),
    B("soft_background", "Fond gris clair", False),
-   G("cards", "Cartes", [T("icon", "Icône (emoji, ignorée si numérotée)"), T("tag", "Étiquette (facultatif)"), T("title", "Titre"), TA("text", "Texte")],
-     [{"icon": "⏱️", "tag": "Managers terrain", "title": "Du temps rendu au terrain", "text": "Annonce, tri, prise de rendez-vous : l'agent s'occupe de l'administratif. Le manager garde la main sur la décision finale."},
-      {"icon": "💬", "tag": "Managers terrain", "title": "Zéro formation", "text": "Un message WhatsApp suffit. Pas de logiciel à ouvrir, pas de mot de passe à retenir : l'adoption est immédiate."},
-      {"icon": "🏬", "tag": "Réseaux de franchise", "title": "Un réseau autonome, une marque cohérente", "text": "Chaque point de vente recrute en autonomie, avec vos modèles d'annonces et vos process. Le siège garde une vision consolidée."}]),
+   G("cards", "Cartes", [T("card_icon", "Icône (emoji, ignorée si numérotée)"), T("card_tag", "Étiquette (facultatif)"), T("card_title", "Titre de la carte"), TA("card_text", "Texte de la carte")],
+     [{"card_icon": "⏱️", "card_tag": "Managers terrain", "card_title": "Du temps rendu au terrain", "card_text": "Annonce, tri, prise de rendez-vous : l'agent s'occupe de l'administratif. Le manager garde la main sur la décision finale."},
+      {"card_icon": "💬", "card_tag": "Managers terrain", "card_title": "Zéro formation", "card_text": "Un message WhatsApp suffit. Pas de logiciel à ouvrir, pas de mot de passe à retenir : l'adoption est immédiate."},
+      {"card_icon": "🏬", "card_tag": "Réseaux de franchise", "card_title": "Un réseau autonome, une marque cohérente", "card_text": "Chaque point de vente recrute en autonomie, avec vos modèles d'annonces et vos process. Le siège garde une vision consolidée."}]),
  ]),
  ("agent-ia-lancement", "Agent IA - Lancement", "Bloc « Disponible le 1er janvier » avec compte à rebours", [
    T("eyebrow", "Surtitre", "Lancement"),
@@ -78,9 +78,9 @@ MODULES = [
 
 # Contenu de la 2e instance du module Cartes (« Comment ça marche »)
 STEPS = {"eyebrow": "Comment ça marche", "title": "3 étapes pour recruter avec l'agent IA", "numbered": True, "soft_background": True,
-  "cards": [{"title": "Exprimez votre besoin", "text": "Par WhatsApp ou depuis Flatchr, décrivez le poste en quelques mots, comme vous le feriez à un collègue."},
-            {"title": "L'agent passe à l'action", "text": "Il rédige l'annonce, la diffuse, analyse les candidatures et vous présente une shortlist."},
-            {"title": "Vous choisissez, vous recrutez", "text": "Validez les profils, l'agent organise les entretiens. Vous rencontrez les bons candidats, sans perte de temps."}]}
+  "cards": [{"card_title": "Exprimez votre besoin", "card_text": "Par WhatsApp ou depuis Flatchr, décrivez le poste en quelques mots, comme vous le feriez à un collègue."},
+            {"card_title": "L'agent passe à l'action", "card_text": "Il rédige l'annonce, la diffuse, analyse les candidatures et vous présente une shortlist."},
+            {"card_title": "Vous choisissez, vous recrutez", "card_text": "Validez les profils, l'agent organise les entretiens. Vous rencontrez les bons candidats, sans perte de temps."}]}
 
 if __name__ == "__main__":
     root = os.path.join(os.path.dirname(__file__), "..", "modules")

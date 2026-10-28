@@ -3,7 +3,7 @@
     <div class="aia-demo-text">
       {% if module.eyebrow %}<p class="aia-eyebrow">{{ module.eyebrow }}</p>{% endif %}
       <h2 class="aia-h2">{{ module.title }}</h2>
-      <p class="aia-demo-lead">{{ module.text }}</p>
+      <p class="aia-demo-lead">{{ module.intro }}</p>
       {% if module.points %}<ul class="aia-demo-list">{% for item in module.points %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
     </div>
     <div class="aia-phone" aria-label="Démonstration d'une conversation WhatsApp avec l'agent IA Flatchr">
@@ -14,7 +14,7 @@
         </div>
         <div class="aia-wa-chat" data-aia-chat aria-live="polite">
           {% for item in module.messages %}
-          <div class="aia-msg aia-{{ item.sender }}">{{ item.text }}{% if item.card %}<div class="aia-card">{{ item.card }}</div>{% endif %}<time>{{ item.time }}</time></div>
+          <div class="aia-msg aia-{{ item.sender }}">{{ item.message }}{% if item.card %}<div class="aia-card">{{ item.card }}</div>{% endif %}<time>{{ item.time }}</time></div>
           {% endfor %}
         </div>
         <div class="aia-wa-input"><span>Écrire un message</span><b aria-hidden="true"></b></div>

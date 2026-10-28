@@ -12,8 +12,8 @@
     "default": "Recruter depuis WhatsApp, entre deux clients"
   },
   {
-    "name": "text",
-    "label": "Texte",
+    "name": "intro",
+    "label": "Texte d'introduction",
     "type": "text",
     "default": "Pas de nouveau logiciel à apprendre : vos managers écrivent à l'agent comme à un collègue, depuis l'appli qu'ils utilisent déjà."
   },
@@ -64,7 +64,7 @@
         "default": "manager"
       },
       {
-        "name": "text",
+        "name": "message",
         "label": "Message",
         "type": "text",
         "default": ""
@@ -85,43 +85,43 @@
     "default": [
       {
         "sender": "manager",
-        "text": "Salut ! J'ai besoin de 2 vendeurs en CDI pour le magasin de Lyon Part-Dieu, dispo vite 🙏",
+        "message": "Salut ! J'ai besoin de 2 vendeurs en CDI pour le magasin de Lyon Part-Dieu, dispo vite 🙏",
         "card": "",
         "time": "09:12"
       },
       {
         "sender": "agent",
-        "text": "C'est noté 👍 J'ai préparé l'annonce à partir de votre modèle « Vendeur·se ». Je la publie ?",
+        "message": "C'est noté 👍 J'ai préparé l'annonce à partir de votre modèle « Vendeur·se ». Je la publie ?",
         "card": "📄 Vendeur·se H/F – CDI 35h – Lyon Part-Dieu",
         "time": "09:12"
       },
       {
         "sender": "manager",
-        "text": "Oui, vas-y",
+        "message": "Oui, vas-y",
         "card": "",
         "time": "09:13"
       },
       {
         "sender": "agent",
-        "text": "Publiée sur Indeed, France Travail et votre page carrière ✅ Je vous préviens dès que j'ai des profils.",
+        "message": "Publiée sur Indeed, France Travail et votre page carrière ✅ Je vous préviens dès que j'ai des profils.",
         "card": "",
         "time": "09:13"
       },
       {
         "sender": "agent",
-        "text": "Bonne nouvelle : 14 candidatures depuis hier. Voici les 3 profils qui collent le mieux :",
+        "message": "Bonne nouvelle : 14 candidatures depuis hier. Voici les 3 profils qui collent le mieux :",
         "card": "⭐ Sarah M. — 3 ans en retail<br>⭐ Yanis B. — dispo immédiatement<br>⭐ Léa D. — vente + caisse",
         "time": "18:40"
       },
       {
         "sender": "manager",
-        "text": "Top, je veux voir Sarah et Yanis",
+        "message": "Top, je veux voir Sarah et Yanis",
         "card": "",
         "time": "18:42"
       },
       {
         "sender": "agent",
-        "text": "Entretiens calés jeudi à 10h et 11h, invitations envoyées 📅 Bonne soirée !",
+        "message": "Entretiens calés jeudi à 10h et 11h, invitations envoyées 📅 Bonne soirée !",
         "card": "",
         "time": "18:42"
       }
