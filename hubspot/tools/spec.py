@@ -77,7 +77,7 @@ MODULES = [
 ]
 
 # Contenu de la 2e instance du module Cartes (« Comment ça marche »)
-STEPS = {"eyebrow": "Comment ça marche", "title": "Comment fonctionne l'agent IA de recrutement Flatchr ?", "numbered": True, "soft_background": True,
+STEPS = {"eyebrow": "Comment ça marche", "subtitle": "", "title": "Comment fonctionne l'agent IA de recrutement Flatchr ?", "numbered": True, "soft_background": True,
   "cards": [{"card_title": "Exprimez votre besoin", "card_text": "Par WhatsApp ou depuis Flatchr, décrivez le poste en quelques mots, comme vous le feriez à un collègue."},
             {"card_title": "L'agent passe à l'action", "card_text": "Il rédige l'annonce, la diffuse, analyse les candidatures et vous présente une shortlist."},
             {"card_title": "Vous choisissez, vous recrutez", "card_text": "Validez les profils, l'agent organise les entretiens. Vous rencontrez les bons candidats, sans perte de temps."}]}
