@@ -130,3 +130,29 @@ DISCOVER = {"title": "Découvrez la suite", "cards": [
  {"icon": "hub-3.svg", "title": "Sourcez des top talents", "text": "Sourcez en quelques clics avec Flatchr pour trouver le candidat idéal", "cta_link": "https://www.flatchr.io/sourcing"},
  {"icon": "collections_bookmark-1.svg", "title": "Gérez vos candidatures", "text": "Centralisez toutes les candidatures sur une plateforme unique pour simplifier vos recrutements", "cta_link": "https://www.flatchr.io/ats"},
  {"icon": "supervised_user_circle-3.svg", "title": "Vos talents dans la CVthèque", "text": "Créez votre vivier de talents et maximisez vos chances de trouver le bon candidat à tout moment", "cta_link": "https://www.flatchr.io/cvtheque"}]}
+
+# « FAQ two col » (/Flatchr theme mar2024/pages/modules/faq-two-col), tout en bas de la page.
+# Champs « Heading » et « Text » du module laissés VIDES (sinon titre en H1) ; le titre passe par la colonne (H2).
+FAQ_TITLE = "Questions fréquentes sur l'agent IA de recrutement"
+FAQ = [
+ ("Qu'est-ce qu'un agent IA de recrutement ?",
+  ["Un agent IA de recrutement est un assistant basé sur l'intelligence artificielle qui prend en charge les tâches répétitives du recrutement à partir d'une simple demande, écrite ou orale.",
+   "Avec Flatchr, l'agent rédige vos offres d'emploi, retrouve des profils dans votre CVthèque, ajoute des CV, prépare vos comptes rendus d'entretien et reformule vos messages aux candidats. Vous gardez toujours la décision finale."]),
+ ("Comment fonctionne l'agent IA de recrutement Flatchr ?",
+  ["Vous échangez avec l'agent comme avec un collègue, sur WhatsApp ou depuis Flatchr, par message écrit ou par note vocale. Il comprend votre demande et l'exécute dans votre ATS.",
+   "Tout ce qu'il produit (offres, fiches candidats, comptes rendus, messages) est enregistré dans Flatchr : les RH et les managers travaillent sur les mêmes informations."]),
+ ("Faut-il installer une application pour utiliser l'agent ?",
+  ["Non. Vos managers utilisent l'application qu'ils ont déjà dans leur poche : il suffit d'écrire ou d'envoyer une note vocale à l'agent. Aucun nouveau logiciel à apprendre, aucune formation nécessaire."]),
+ ("L'agent IA prend-il des décisions à la place du manager ?",
+  ["Non. L'agent prépare, propose et vous fait gagner du temps, mais c'est toujours vous qui validez : une offre avant sa mise en ligne, un message avant son envoi, un candidat avant de le retenir."]),
+ ("L'agent IA de recrutement est-il conforme au RGPD ?",
+  ["Oui. L'aide à la sélection repose uniquement sur des critères liés au poste (expérience, compétences, disponibilités), et les données des candidats restent dans votre espace Flatchr, avec les mêmes engagements de sécurité et de protection des données que le reste de l'ATS."]),
+ ("Comment l'agent limite-t-il les biais dans la sélection des candidats ?",
+  ["L'agent compare chaque candidature aux seuls critères de votre offre, sans tenir compte d'informations sans rapport avec le poste. Aucun candidat n'est écarté automatiquement : toutes les candidatures restent consultables et la décision reste humaine."]),
+ ("Que se passe-t-il quand j'envoie la photo d'un CV ?",
+  ["L'agent lit le CV, crée la fiche du candidat dans votre CVthèque et peut la rattacher à l'offre en cours. Le CV papier remis en boutique ou en agence ne se perd plus."]),
+ ("L'agent est-il adapté aux réseaux de franchise et aux entreprises multisites ?",
+  ["Oui. Chaque manager de point de vente peut recruter en autonomie avec ses propres demandes, tandis que l'agent s'appuie sur vos modèles d'offres communs. Le siège ou les RH gardent une vision consolidée de tous les recrutements dans Flatchr."]),
+ ("Quand l'agent IA de recrutement sera-t-il disponible ?",
+  ["L'agent IA de recrutement Flatchr est disponible à partir du 1er janvier. Vous pouvez dès maintenant activer votre accès gratuit pour faire partie des premiers utilisateurs."]),
+]

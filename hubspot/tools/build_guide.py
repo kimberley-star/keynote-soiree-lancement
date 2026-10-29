@@ -1,7 +1,8 @@
 """Génère guide-hubspot-agent-ia.html (kit pas à pas + code à copier) à partir des modules et de spec.py."""
 import html, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from spec import MODULES, STEPS, ZIGZAG, DISCOVER
+from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE
+import json
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 e = html.escape
@@ -48,8 +49,8 @@ def fmt(f, v):
     if f["type"] == "image": return "Choisis ton illustration (ex. les tentacules) dans le gestionnaire de fichiers"
     return f'<span class="val">{e(str(v))}</span>'
 
-def code(label, path, lang):
-    src = open(path).read().strip()
+def code(label, path, lang, src=None):
+    src = (src if src is not None else open(path).read()).strip()
     if not src: return f'<div class="code empty"><div class="code-bar"><span>{label}</span></div><p>Rien à coller : laisse ce panneau vide.</p></div>'
     return f'<div class="code"><div class="code-bar"><span>{label}</span><button class="copy" type="button">Copier</button></div><pre><code>{e(src)}</code></pre></div>'
 
@@ -86,11 +87,17 @@ def theme_zigzag():
 def theme_discover():
     rows = "".join(f'<li><span class="n">{k}</span><div><b>Icône</b> : <code class="cp">{e(c["icon"])}</code><br><b>Titre</b> : <span class="val">{e(c["title"])}</span><br><b>Texte</b> : <span class="val">{e(c["text"])}</span><br><b>Bouton</b> : En savoir plus · <code class="cp">{e(c["cta_link"])}</code></div></li>' for k, c in enumerate(DISCOVER["cards"], 1))
     return f'<p class="note">Module du thème « Three col cards with stroke cta » : le plus simple est de copier les cartes de la page /multidiffusion.</p><div class="kv"><dt>Titre</dt><dd><span class="val">{e(DISCOVER["title"])}</span></dd></div><ol class="items">{rows}</ol>'
+def theme_faq():
+    rows = "".join(f'<li><span class="n">{k}</span><div><b>Question</b> : <span class="val">{e(q)}</span><br><b>Réponse</b> (texte enrichi) :<div class="val">{"".join(f"<p>{e(x)}</p>" for x in a)}</div></div></li>' for k, (q, a) in enumerate(FAQ, 1))
+    return (f'<p class="note">Module du thème « Faq two col » (celui de ta page /faq). Laisse les champs « Heading » et « Text » du module VIDES : sinon un 2e titre H1 apparaît. Une seule colonne dans « Faq Column Group ».</p>'
+            f'<div class="kv"><dt>Title (de la colonne)</dt><dd><span class="val">{e(FAQ_TITLE)}</span></dd></div><ol class="items">{rows}</ol>')
+
 page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("agent-ia-video", {}, "Vidéo de vision"),
               ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "7 fonctionnalités en détail"),
               ("agent-ia-cartes", {}, "3 bénéfices"), ("agent-ia-cartes", STEPS, "Comment ça marche"),
               ("theme:Three col cards with stroke cta (thème Flatchr)", theme_discover, "Découvrez la suite"),
-              ("agent-ia-lancement", {}, "Disponible le 1er janvier")]
+              ("agent-ia-lancement", {}, "Disponible le 1er janvier"),
+              ("theme:Faq two col (thème Flatchr)", theme_faq, "FAQ, tout en bas")]
 content = []
 for i, (slug, over, what) in enumerate(page_order, 1):
     if slug.startswith("theme:"):
@@ -229,6 +236,8 @@ ol.items .n {{ font-size: .75rem; font-weight: 600; color: var(--accent); min-wi
     <div class="kv"><dt>Titre de la page</dt><dd><code class="cp">Agent IA de recrutement pour vos managers terrain | Flatchr</code></dd></div>
     <div class="kv"><dt>Méta-description</dt><dd><code class="cp">Découvrez l'agent IA de recrutement Flatchr : vos managers terrain recrutent depuis WhatsApp, de l'annonce à l'entretien. Disponible le 1er janvier.</code></dd></div>
   </div>
+  <p><b>Balisage FAQ (bonus SEO)</b> : dans <b>Paramètres → Avancé → HTML d'en-tête</b>, colle ce code. Il décrit la FAQ aux moteurs de recherche et aux moteurs IA (ChatGPT, Perplexity…). Si tu modifies une question dans la page, modifie-la aussi ici.</p>
+  {code("HTML d'en-tête (balisage FAQ)", None, "html", '<script type="application/ld+json">\n' + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": " ".join(a)}} for q, a in FAQ]}, ensure_ascii=False, indent=2) + '\n</script>')}
   <p class="callout"><b>Ne clique pas sur Publier.</b> Enregistre et utilise <b>Aperçu</b> : la page reste en brouillon tant que tout n'est pas validé.</p>
 </section>
 
