@@ -9,13 +9,13 @@
     "name": "title",
     "label": "Titre (début)",
     "type": "text",
-    "default": "Votre recrutement, en"
+    "default": "Agent IA de recrutement :"
   },
   {
     "name": "title_highlight",
     "label": "Titre (partie en couleur)",
     "type": "text",
-    "default": "une conversation."
+    "default": "recrutez en une conversation."
   },
   {
     "name": "lead",

@@ -9,13 +9,13 @@
     "name": "title",
     "label": "Titre",
     "type": "text",
-    "default": "Le RH pilote, le manager recrute, l'IA accélère"
+    "default": "Notre vision de l'agent IA de recrutement"
   },
   {
     "name": "subtitle",
     "label": "Sous-titre",
     "type": "text",
-    "default": "Pourquoi nous avons construit un agent IA pour celles et ceux qui recrutent sur le terrain."
+    "default": "Le RH pilote, le manager recrute, l'IA accélère. Pourquoi nous l'avons conçu pour celles et ceux qui recrutent sur le terrain."
   },
   {
     "name": "video_url",

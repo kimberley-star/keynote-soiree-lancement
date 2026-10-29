@@ -211,9 +211,9 @@ ol.items .n {{ font-size: .75rem; font-weight: 600; color: var(--accent); min-wi
   <div class="settings">
     <p><b>Onglet Paramètres de la page :</b></p>
     <div class="kv"><dt>Nom interne</dt><dd><code class="cp">Agent IA Flatchr — Lancement (brouillon)</code></dd></div>
-    <div class="kv"><dt>URL (slug)</dt><dd><code class="cp">agent-ia</code></dd></div>
-    <div class="kv"><dt>Titre de la page</dt><dd><code class="cp">Agent IA Flatchr : recrutez en une conversation</code></dd></div>
-    <div class="kv"><dt>Méta-description</dt><dd><code class="cp">Vos managers terrain recrutent depuis WhatsApp grâce à l'agent IA Flatchr. Disponible le 1er janvier. Accès gratuit.</code></dd></div>
+    <div class="kv"><dt>URL (slug)</dt><dd><code class="cp">agent-ia-recrutement</code></dd></div>
+    <div class="kv"><dt>Titre de la page</dt><dd><code class="cp">Agent IA de recrutement pour vos managers terrain | Flatchr</code></dd></div>
+    <div class="kv"><dt>Méta-description</dt><dd><code class="cp">Découvrez l'agent IA de recrutement Flatchr : vos managers terrain recrutent depuis WhatsApp, de l'annonce à l'entretien. Disponible le 1er janvier.</code></dd></div>
   </div>
   <p class="callout"><b>Ne clique pas sur Publier.</b> Enregistre et utilise <b>Aperçu</b> : la page reste en brouillon tant que tout n'est pas validé.</p>
 </section>

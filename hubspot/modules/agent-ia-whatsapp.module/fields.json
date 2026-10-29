@@ -15,7 +15,7 @@
     "name": "intro",
     "label": "Texte d'introduction",
     "type": "text",
-    "default": "Pas de nouveau logiciel à apprendre : vos managers écrivent à l'agent comme à un collègue, depuis l'appli qu'ils utilisent déjà."
+    "default": "Pas de nouveau logiciel à apprendre : vos managers écrivent à leur agent IA de recrutement comme à un collègue, depuis l'appli qu'ils utilisent déjà."
   },
   {
     "name": "points",

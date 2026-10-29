@@ -9,13 +9,13 @@
     "name": "title",
     "label": "Titre",
     "type": "text",
-    "default": "Pensé pour les managers terrain et les réseaux de franchise"
+    "default": "Pourquoi adopter un agent IA de recrutement ?"
   },
   {
     "name": "subtitle",
     "label": "Sous-titre (facultatif)",
     "type": "text",
-    "default": ""
+    "default": "Pensé pour les managers terrain et les réseaux de franchise."
   },
   {
     "name": "numbered",

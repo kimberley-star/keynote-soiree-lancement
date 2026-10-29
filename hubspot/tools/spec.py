@@ -13,8 +13,8 @@ FREE = "https://app.flatchr.io/signup"
 MODULES = [
  ("agent-ia-hero", "Agent IA - Hero prompt", "Champ de saisie façon ChatGPT + lien vers l'accès gratuit", [
    T("badge", "Badge", "Nouveau · L'agent IA Flatchr"),
-   T("title", "Titre (début)", "Votre recrutement, en"),
-   T("title_highlight", "Titre (partie en couleur)", "une conversation."),
+   T("title", "Titre (début)", "Agent IA de recrutement\u00a0:"),
+   T("title_highlight", "Titre (partie en couleur)", "recrutez en une conversation."),
    TA("lead", "Texte d'accroche", "Dites à l'agent IA Flatchr ce dont vous avez besoin. Il rédige l'annonce, la diffuse, trie les candidats et cale les entretiens. Vous, vous gérez votre équipe."),
    T("placeholder", "Texte d'exemple dans le champ", "Ex. : Je cherche 2 vendeurs en CDI pour mon magasin de Lyon, dispo dès lundi…"),
    T("hint", "Mention sous le champ", "✨ L'agent IA Flatchr démarre votre recrutement"),
@@ -27,8 +27,8 @@ MODULES = [
  ]),
  ("agent-ia-video", "Agent IA - Vidéo de vision", "Vidéo YouTube, Vimeo ou .mp4, avec encart d'attente", [
    T("eyebrow", "Surtitre", "Notre vision"),
-   T("title", "Titre", "Le RH pilote, le manager recrute, l'IA accélère"),
-   T("subtitle", "Sous-titre", "Pourquoi nous avons construit un agent IA pour celles et ceux qui recrutent sur le terrain."),
+   T("title", "Titre", "Notre vision de l'agent IA de recrutement"),
+   T("subtitle", "Sous-titre", "Le RH pilote, le manager recrute, l'IA accélère. Pourquoi nous l'avons conçu pour celles et ceux qui recrutent sur le terrain."),
    T("video_url", "Lien de la vidéo (YouTube, Vimeo ou .mp4) — vide = encart d'attente", ""),
    T("placeholder_title", "Encart d'attente : titre", "Vidéo de vision"),
    T("placeholder_text", "Encart d'attente : texte", "Bientôt disponible"),
@@ -36,7 +36,7 @@ MODULES = [
  ("agent-ia-whatsapp", "Agent IA - Démo WhatsApp", "Téléphone avec conversation animée manager / agent", [
    T("eyebrow", "Surtitre", "Démo"),
    T("title", "Titre", "Recruter depuis WhatsApp, entre deux clients"),
-   TA("intro", "Texte d'introduction", "Pas de nouveau logiciel à apprendre : vos managers écrivent à l'agent comme à un collègue, depuis l'appli qu'ils utilisent déjà."),
+   TA("intro", "Texte d'introduction", "Pas de nouveau logiciel à apprendre : vos managers écrivent à leur agent IA de recrutement comme à un collègue, depuis l'appli qu'ils utilisent déjà."),
    R("points", "Points clés", ["L'agent rédige et publie l'annonce sur les bons jobboards", "Il présélectionne les candidats selon vos critères", "Il propose les créneaux d'entretien et relance pour vous"]),
    T("agent_name", "Nom affiché dans WhatsApp", "Agent IA Flatchr"),
    G("messages", "Messages de la conversation", [
@@ -54,8 +54,8 @@ MODULES = [
  ]),
  ("agent-ia-cartes", "Agent IA - Cartes", "3 cartes : bénéfices (icônes) ou étapes (numérotées)", [
    T("eyebrow", "Surtitre", "Pour le terrain"),
-   T("title", "Titre", "Pensé pour les managers terrain et les réseaux de franchise"),
-   T("subtitle", "Sous-titre (facultatif)", ""),
+   T("title", "Titre", "Pourquoi adopter un agent IA de recrutement ?"),
+   T("subtitle", "Sous-titre (facultatif)", "Pensé pour les managers terrain et les réseaux de franchise."),
    B("numbered", "Cartes numérotées (étapes) au lieu des icônes", False),
    B("soft_background", "Fond gris clair", False),
    G("cards", "Cartes", [T("card_icon", "Icône (emoji, ignorée si numérotée)"), T("card_tag", "Étiquette (facultatif)"), T("card_title", "Titre de la carte"), TA("card_text", "Texte de la carte")],
@@ -67,7 +67,7 @@ MODULES = [
    T("eyebrow", "Surtitre", "Lancement"),
    T("title", "Titre (début)", "Disponible le"),
    T("title_highlight", "Titre (partie en orange)", "1er janvier"),
-   TA("text", "Texte", "Activez votre accès gratuit dès maintenant et soyez parmi les premiers à recruter avec l'agent IA Flatchr."),
+   TA("text", "Texte", "Activez votre accès gratuit dès maintenant et soyez parmi les premiers à recruter avec l'agent IA de recrutement Flatchr."),
    T("launch_date", "Date du compte à rebours (format 2027-01-01T00:00:00+01:00 — vide = pas de compte à rebours)", "2027-01-01T00:00:00+01:00"),
    T("cta1_text", "Bouton 1 : texte", "Obtenir mon accès gratuit"),
    T("cta1_url", "Bouton 1 : lien", FREE),
@@ -77,7 +77,7 @@ MODULES = [
 ]
 
 # Contenu de la 2e instance du module Cartes (« Comment ça marche »)
-STEPS = {"eyebrow": "Comment ça marche", "title": "3 étapes pour recruter avec l'agent IA", "numbered": True, "soft_background": True,
+STEPS = {"eyebrow": "Comment ça marche", "title": "Comment fonctionne l'agent IA de recrutement Flatchr ?", "numbered": True, "soft_background": True,
   "cards": [{"card_title": "Exprimez votre besoin", "card_text": "Par WhatsApp ou depuis Flatchr, décrivez le poste en quelques mots, comme vous le feriez à un collègue."},
             {"card_title": "L'agent passe à l'action", "card_text": "Il rédige l'annonce, la diffuse, analyse les candidatures et vous présente une shortlist."},
             {"card_title": "Vous choisissez, vous recrutez", "card_text": "Validez les profils, l'agent organise les entretiens. Vous rencontrez les bons candidats, sans perte de temps."}]}

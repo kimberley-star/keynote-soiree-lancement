@@ -8,8 +8,8 @@ Textes et champs : source unique `hubspot/tools/spec.py` (relancer `python3 hubs
 - Type : page de site web, **brouillon (ne pas publier)**
 - Modèle : `Flatchr theme mar2024/pages/templates/site-flex.html` (Flex : menu + footer globaux du site)
 - Nom interne : `Agent IA Flatchr — Lancement (brouillon)`
-- Slug : `agent-ia`
-- Titre SEO : « Agent IA Flatchr : recrutez en une conversation »
+- Slug : `agent-ia-recrutement`
+- Titre SEO : « Agent IA de recrutement pour vos managers terrain | Flatchr »
 - Méta-description : « Vos managers terrain recrutent depuis WhatsApp grâce à l'agent IA Flatchr. Disponible le 1er janvier. Accès gratuit. »
 
 ## Modules, dans l'ordre

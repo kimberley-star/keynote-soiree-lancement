@@ -21,7 +21,7 @@
     "name": "text",
     "label": "Texte",
     "type": "text",
-    "default": "Activez votre accès gratuit dès maintenant et soyez parmi les premiers à recruter avec l'agent IA Flatchr."
+    "default": "Activez votre accès gratuit dès maintenant et soyez parmi les premiers à recruter avec l'agent IA de recrutement Flatchr."
   },
   {
     "name": "launch_date",

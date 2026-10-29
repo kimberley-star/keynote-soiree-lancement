@@ -8,8 +8,8 @@
 @media (max-width:760px){.aia-hero .aia-decor{width:65vw;opacity:.45}}
 .aia-hero .aia-badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid #dee5ed;color:#016d7d;font-size:.85rem;font-weight:600;padding:.4rem .9rem;border-radius:999px;box-shadow:0 2px 10px rgba(24,37,52,.05)}
 .aia-hero .aia-badge:before{content:"";width:8px;height:8px;border-radius:50%;background:#ff9c11}
-.aia-hero .aia-h1{font-family:inherit;font-size:clamp(2.1rem,5.6vw,3.8rem);font-weight:800;line-height:1.15;margin:1.25rem auto 0;max-width:20ch;color:#182534;text-wrap:balance}
-.aia-hero .aia-hl{color:#01aec8}
+.aia-hero .aia-h1{font-family:inherit;font-size:clamp(2.1rem,5.6vw,3.8rem);font-weight:800;line-height:1.15;margin:1.25rem auto 0;max-width:24ch;color:#182534;text-wrap:balance}
+.aia-hero .aia-hl{color:#01aec8;display:block}
 .aia-hero .aia-lead{font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.6;color:#5b6b7d;max-width:40rem;margin:1.1rem auto 0}
 .aia-hero .aia-prompt{max-width:46rem;margin:2.25rem auto 0;background:#fff;border:1px solid #dee5ed;border-radius:26px;box-shadow:0 12px 40px rgba(1,109,125,.12);padding:.9rem .9rem .9rem 1.25rem;text-align:left}
 .aia-hero .aia-prompt:focus-within{border-color:#01aec8}
