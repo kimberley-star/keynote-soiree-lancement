@@ -1,12 +1,12 @@
 """Génère guide-hubspot-agent-ia.html (kit pas à pas + code à copier) à partir des modules et de spec.py."""
 import html, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE, FAQ_A_VALIDER
+from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE, FAQ_A_VALIDER, TRUST_A_VALIDER
 import json
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 e = html.escape
-TYPE = {"image": "Image", "text": "Texte", "boolean": "Booléen (case à cocher)", "choice": "Choix", "group": "Groupe (répéteur)"}
+TYPE = {"image": "Image", "richtext": "Texte enrichi", "text": "Texte", "boolean": "Booléen (case à cocher)", "choice": "Choix", "group": "Groupe (répéteur)"}
 
 def fields_rows(fields, indent=False):
     out = []
@@ -46,6 +46,7 @@ def content_list(fields, values):
 def fmt(f, v):
     if f["type"] == "boolean": return "✅ coché" if v else "☐ non coché"
     if f["type"] == "choice": return e(dict(f["choices"])[v])
+    if f["type"] == "richtext": return f'<div class="val">{v}</div>'
     if f["type"] == "image": return "Choisis ton illustration (ex. les tentacules) dans le gestionnaire de fichiers"
     return f'<span class="val">{e(str(v))}</span>'
 
@@ -54,7 +55,7 @@ def code(label, path, lang, src=None):
     if not src: return f'<div class="code empty"><div class="code-bar"><span>{label}</span></div><p>Rien à coller : laisse ce panneau vide.</p></div>'
     return f'<div class="code"><div class="code-bar"><span>{label}</span><button class="copy" type="button">Copier</button></div><pre><code>{e(src)}</code></pre></div>'
 
-order_note = {"agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche »."}
+order_note = {"agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche ».", "agent-ia-confiance": "⚠️ " + TRUST_A_VALIDER}
 mods = []
 for i, (slug, label, desc, fields) in enumerate(MODULES, 1):
     d = os.path.join(ROOT, "modules", slug + ".module")
@@ -95,6 +96,7 @@ def theme_faq():
 page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("agent-ia-video", {}, "Vidéo de vision"),
               ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "7 fonctionnalités en détail"),
               ("agent-ia-cartes", {}, "3 bénéfices"), ("agent-ia-cartes", STEPS, "Comment ça marche"),
+              ("agent-ia-confiance", {}, "Souveraineté, RGPD et AI Act"),
               ("theme:Three col cards with stroke cta (thème Flatchr)", theme_discover, "Découvrez la suite"),
               ("agent-ia-lancement", {}, "Disponible le 1er janvier"),
               ("theme:Faq two col (thème Flatchr)", theme_faq, "FAQ, tout en bas")]

@@ -1,0 +1,20 @@
+<section class="aia-trust" id="confiance">
+  <div class="aia-wrap">
+    <div class="aia-head">
+      {% if module.eyebrow %}<p class="aia-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+      <h2 class="aia-h2">{{ module.title }}</h2>
+      {% if module.intro %}<p class="aia-sub">{{ module.intro }}</p>{% endif %}
+    </div>
+    {% if module.badges %}<ul class="aia-badges">{% for item in module.badges %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
+    <div class="aia-pillars">
+      {% for item in module.pillars %}
+      <article class="aia-pillar">
+        {% if item.pillar_icon %}<div class="aia-picon" aria-hidden="true">{{ item.pillar_icon }}</div>{% endif %}
+        <h3>{{ item.pillar_title }}</h3>
+        <div class="aia-ptext">{{ item.pillar_text }}</div>
+      </article>
+      {% endfor %}
+    </div>
+    {% if module.cta_text %}<p class="aia-trust-cta"><a href="{{ module.cta_url|escape }}">{{ module.cta_text }}</a></p>{% endif %}
+  </div>
+</section>

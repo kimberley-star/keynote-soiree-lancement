@@ -6,6 +6,7 @@ def TA(name, label, default=""): return T(name, label, default)  # champ texte l
 def B(name, label, default=False): return {"name": name, "label": label, "type": "boolean", "default": default}
 def CH(name, label, choices, default): return {"name": name, "label": label, "type": "choice", "display": "select", "choices": choices, "default": default}
 def R(name, label, default): return {"name": name, "label": label, "type": "text", "occurrence": {"min": 0, "default": len(default)}, "default": default}
+def RT(name, label, default=""): return {"name": name, "label": label, "type": "richtext", "default": default}
 def G(name, label, children, default): return {"name": name, "label": label, "type": "group", "occurrence": {"min": 0, "default": len(default)}, "children": children, "default": default}
 
 FREE = "https://app.flatchr.io/signup"
@@ -63,6 +64,21 @@ MODULES = [
      [{"card_icon": "⏱️", "card_tag": "Managers terrain", "card_title": "Du temps rendu au terrain", "card_text": "Rédaction des offres, recherche de profils, comptes rendus : l'agent s'occupe de l'administratif. Le manager garde la main sur la décision finale."},
       {"card_icon": "💬", "card_tag": "Managers terrain", "card_title": "Zéro formation", "card_text": "Un message WhatsApp suffit. Pas de logiciel à ouvrir, pas de mot de passe à retenir : l'adoption est immédiate."},
       {"card_icon": "🏬", "card_tag": "Réseaux de franchise", "card_title": "Un réseau autonome, une marque cohérente", "card_text": "Chaque point de vente recrute en autonomie, avec vos modèles d'annonces et vos process. Le siège garde une vision consolidée."}]),
+ ]),
+ ("agent-ia-confiance", "Agent IA - Confiance", "Bloc souveraineté des données, RGPD et AI Act", [
+   T("eyebrow", "Surtitre", "Souveraineté et conformité"),
+   T("title", "Titre", "Un agent IA de recrutement de confiance, avec vos données en France"),
+   TA("intro", "Introduction", "Recruter avec l'IA ne doit jamais se faire au détriment de vos candidats ni de vos données. L'agent IA Flatchr est conçu pour respecter le RGPD et les principes de l'AI Act européen."),
+   R("badges", "Badges", ["Données hébergées en France", "Datacenters ISO 27001", "SOC 2", "RGPD", "Principes de l'AI Act"]),
+   G("pillars", "Piliers", [T("pillar_icon", "Icône (emoji)"), T("pillar_title", "Titre du pilier"), RT("pillar_text", "Texte du pilier")],
+     [{"pillar_icon": "🇫🇷", "pillar_title": "Vos données restent en France",
+       "pillar_text": "<p>Les données personnelles de vos candidats sont hébergées en France, dans des centres de données certifiés ISO 27001 et conformes SOC 2.</p><p>Flatchr ne partage jamais les informations personnelles de vos candidats : vous gardez la maîtrise de vos données de recrutement.</p>"},
+      {"pillar_icon": "🛡️", "pillar_title": "RGPD dès la conception",
+       "pillar_text": "<ul><li>Gestion des consentements des candidats</li><li>Archivage automatique des candidatures</li><li>Outil d'anonymisation</li><li>Accès aux données selon le rôle de chaque utilisateur</li><li>Accord de traitement des données (DPA) sur demande</li></ul>"},
+      {"pillar_icon": "⚖️", "pillar_title": "Conçu selon les principes de l'AI Act",
+       "pillar_text": "<p>L'AI Act européen encadre de près l'IA utilisée pour recruter. L'agent est conçu autour de ses principes :</p><ul><li>L'humain décide toujours : aucun candidat écarté automatiquement</li><li>Uniquement des critères liés au poste, jamais de données sensibles</li><li>Transparence : vous voyez les critères de chaque analyse</li><li>Aucune analyse des émotions des candidats</li></ul>"}]),
+   T("cta_text", "Texte du lien", "Découvrir notre politique de sécurité"),
+   T("cta_url", "Lien", "https://www.flatchr.io/security"),
  ]),
  ("agent-ia-lancement", "Agent IA - Lancement", "Bloc « Disponible le 1er janvier » avec compte à rebours", [
    T("eyebrow", "Surtitre", "Lancement"),
@@ -173,3 +189,5 @@ FAQ_A_VALIDER = {
  "Les données de mes candidats servent-elles à entraîner l'IA ?": "Réponse à confirmer impérativement avec Damien : dépend du fournisseur du modèle IA et du contrat signé avec lui.",
  "Comment l'agent limite-t-il les biais dans la sélection des candidats ?": "Confirmer la formulation « sans tenir compte d'informations sans rapport avec le poste ».",
 }
+
+TRUST_A_VALIDER = "Pilier AI Act : faire valider par Damien et le DPO / juriste. Points à confirmer : critères affichés pour chaque analyse, aucune analyse des émotions (la reconnaissance des émotions au travail est interdite par l'AI Act depuis février 2025), aucune donnée sensible utilisée. Ne pas écrire « conforme à l'AI Act » sans validation juridique : le recrutement est classé « à haut risque » (annexe III)."

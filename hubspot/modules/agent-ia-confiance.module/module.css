@@ -1,0 +1,24 @@
+.aia-trust,.aia-trust *{box-sizing:border-box}
+.aia-trust{padding:clamp(3.5rem,8vw,6rem) 0;background:linear-gradient(160deg,#12435e 0%,#0d3247 100%);color:#fff;font-family:Poppins,"Segoe UI",system-ui,sans-serif;position:relative;overflow:hidden}
+.aia-trust:before{content:"";position:absolute;width:28rem;height:28rem;border-radius:50%;background:#01aec8;opacity:.12;right:-10rem;top:-12rem}
+.aia-trust .aia-wrap{position:relative;max-width:72rem;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+.aia-trust .aia-head{text-align:center;max-width:46rem;margin:0 auto}
+.aia-trust .aia-eyebrow{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#5fd6e8;margin:0}
+.aia-trust .aia-h2{font-family:inherit;font-size:clamp(1.75rem,3.8vw,2.6rem);font-weight:700;line-height:1.15;margin:.5rem 0 0;color:#fff;text-wrap:balance}
+.aia-trust .aia-sub{color:#c9dde6;margin:.9rem 0 0;font-size:1.05rem;line-height:1.6}
+.aia-trust .aia-badges{list-style:none;padding:0;margin:1.75rem auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.aia-trust .aia-badges li{margin:0;font-size:.85rem;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);border-radius:999px;padding:.4rem .95rem;display:inline-flex;align-items:center;gap:.45rem}
+.aia-trust .aia-badges li:before{content:"✓";color:#ff9c11;font-weight:700}
+.aia-trust .aia-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.25rem;margin-top:clamp(2rem,5vw,3rem)}
+.aia-trust .aia-pillar{min-width:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:1.75rem 1.6rem}
+.aia-trust .aia-picon{width:52px;height:52px;border-radius:14px;background:rgba(1,174,200,.18);display:grid;place-items:center;font-size:1.5rem;margin-bottom:1.1rem}
+.aia-trust h3{font-family:inherit;font-size:1.2rem;font-weight:700;line-height:1.25;margin:0;color:#fff}
+.aia-trust .aia-ptext{margin-top:.7rem;color:#d7e6ec;font-size:.95rem;line-height:1.6}
+.aia-trust .aia-ptext p{margin:0 0 .6rem;color:inherit}
+.aia-trust .aia-ptext ul{margin:.4rem 0 0;padding:0;list-style:none;display:grid;gap:.45rem}
+.aia-trust .aia-ptext li{margin:0;padding-left:1.4rem;position:relative}
+.aia-trust .aia-ptext li:before{content:"";position:absolute;left:0;top:.55em;width:.55rem;height:.55rem;border-radius:50%;background:#01aec8}
+.aia-trust .aia-trust-cta{text-align:center;margin:2.25rem 0 0}
+.aia-trust .aia-trust-cta a{font-weight:600;color:#5fd6e8;text-decoration:none}
+.aia-trust .aia-trust-cta a:after{content:" →"}
+.aia-trust .aia-trust-cta a:hover{color:#fff}
