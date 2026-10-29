@@ -91,3 +91,29 @@ if __name__ == "__main__":
                    "is_available_for_new_content": True, "smart_type": "NOT_SMART", "tags": [], "other_assets": []},
                   open(os.path.join(d, "meta.json"), "w"), ensure_ascii=False, indent=2)
     print("ok")
+
+# Modules du thème Flatchr réutilisés tels quels (comme sur les pages fonctionnalités)
+# « Zig zag » (/Flatchr theme mar2024/pages/modules/zig-zag) : 4 blocs texte + visuel alternés
+ZIGZAG = [
+ {"title": "Des offres d'emploi rédigées par l'IA en quelques secondes",
+  "caption": ["Votre manager décrit le poste en une phrase, sur WhatsApp ou dans Flatchr. L'agent IA de recrutement rédige l'annonce à partir de vos modèles et de vos meilleures offres : missions, profil recherché, avantages.",
+              "Ton professionnel, dynamique ou inclusif : l'annonce respecte votre marque employeur. Le manager relit et valide avant toute publication."],
+  "image": "Redaction IA - Mockup-selection.png", "cta_link": "https://www.flatchr.io/fonctionnalites-ia-flatchr"},
+ {"title": "Diffusées automatiquement sur +160 sites emploi",
+  "caption": ["Une fois l'annonce validée, l'agent la publie sur les sites emploi adaptés au poste, sur votre site carrière et sur vos réseaux sociaux. Plus besoin de passer d'un jobboard à l'autre.",
+              "Vous suivez en temps réel la provenance de vos meilleurs candidats et ajustez vos diffusions pour maîtriser vos dépenses."],
+  "image": "Multidiffusion_Illustration_1-min.png", "cta_link": "https://www.flatchr.io/multidiffusion"},
+ {"title": "Un tri des CV intelligent, sans perdre le contrôle",
+  "caption": ["Avec Flatchr Fit, chaque candidature est comparée aux critères de l'offre : expérience, compétences, formation, localisation. L'agent fait remonter les profils les plus pertinents et les présente au manager sous forme de shortlist.",
+              "Aucun CV n'est écarté : toutes les candidatures restent accessibles dans votre CVthèque, et l'agent vous suggère aussi des profils déjà présents dans votre vivier."],
+  "image": "flatchr fir matching cv.png", "cta_link": "https://www.flatchr.io/matching-tri-cv-offre-emploi"},
+ {"title": "Des entretiens planifiés sans aller-retour",
+  "caption": ["Le manager choisit les candidats à rencontrer, l'agent s'occupe du reste. Grâce à l'agenda connecté, les candidats réservent directement un créneau parmi les disponibilités du manager.",
+              "Invitations, rappels et reprogrammations : tout est suivi dans Flatchr. Fini les échanges de mails interminables, les doublons et les oublis."],
+  "image": "agenda intelligent entretiens.png", "cta_link": "https://www.flatchr.io/agenda-partage-planification-entretien-automatique"},
+]
+# « Three col cards with stroke cta » : bloc « Découvrez la suite » (mêmes cartes que sur /multidiffusion)
+DISCOVER = {"title": "Découvrez la suite", "cards": [
+ {"icon": "hub-3.svg", "title": "Sourcez des top talents", "text": "Sourcez en quelques clics avec Flatchr pour trouver le candidat idéal", "cta_link": "https://www.flatchr.io/sourcing"},
+ {"icon": "collections_bookmark-1.svg", "title": "Gérez vos candidatures", "text": "Centralisez toutes les candidatures sur une plateforme unique pour simplifier vos recrutements", "cta_link": "https://www.flatchr.io/ats"},
+ {"icon": "supervised_user_circle-3.svg", "title": "Vos talents dans la CVthèque", "text": "Créez votre vivier de talents et maximisez vos chances de trouver le bon candidat à tout moment", "cta_link": "https://www.flatchr.io/cvtheque"}]}

@@ -1,7 +1,7 @@
 """Génère guide-hubspot-agent-ia.html (kit pas à pas + code à copier) à partir des modules et de spec.py."""
 import html, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from spec import MODULES, STEPS
+from spec import MODULES, STEPS, ZIGZAG, DISCOVER
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 e = html.escape
@@ -77,11 +77,25 @@ for i, (slug, label, desc, fields) in enumerate(MODULES, 1):
 </details>""")
 
 spec = {s: (l, f) for s, l, _, f in MODULES}
+def theme_zigzag():
+    rows = []
+    for k, z in enumerate(ZIGZAG, 1):
+        cap = "".join(f"<p>{e(p)}</p>" for p in z["caption"])
+        rows.append(f'<li><span class="n">{k}</span><div><b>Titre</b> : <span class="val">{e(z["title"])}</span><br><b>Légende</b> (texte enrichi, 2 paragraphes) :<div class="val">{cap}</div><b>Image</b> : <code class="cp">{e(z["image"])}</code> (déjà dans tes fichiers HubSpot)<br><b>Texte du bouton</b> : <span class="val">En savoir plus</span> · <b>Lien</b> : <code class="cp">{e(z["cta_link"])}</code><br><b>Inverser les colonnes</b> : {"✅ coché" if k % 2 == 0 else "☐ non coché"}</div></li>')
+    return f'<p class="note">Module du thème « Zig zag » (déjà utilisé sur /multidiffusion) : rien à coder. Ajoute 4 éléments dans « zig_zag_group ».</p><ol class="items">{"".join(rows)}</ol>'
+def theme_discover():
+    rows = "".join(f'<li><span class="n">{k}</span><div><b>Icône</b> : <code class="cp">{e(c["icon"])}</code><br><b>Titre</b> : <span class="val">{e(c["title"])}</span><br><b>Texte</b> : <span class="val">{e(c["text"])}</span><br><b>Bouton</b> : En savoir plus · <code class="cp">{e(c["cta_link"])}</code></div></li>' for k, c in enumerate(DISCOVER["cards"], 1))
+    return f'<p class="note">Module du thème « Three col cards with stroke cta » : le plus simple est de copier les cartes de la page /multidiffusion.</p><div class="kv"><dt>Titre</dt><dd><span class="val">{e(DISCOVER["title"])}</span></dd></div><ol class="items">{rows}</ol>'
 page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("agent-ia-video", {}, "Vidéo de vision"),
-              ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("agent-ia-cartes", {}, "3 bénéfices"),
-              ("agent-ia-cartes", STEPS, "Comment ça marche"), ("agent-ia-lancement", {}, "Disponible le 1er janvier")]
+              ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "4 fonctionnalités en détail"),
+              ("agent-ia-cartes", {}, "3 bénéfices"), ("agent-ia-cartes", STEPS, "Comment ça marche"),
+              ("theme:Three col cards with stroke cta (thème Flatchr)", theme_discover, "Découvrez la suite"),
+              ("agent-ia-lancement", {}, "Disponible le 1er janvier")]
 content = []
 for i, (slug, over, what) in enumerate(page_order, 1):
+    if slug.startswith("theme:"):
+        content.append(f'<details class="fill"><summary><span class="num">{i}</span><span><b>{e(slug[6:])}</b> <span class="what">· {e(what)}</span></span></summary><dl>{over()}</dl></details>')
+        continue
     l, f = spec[slug]
     content.append(f'<details class="fill"><summary><span class="num">{i}</span><span><b>{e(l)}</b> <span class="what">· {e(what)}</span></span></summary><dl>{content_list(f, over)}</dl></details>')
 
