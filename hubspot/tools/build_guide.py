@@ -81,13 +81,13 @@ def theme_zigzag():
     rows = []
     for k, z in enumerate(ZIGZAG, 1):
         cap = "".join(f"<p>{e(p)}</p>" for p in z["caption"])
-        rows.append(f'<li><span class="n">{k}</span><div><b>Titre</b> : <span class="val">{e(z["title"])}</span><br><b>Légende</b> (texte enrichi, 2 paragraphes) :<div class="val">{cap}</div><b>Image</b> : <code class="cp">{e(z["image"])}</code> (déjà dans tes fichiers HubSpot)<br><b>Texte du bouton</b> : <span class="val">En savoir plus</span> · <b>Lien</b> : <code class="cp">{e(z["cta_link"])}</code><br><b>Inverser les colonnes</b> : {"✅ coché" if k % 2 == 0 else "☐ non coché"}</div></li>')
-    return f'<p class="note">Module du thème « Zig zag » (déjà utilisé sur /multidiffusion) : rien à coder. Ajoute 4 éléments dans « zig_zag_group ».</p><ol class="items">{"".join(rows)}</ol>'
+        rows.append(f'<li><span class="n">{k}</span><div><b>Titre</b> : <span class="val">{e(z["title"])}</span><br><b>Légende</b> (texte enrichi, 2 paragraphes) :<div class="val">{cap}</div><b>Image</b> : <code class="cp">{e(z["image"])}</code> (à importer depuis le dossier <code>hubspot/visuels</code>)<br>{('<b>Texte du bouton</b> : <span class="val">En savoir plus</span> · <b>Lien</b> : <code class="cp">' + e(z["cta_link"]) + '</code><br>') if z["cta_link"] else '<b>Bouton</b> : laisser vide (pas de page dédiée)<br>'}<b>Inverser les colonnes</b> : {"✅ coché" if k % 2 == 0 else "☐ non coché"}</div></li>')
+    return f'<p class="note">Module du thème « Zig zag » (déjà utilisé sur /multidiffusion) : rien à coder. Ajoute 7 éléments dans « zig_zag_group ».</p><ol class="items">{"".join(rows)}</ol>'
 def theme_discover():
     rows = "".join(f'<li><span class="n">{k}</span><div><b>Icône</b> : <code class="cp">{e(c["icon"])}</code><br><b>Titre</b> : <span class="val">{e(c["title"])}</span><br><b>Texte</b> : <span class="val">{e(c["text"])}</span><br><b>Bouton</b> : En savoir plus · <code class="cp">{e(c["cta_link"])}</code></div></li>' for k, c in enumerate(DISCOVER["cards"], 1))
     return f'<p class="note">Module du thème « Three col cards with stroke cta » : le plus simple est de copier les cartes de la page /multidiffusion.</p><div class="kv"><dt>Titre</dt><dd><span class="val">{e(DISCOVER["title"])}</span></dd></div><ol class="items">{rows}</ol>'
 page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("agent-ia-video", {}, "Vidéo de vision"),
-              ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "4 fonctionnalités en détail"),
+              ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "7 fonctionnalités en détail"),
               ("agent-ia-cartes", {}, "3 bénéfices"), ("agent-ia-cartes", STEPS, "Comment ça marche"),
               ("theme:Three col cards with stroke cta (thème Flatchr)", theme_discover, "Découvrez la suite"),
               ("agent-ia-lancement", {}, "Disponible le 1er janvier")]

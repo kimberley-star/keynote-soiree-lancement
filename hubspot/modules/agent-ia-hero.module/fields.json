@@ -21,7 +21,7 @@
     "name": "lead",
     "label": "Texte d'accroche",
     "type": "text",
-    "default": "Dites à l'agent IA Flatchr ce dont vous avez besoin. Il rédige l'annonce, la diffuse, trie les candidats et cale les entretiens. Vous, vous gérez votre équipe."
+    "default": "Dites à l'agent IA Flatchr ce dont vous avez besoin, à l'écrit ou à la voix. Il rédige vos offres, retrouve les bons profils dans votre CVthèque et prépare vos comptes rendus. Vous, vous gérez votre équipe."
   },
   {
     "name": "placeholder",
@@ -44,9 +44,9 @@
       "default": 3
     },
     "default": [
-      "Recruter un serveur pour ce week-end",
-      "Ouvrir un poste dans mes 12 franchises",
-      "Trier les candidats de la semaine"
+      "Rédige une offre de serveur pour ce week-end",
+      "Trouve un vendeur dans ma CVthèque",
+      "Aide-moi à choisir parmi les candidats"
     ]
   },
   {
