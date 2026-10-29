@@ -1,7 +1,7 @@
 """Génère guide-hubspot-agent-ia.html (kit pas à pas + code à copier) à partir des modules et de spec.py."""
 import html, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE
+from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE, FAQ_A_VALIDER
 import json
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -88,7 +88,7 @@ def theme_discover():
     rows = "".join(f'<li><span class="n">{k}</span><div><b>Icône</b> : <code class="cp">{e(c["icon"])}</code><br><b>Titre</b> : <span class="val">{e(c["title"])}</span><br><b>Texte</b> : <span class="val">{e(c["text"])}</span><br><b>Bouton</b> : En savoir plus · <code class="cp">{e(c["cta_link"])}</code></div></li>' for k, c in enumerate(DISCOVER["cards"], 1))
     return f'<p class="note">Module du thème « Three col cards with stroke cta » : le plus simple est de copier les cartes de la page /multidiffusion.</p><div class="kv"><dt>Titre</dt><dd><span class="val">{e(DISCOVER["title"])}</span></dd></div><ol class="items">{rows}</ol>'
 def theme_faq():
-    rows = "".join(f'<li><span class="n">{k}</span><div><b>Question</b> : <span class="val">{e(q)}</span><br><b>Réponse</b> (texte enrichi) :<div class="val">{"".join(f"<p>{e(x)}</p>" for x in a)}</div></div></li>' for k, (q, a) in enumerate(FAQ, 1))
+    rows = "".join(f'<li><span class="n">{k}</span><div><b>Question</b> : <span class="val">{e(q)}</span><br><b>Réponse</b> (texte enrichi) :<div class="val">{"".join(f"<p>{e(x)}</p>" for x in a)}</div>{('<p class="note">⚠️ À valider : ' + e(FAQ_A_VALIDER[q]) + '</p>') if q in FAQ_A_VALIDER else ''}</div></li>' for k, (q, a) in enumerate(FAQ, 1))
     return (f'<p class="note">Module du thème « Faq two col » (celui de ta page /faq). Laisse les champs « Heading » et « Text » du module VIDES : sinon un 2e titre H1 apparaît. Une seule colonne dans « Faq Column Group ».</p>'
             f'<div class="kv"><dt>Title (de la colonne)</dt><dd><span class="val">{e(FAQ_TITLE)}</span></dd></div><ol class="items">{rows}</ol>')
 

@@ -146,7 +146,16 @@ FAQ = [
  ("L'agent IA prend-il des décisions à la place du manager ?",
   ["Non. L'agent prépare, propose et vous fait gagner du temps, mais c'est toujours vous qui validez : une offre avant sa mise en ligne, un message avant son envoi, un candidat avant de le retenir."]),
  ("L'agent IA de recrutement est-il conforme au RGPD ?",
-  ["Oui. L'aide à la sélection repose uniquement sur des critères liés au poste (expérience, compétences, disponibilités), et les données des candidats restent dans votre espace Flatchr, avec les mêmes engagements de sécurité et de protection des données que le reste de l'ATS."]),
+  ["Oui. L'agent fonctionne au sein de l'ATS Flatchr, conforme au RGPD dès sa conception : gestion des consentements des candidats, archivage automatique des candidatures et outil d'anonymisation.",
+   "L'aide à la sélection repose uniquement sur des critères liés au poste, et un accord de traitement des données (DPA) vous est fourni sur demande."]),
+ ("Où sont hébergées les données traitées par l'agent IA ?",
+  ["Les données personnelles de vos candidats restent en France, dans des centres de données certifiés ISO 27001 et conformes SOC 2, comme pour le reste de l'ATS Flatchr.",
+   "Flatchr ne partage jamais les informations personnelles de vos candidats : vous gardez la maîtrise de vos données de recrutement."]),
+ ("Comment l'agent protège-t-il les données sensibles ?",
+  ["Chaque utilisateur n'accède qu'aux informations dont il a besoin selon son rôle : un manager voit ses recrutements, les RH gardent une vision d'ensemble.",
+   "L'agent n'utilise aucune donnée sensible (santé, origine, opinions, vie privée) pour vous aider à sélectionner les candidats : seuls les critères liés au poste comptent."]),
+ ("Les données de mes candidats servent-elles à entraîner l'IA ?",
+  ["Non. Les CV, notes vocales et échanges traités par l'agent servent uniquement à vos recrutements. Ils ne sont pas utilisés pour entraîner des modèles d'intelligence artificielle."]),
  ("Comment l'agent limite-t-il les biais dans la sélection des candidats ?",
   ["L'agent compare chaque candidature aux seuls critères de votre offre, sans tenir compte d'informations sans rapport avec le poste. Aucun candidat n'est écarté automatiquement : toutes les candidatures restent consultables et la décision reste humaine."]),
  ("Que se passe-t-il quand j'envoie la photo d'un CV ?",
@@ -156,3 +165,11 @@ FAQ = [
  ("Quand l'agent IA de recrutement sera-t-il disponible ?",
   ["L'agent IA de recrutement Flatchr est disponible à partir du 1er janvier. Vous pouvez dès maintenant activer votre accès gratuit pour faire partie des premiers utilisateurs."]),
 ]
+
+# Réponses à faire valider (produit / juridique) avant publication : question -> point à vérifier
+FAQ_A_VALIDER = {
+ "Où sont hébergées les données traitées par l'agent IA ?": "Confirmer que les traitements IA de l'agent (modèle utilisé, transcription des notes vocales) sont eux aussi hébergés en France, et préciser le cas des échanges WhatsApp, qui transitent par Meta. Attention : /security dit « en France », /faq dit « en Europe ».",
+ "Comment l'agent protège-t-il les données sensibles ?": "Confirmer que l'agent ignore bien les données sensibles (santé, origine, opinions…) dans l'aide à la sélection.",
+ "Les données de mes candidats servent-elles à entraîner l'IA ?": "Réponse à confirmer impérativement avec Damien : dépend du fournisseur du modèle IA et du contrat signé avec lui.",
+ "Comment l'agent limite-t-il les biais dans la sélection des candidats ?": "Confirmer la formulation « sans tenir compte d'informations sans rapport avec le poste ».",
+}
