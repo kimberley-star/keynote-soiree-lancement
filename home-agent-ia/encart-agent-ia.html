@@ -1,0 +1,266 @@
+<!--
+  ENCART « AGENT IA » — HOME FLATCHR
+  À coller dans un module HubSpot « HTML personnalisé » (Custom HTML / Rich text > Source),
+  à la place de la section « Choisissez Flatchr pour recruter l'équipe de vos rêves ».
+  Tout est préfixé .fa- pour ne pas entrer en conflit avec le thème.
+  Polices : Poppins + Lato (déjà chargées par le thème flatchr.io).
+
+  À PERSONNALISER :
+  - URL_PAGE_AGENT : remplacer "/agent-ia" par l'URL de la page dédiée de l'agent
+  - Nom de l'agent : remplacer "l'agent IA Flatchr" si l'agent a un nom de produit
+-->
+<section class="fa-agent" id="agent-ia" aria-labelledby="fa-agent-title">
+  <div class="fa-wrap">
+
+    <header class="fa-head">
+      <p class="fa-eyebrow"><span class="fa-dot" aria-hidden="true"></span>Nouveau · Agent IA spécialisé recrutement</p>
+      <h2 id="fa-agent-title">Le RH pilote, le manager recrute,<br><span class="fa-hl">l'agent IA accélère.</span></h2>
+      <p class="fa-lead">Intégré à Flatchr, l'agent IA Flatchr analyse vos candidatures, prépare le travail à chaque étape et fait gagner un temps précieux à vos équipes terrain. Vos managers recrutent en autonomie, dans le cadre fixé par vos RH.</p>
+    </header>
+
+    <ul class="fa-personas" aria-label="Ce que l'agent apporte à chacun">
+      <li><b>RH</b><span>Un cadre de recrutement décentralisé, que vous gardez sous contrôle.</span></li>
+      <li><b>Manager</b><span>Un coéquipier qui prépare le travail pour recruter sans attendre.</span></li>
+      <li><b>Dirigeant</b><span>Des recrutements plus rapides et un coût par embauche maîtrisé.</span></li>
+    </ul>
+
+    <div class="fa-grid">
+      <div class="fa-tabs" role="tablist" aria-label="Ce que fait l'agent IA">
+        <button class="fa-tab" role="tab" id="fa-t1" aria-controls="fa-demo" aria-selected="true" data-i="0">
+          <span class="fa-tab-ic" aria-hidden="true">01</span>
+          <span><b>Qualification des CV</b><small>Il compare chaque CV aux prérequis du poste et vous signale les profils à regarder en priorité.</small></span>
+        </button>
+        <button class="fa-tab" role="tab" id="fa-t2" aria-controls="fa-demo" aria-selected="false" tabindex="-1" data-i="1">
+          <span class="fa-tab-ic" aria-hidden="true">02</span>
+          <span><b>CVthèque réactivée</b><small>Il fait remonter les talents déjà présents dans vos viviers qui collent à votre nouvelle offre.</small></span>
+        </button>
+        <button class="fa-tab" role="tab" id="fa-t3" aria-controls="fa-demo" aria-selected="false" tabindex="-1" data-i="2">
+          <span class="fa-tab-ic" aria-hidden="true">03</span>
+          <span><b>Offres d'emploi</b><small>Il rédige une annonce attractive, à votre ton et aux couleurs de votre entreprise, en quelques clics.</small></span>
+        </button>
+        <button class="fa-tab" role="tab" id="fa-t4" aria-controls="fa-demo" aria-selected="false" tabindex="-1" data-i="3">
+          <span class="fa-tab-ic" aria-hidden="true">04</span>
+          <span><b>Préparation d'entretien</b><small>Il propose des questions adaptées au parcours du candidat et aux compétences recherchées.</small></span>
+        </button>
+        <button class="fa-tab" role="tab" id="fa-t5" aria-controls="fa-demo" aria-selected="false" tabindex="-1" data-i="4">
+          <span class="fa-tab-ic" aria-hidden="true">05</span>
+          <span><b>Synthèse d'entretien</b><small>Il résume points forts et points de vigilance, à partager à l'équipe en un clic.</small></span>
+        </button>
+      </div>
+
+      <div class="fa-demo" id="fa-demo" role="tabpanel" aria-labelledby="fa-t1" aria-live="polite">
+        <div class="fa-win">
+          <div class="fa-win-bar" aria-hidden="true"><i></i><i></i><i></i><span>Flatchr · Agent IA</span></div>
+          <div class="fa-chat">
+            <div class="fa-msg fa-user" data-q></div>
+            <div class="fa-msg fa-bot">
+              <span class="fa-avatar" aria-hidden="true">IA</span>
+              <div class="fa-bot-body">
+                <div class="fa-typing" aria-hidden="true"><i></i><i></i><i></i></div>
+                <div data-a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="fa-demo-note">Exemple illustratif · données fictives</p>
+      </div>
+    </div>
+
+    <div class="fa-foot">
+      <div class="fa-stat">
+        <b>jusqu'à 70&nbsp;%</b>
+        <span>de temps en moins sur le tri des CV<small>Source : Flatchr</small></span>
+      </div>
+      <p class="fa-trust"><strong>L'IA propose, vous décidez.</strong> Aucun profil n'est sélectionné ni écarté automatiquement, et vos données sont traitées conformément au RGPD.</p>
+      <div class="fa-ctas">
+        <a class="fa-btn fa-btn-primary" href="/agent-ia">Découvrir l'agent IA</a>
+        <a class="fa-btn fa-btn-ghost" href="https://www.flatchr.io/demo">Demander une démo</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.fa-agent{--fa-teal:#01AEC8;--fa-teal-2:#019BB2;--fa-teal-3:#016D7D;--fa-orange:#FF9C11;--fa-navy:#2B435E;--fa-ink:#182534;--fa-mute:#5B6E84;--fa-line:#DEE5ED;--fa-ice:#F2FDFF;--fa-ice-2:#DBFAFF;
+  position:relative;overflow:hidden;padding:96px 0;background:linear-gradient(180deg,#fff 0%,var(--fa-ice) 100%);color:var(--fa-ink);font-family:Lato,system-ui,sans-serif;line-height:1.55}
+.fa-agent *,.fa-agent *::before,.fa-agent *::after{box-sizing:border-box}
+.fa-agent::before{content:"";position:absolute;top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(1,174,200,.18),transparent 65%);pointer-events:none}
+.fa-wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 24px}
+.fa-head{max-width:760px;margin:0 auto 40px;text-align:center}
+.fa-eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:6px 14px;border-radius:999px;background:#fff;border:1px solid var(--fa-ice-2);color:var(--fa-teal-3);font:600 13px/1.2 Poppins,sans-serif;letter-spacing:.02em}
+.fa-dot{width:8px;height:8px;border-radius:50%;background:var(--fa-orange);box-shadow:0 0 0 4px rgba(255,156,17,.2)}
+.fa-agent h2{margin:0 0 16px;font:700 clamp(28px,4vw,44px)/1.15 Poppins,sans-serif;color:var(--fa-ink);letter-spacing:-.01em}
+.fa-hl{color:var(--fa-teal)}
+.fa-lead{margin:0;font-size:18px;color:var(--fa-mute)}
+
+.fa-personas{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:960px;margin:0 auto 48px;padding:0;list-style:none}
+.fa-personas li{display:flex;flex-direction:column;gap:4px;padding:14px 18px;border-radius:14px;background:#fff;border:1px solid var(--fa-line)}
+.fa-personas b{font:600 14px Poppins,sans-serif;color:var(--fa-teal-3)}
+.fa-personas span{font-size:15px;color:var(--fa-navy)}
+
+.fa-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:40px;align-items:center}
+.fa-tabs{display:flex;flex-direction:column;gap:8px}
+.fa-tab{all:unset;box-sizing:border-box;display:flex;gap:14px;align-items:flex-start;width:100%;padding:16px 18px;border-radius:14px;border:1px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden}
+.fa-tab:hover{background:rgba(255,255,255,.7)}
+.fa-tab:focus-visible{outline:2px solid var(--fa-teal);outline-offset:2px}
+.fa-tab-ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--fa-ice-2);color:var(--fa-teal-3);font:700 13px Poppins,sans-serif}
+.fa-tab b{display:block;font:600 17px/1.3 Poppins,sans-serif;color:var(--fa-ink)}
+.fa-tab small{display:block;max-height:0;opacity:0;overflow:hidden;font-size:15px;line-height:1.5;color:var(--fa-mute);transition:max-height .35s,opacity .35s,margin .35s}
+.fa-tab[aria-selected="true"]{background:#fff;border-color:var(--fa-line);box-shadow:0 10px 30px -12px rgba(24,37,52,.18)}
+.fa-tab[aria-selected="true"] .fa-tab-ic{background:var(--fa-teal);color:#fff}
+.fa-tab[aria-selected="true"] small{max-height:90px;opacity:1;margin-top:4px}
+.fa-tab[aria-selected="true"]::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--fa-orange);transform-origin:left;transform:scaleX(0);animation:fa-progress var(--fa-dur,7s) linear forwards}
+.fa-agent.is-paused .fa-tab::after{animation-play-state:paused}
+@keyframes fa-progress{to{transform:scaleX(1)}}
+
+.fa-demo{position:relative}
+.fa-win{border-radius:20px;background:#fff;border:1px solid var(--fa-line);box-shadow:0 30px 60px -25px rgba(24,37,52,.35);overflow:hidden}
+.fa-win-bar{display:flex;align-items:center;gap:6px;padding:12px 16px;background:var(--fa-ink);color:#cfe3ec;font:500 13px Poppins,sans-serif}
+.fa-win-bar i{width:10px;height:10px;border-radius:50%;background:#3b4b5e}
+.fa-win-bar i:first-child{background:var(--fa-orange)}
+.fa-win-bar span{margin-left:8px}
+.fa-chat{display:flex;flex-direction:column;gap:14px;min-height:360px;padding:22px}
+.fa-msg{max-width:92%;font-size:15px}
+.fa-user{align-self:flex-end;padding:12px 16px;border-radius:16px 16px 4px 16px;background:var(--fa-teal);color:#fff;font-weight:600}
+.fa-bot{display:flex;gap:10px;align-items:flex-start;max-width:100%}
+.fa-bot .fa-bot-body{flex:1}
+.fa-avatar{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--fa-teal),var(--fa-teal-3));color:#fff;font:700 12px Poppins,sans-serif}
+.fa-bot-body{padding:14px 16px;border-radius:4px 16px 16px 16px;background:var(--fa-ice);border:1px solid var(--fa-ice-2);color:var(--fa-ink);min-width:120px}
+.fa-bot-body p{margin:0 0 10px}
+.fa-bot-body p:last-child{margin:0}
+.fa-typing{display:none;gap:4px;padding:4px 0}
+.fa-typing i{width:7px;height:7px;border-radius:50%;background:var(--fa-teal-2);animation:fa-blink 1s infinite}
+.fa-typing i:nth-child(2){animation-delay:.15s}.fa-typing i:nth-child(3){animation-delay:.3s}
+.fa-demo.is-typing .fa-typing{display:flex}
+.fa-demo.is-typing [data-a]{display:none}
+@keyframes fa-blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+[data-a] > *{animation:fa-in .45s both}
+[data-a] > *:nth-child(2){animation-delay:.12s}[data-a] > *:nth-child(3){animation-delay:.24s}[data-a] > *:nth-child(4){animation-delay:.36s}
+@keyframes fa-in{from{opacity:0;transform:translateY(6px)}}
+.fa-rows{display:flex;flex-direction:column;gap:8px;margin:0 0 10px;padding:0;list-style:none}
+.fa-rows li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:#fff;border:1px solid var(--fa-line)}
+.fa-rows em{font-style:normal;color:var(--fa-mute);font-size:13px}
+.fa-tag{flex:none;padding:3px 10px;border-radius:999px;font:600 12px Poppins,sans-serif;background:var(--fa-ice-2);color:var(--fa-teal-3)}
+.fa-tag.fa-o{background:#FFF4E7;color:#B86A00}
+.fa-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 10px}
+.fa-cols div{padding:10px 12px;border-radius:10px;background:#fff;border:1px solid var(--fa-line);font-size:14px}
+.fa-cols b{display:block;margin-bottom:4px;font:600 13px Poppins,sans-serif}
+.fa-cols .fa-plus b{color:var(--fa-teal-3)}.fa-cols .fa-warn b{color:#B86A00}
+.fa-act{display:inline-block;padding:6px 12px;border-radius:8px;background:var(--fa-ink);color:#fff;font:600 13px Poppins,sans-serif}
+.fa-demo-note{margin:10px 0 0;text-align:right;font-size:12px;color:var(--fa-mute)}
+
+.fa-foot{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;margin-top:56px;padding:24px 28px;border-radius:20px;background:var(--fa-ink);color:#fff}
+.fa-stat{display:flex;align-items:center;gap:14px}
+.fa-stat b{font:800 34px/1 Poppins,sans-serif;color:var(--fa-orange);white-space:nowrap}
+.fa-stat span{font-size:15px;line-height:1.35;max-width:180px}
+.fa-stat small{display:block;margin-top:2px;font-size:11px;color:#9fb2c4}
+.fa-trust{margin:0;font-size:15px;color:#cfdbe6}
+.fa-trust strong{color:#fff}
+.fa-ctas{display:flex;flex-wrap:wrap;gap:10px}
+.fa-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font:600 15px Poppins,sans-serif;text-decoration:none;transition:transform .15s,background .2s}
+.fa-btn:hover{transform:translateY(-1px)}
+.fa-btn-primary{background:var(--fa-teal);color:#fff}
+.fa-btn-primary:hover{background:var(--fa-teal-2);color:#fff}
+.fa-btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff}
+.fa-btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff}
+
+@media (max-width:960px){
+  .fa-grid{grid-template-columns:1fr;gap:28px}
+  .fa-foot{grid-template-columns:1fr;gap:18px}
+}
+@media (max-width:640px){
+  .fa-agent{padding:64px 0}
+  .fa-wrap{padding:0 16px}
+  .fa-lead{font-size:16px}
+  .fa-personas{grid-template-columns:1fr;margin-bottom:32px}
+  .fa-tab{padding:12px 14px}
+  .fa-chat{min-height:330px;padding:16px}
+  .fa-cols{grid-template-columns:1fr}
+  .fa-btn{flex:1 1 100%}
+  .fa-stat{flex-direction:column;align-items:flex-start;gap:6px}
+  .fa-stat span{max-width:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .fa-agent *{animation:none!important;transition:none!important}
+}
+</style>
+
+<script>
+(function(){
+  var root=document.getElementById('agent-ia'); if(!root) return;
+  var tabs=[].slice.call(root.querySelectorAll('.fa-tab'));
+  var demo=root.querySelector('.fa-demo'), q=root.querySelector('[data-q]'), a=root.querySelector('[data-a]');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DUR=7000, cur=0, timer=null, typingT=null, paused=false, visible=false;
+
+  var SCENES=[
+    {q:"Quels candidats correspondent au poste de Vendeur·se – Lyon ?",
+     a:'<p>J\'ai analysé <b>48 CV</b> face aux prérequis du poste. 3 profils à regarder en priorité :</p>'+
+       '<ul class="fa-rows"><li><span>Profil A <em>· 4 ans retail</em></span><span class="fa-tag">Très bon match</span></li>'+
+       '<li><span>Profil B <em>· 2 ans restauration</em></span><span class="fa-tag">Bon match</span></li>'+
+       '<li><span>Profil C <em>· reconversion</em></span><span class="fa-tag fa-o">À examiner</span></li></ul>'+
+       '<p>Vous gardez la main : aucun profil n\'a été écarté.</p>'},
+    {q:"Nouvelle offre : Chef·fe d'équipe – Bordeaux. On a déjà des profils ?",
+     a:'<p>Oui ! <b>6 talents</b> de votre CVthèque correspondent aux critères de l\'offre :</p>'+
+       '<ul class="fa-rows"><li><span>Profil D <em>· candidat 2025, finaliste</em></span><span class="fa-tag">Très bon match</span></li>'+
+       '<li><span>Profil E <em>· vivier « Encadrement »</em></span><span class="fa-tag">Bon match</span></li></ul>'+
+       '<span class="fa-act">Inviter à postuler</span>'},
+    {q:"Rédige une offre pour un·e Hôte·sse d'accueil, ton chaleureux.",
+     a:'<p><b>Hôte·sse d\'accueil (H/F) – CDI</b></p>'+
+       '<p>Vous aimez le contact et faire en sorte que chacun se sente attendu ? Rejoignez une équipe soudée où votre sourire fait la différence dès la première minute…</p>'+
+       '<span class="fa-act">Diffuser sur les jobboards</span>'},
+    {q:"Prépare mon entretien de demain avec le Profil A.",
+     a:'<p>Voici 3 questions adaptées à son parcours :</p>'+
+       '<ul class="fa-rows"><li><span>Racontez une vente difficile que vous avez transformée.</span></li>'+
+       '<li><span>Comment gérez-vous un rush en boutique ?</span></li>'+
+       '<li><span>Qu\'attendez-vous d\'un manager au quotidien ?</span></li></ul>'},
+    {q:"Fais-moi la synthèse de l'entretien avec le Profil A.",
+     a:'<div class="fa-cols"><div class="fa-plus"><b>Points forts</b>Excellent relationnel, expérience du rush, très motivé·e.</div>'+
+       '<div class="fa-warn"><b>Points de vigilance</b>Disponibilité le samedi à confirmer.</div></div>'+
+       '<span class="fa-act">Partager à l\'équipe</span>'}
+  ];
+
+  function show(i, focus){
+    cur=i;
+    tabs.forEach(function(t,k){
+      var on=k===i; t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1;
+    });
+    demo.setAttribute('aria-labelledby',tabs[i].id);
+    if(focus) tabs[i].focus();
+    q.textContent=SCENES[i].q;
+    clearTimeout(typingT);
+    if(reduce){ a.innerHTML=SCENES[i].a; return; }
+    demo.classList.add('is-typing'); a.innerHTML='';
+    typingT=setTimeout(function(){ a.innerHTML=SCENES[i].a; demo.classList.remove('is-typing'); },900);
+  }
+  function schedule(){
+    clearTimeout(timer);
+    if(reduce||paused||!visible) return;
+    timer=setTimeout(function(){ show((cur+1)%tabs.length); schedule(); },DUR);
+  }
+  function setPaused(p){ paused=p; root.classList.toggle('is-paused',p); schedule(); }
+
+  root.style.setProperty('--fa-dur',DUR+'ms');
+  tabs.forEach(function(t,k){
+    t.addEventListener('click',function(){ show(k); schedule(); });
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowDown'||e.key==='ArrowRight') n=(k+1)%tabs.length;
+      if(e.key==='ArrowUp'||e.key==='ArrowLeft') n=(k-1+tabs.length)%tabs.length;
+      if(e.key==='Home') n=0; if(e.key==='End') n=tabs.length-1;
+      if(n!==null){ e.preventDefault(); show(n,true); schedule(); }
+    });
+  });
+  var grid=root.querySelector('.fa-grid');
+  grid.addEventListener('mouseenter',function(){setPaused(true)});
+  grid.addEventListener('mouseleave',function(){setPaused(false)});
+  grid.addEventListener('focusin',function(){setPaused(true)});
+  grid.addEventListener('focusout',function(){setPaused(false)});
+
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ visible=es[0].isIntersecting; root.classList.toggle('is-paused',!visible||paused); schedule(); },{threshold:.35}).observe(grid);
+  } else { visible=true; }
+  show(0); schedule();
+})();
+</script>
