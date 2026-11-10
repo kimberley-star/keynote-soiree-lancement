@@ -19,10 +19,10 @@ Si l'éditeur HubSpot retire le `<script>`, le coller dans Paramètres de la pag
 
 ## Contenu de l'encart
 - Accroche reprise du hero : *Le RH pilote, le manager recrute, l'agent IA accélère.*
-- 3 cartes RH / Manager / Dirigeant : on garde le positionnement de la section supprimée.
+- Lead court + 5 onglets (titre + une ligne).
 - 5 capacités en onglets qui défilent tout seuls (pause au survol), avec une démo animée façon chat à droite (équivalent de la vidéo de Leo chez Digitaleo).
 - Preuve chiffrée : « jusqu'à 70 % » (chiffre déjà publié sur /fonctionnalites-ia-flatchr).
-- Message de confiance : l'IA propose, vous décidez + RGPD.
+- Message de confiance : « L’IA propose, vous décidez. »
 - 2 boutons : Découvrir l'agent IA / Demander une démo.
 
 ## Points à valider
