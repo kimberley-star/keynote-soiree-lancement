@@ -50,7 +50,8 @@ def fmt(f, v):
     if f["type"] == "color": return f'<span class="val">{e(v["color"])}</span> (bleu nuit Flatchr par défaut)'
     if f["type"] == "richtext": return f'<div class="val">{v}</div>'
     if f["type"] == "image":
-        if f["name"] == "mascot_image": return "mascotte-salut.webp (dossier hubspot/visuels)"
+        if f["name"] == "mascot_image": return "mascotte-neutre.webp (dossier hubspot/visuels)"
+        if f["name"] == "arm_image": return "mascotte-tentacule.webp (dossier hubspot/visuels)"
         if f["name"].startswith("peek_"): return {"peek_face": "mascotte-coucou-face.webp", "peek_left": "mascotte-coucou-gauche.webp", "peek_right": "mascotte-coucou-droite.webp", "peek_up": "mascotte-coucou-haut.webp"}[f["name"]] + " (dossier hubspot/visuels)"
         if f["name"].startswith("mascot_"): return {"mascot_idle": "mascotte-neutre.webp", "mascot_wave": "mascotte-salut.webp", "mascot_wink": "mascotte-clin-oeil.webp", "mascot_fly": "mascotte-vol.webp"}[f["name"]] + " (dossier hubspot/visuels)"
         return "Choisis ton image dans le gestionnaire de fichiers (facultatif)"

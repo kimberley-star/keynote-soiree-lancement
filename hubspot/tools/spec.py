@@ -51,7 +51,8 @@ MODULES = [
    TA("intro", "Texte d'introduction", "Pas de nouveau logiciel à apprendre : vos managers écrivent à leur agent IA de recrutement comme à un collègue, depuis l'appli qu'ils utilisent déjà."),
    R("points", "Points clés", ["Une offre rédigée à partir d'une simple phrase", "Un CV ajouté en le prenant en photo", "Un compte rendu d'entretien dicté en note vocale"]),
    T("agent_name", "Nom affiché dans WhatsApp", "Agent IA Flatchr"),
-   {"name": "mascot_image", "label": "Mascotte qui tient le téléphone + avatar (pose qui salue, facultatif)", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "mascot_image", "label": "Mascotte à côté du téléphone + avatar (pose neutre avec la tentacule, pose qui salue sinon)", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "arm_image", "label": "Tentacule qui tient le téléphone (facultatif)", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
    G("messages", "Messages de la conversation", [
        CH("sender", "Envoyé par", [["manager", "Manager (bulle verte, à droite)"], ["agent", "Agent IA (bulle blanche, à gauche)"]], "manager"),
        T("message", "Message"),

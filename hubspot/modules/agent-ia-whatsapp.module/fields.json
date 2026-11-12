@@ -39,7 +39,17 @@
   },
   {
     "name": "mascot_image",
-    "label": "Mascotte qui tient le téléphone + avatar (pose qui salue, facultatif)",
+    "label": "Mascotte à côté du téléphone + avatar (pose neutre avec la tentacule, pose qui salue sinon)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "arm_image",
+    "label": "Tentacule qui tient le téléphone (facultatif)",
     "type": "image",
     "default": {
       "src": "",

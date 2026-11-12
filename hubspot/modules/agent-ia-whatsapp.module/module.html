@@ -6,7 +6,8 @@
       <p class="aia-demo-lead">{{ module.intro }}</p>
       {% if module.points %}<ul class="aia-demo-list">{% for item in module.points %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
     </div>
-    <div class="aia-phone-stage{% if module.mascot_image.src %} aia-phone-stage--mascot{% endif %}">
+    <div class="aia-phone-stage{% if module.mascot_image.src %} aia-phone-stage--mascot{% endif %}{% if module.mascot_image.src and module.arm_image.src %} aia-phone-stage--arm{% endif %}">
+    {% if module.mascot_image.src and module.arm_image.src %}<div class="aia-hold aia-hold--arm" aria-hidden="true"><img src="{{ module.arm_image.src }}" alt="" loading="lazy"></div>{% endif %}
     {% if module.mascot_image.src %}<div class="aia-hold aia-hold--back" aria-hidden="true"><img src="{{ module.mascot_image.src }}" alt="" loading="lazy"></div>{% endif %}
     <div class="aia-phone" aria-label="Démonstration d'une conversation WhatsApp avec l'agent IA Flatchr">
       <div class="aia-screen">
@@ -22,7 +23,8 @@
         <div class="aia-wa-input"><span>Écrire un message</span><b aria-hidden="true"></b></div>
       </div>
     </div>
-    {% if module.mascot_image.src %}<div class="aia-hold aia-hold--front" aria-hidden="true"><img src="{{ module.mascot_image.src }}" alt="" loading="lazy"></div>{% endif %}
+    {% if module.mascot_image.src and module.arm_image.src %}<div class="aia-hold aia-hold--hand" aria-hidden="true"><img src="{{ module.arm_image.src }}" alt="" loading="lazy"></div>
+    {% elif module.mascot_image.src %}<div class="aia-hold aia-hold--front" aria-hidden="true"><img src="{{ module.mascot_image.src }}" alt="" loading="lazy"></div>{% endif %}
     </div>
   </div>
 </section>
