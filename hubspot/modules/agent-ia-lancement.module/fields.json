@@ -52,5 +52,45 @@
     "label": "Bouton 2 : lien",
     "type": "text",
     "default": "https://www.flatchr.io/demo"
+  },
+  {
+    "name": "mascot_idle",
+    "label": "Mascotte – pose neutre (active la mascotte)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "mascot_wave",
+    "label": "Mascotte – pose qui salue",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "mascot_wink",
+    "label": "Mascotte – pose clin d'œil",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "mascot_fly",
+    "label": "Mascotte – pose en vol (arrivée)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
   }
 ]

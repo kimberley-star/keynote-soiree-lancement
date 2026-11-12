@@ -6,7 +6,7 @@
 .aia-launch-sec .aia-launch-text{min-width:0;position:relative;z-index:1}
 .aia-launch-sec .aia-eyebrow{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#dbfaff;margin:0}
 .aia-launch-sec .aia-h2{font-family:inherit;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;margin:.5rem 0 0;color:#fff}
-.aia-launch-sec .aia-h2 em{font-style:normal;color:#ff9c11}
+.aia-launch-sec .aia-h2 em{font:inherit;font-style:normal;display:inline;white-space:nowrap;color:#ff9c11;letter-spacing:inherit}
 .aia-launch-sec .aia-launch-lead{margin:.8rem 0 0;opacity:.9;max-width:34rem;color:#fff}
 .aia-launch-sec .aia-countdown{display:flex;gap:.75rem;margin-top:1.5rem}
 .aia-launch-sec .aia-countdown div{background:rgba(255,255,255,.12);border-radius:12px;padding:.6rem .9rem;text-align:center;min-width:4.5rem}
@@ -19,3 +19,19 @@
 .aia-launch-sec .aia-btn-ghost{color:#fff;border-color:rgba(255,255,255,.6)}
 .aia-launch-sec .aia-btn-ghost:hover{background:#fff;color:#016d7d}
 @media (max-width:760px){.aia-launch-sec .aia-launch{grid-template-columns:1fr}}
+/* Mascotte animée à droite du texte (les boutons passent sous le texte) */
+.aia-launch-sec .aia-launch--mascot{grid-template-columns:1fr 320px;grid-template-areas:"text mascot" "cta mascot";row-gap:1.75rem;align-items:center}
+.aia-launch-sec .aia-launch--mascot .aia-launch-text{grid-area:text}
+.aia-launch-sec .aia-launch--mascot .aia-launch-cta{grid-area:cta;flex-direction:row;flex-wrap:wrap;position:relative;z-index:1}
+.aia-launch-sec .aia-launch-mascot{grid-area:mascot;position:relative;z-index:1;width:100%;aspect-ratio:520/460;pointer-events:none}
+.aia-launch-sec .aia-mascot-float{position:absolute;inset:0;animation:aiaLaunchFloat 4s ease-in-out infinite}
+.aia-launch-sec .aia-m{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;opacity:0;transition:opacity .25s ease}
+.aia-launch-sec .aia-m.is-on{opacity:1}
+.aia-launch-sec .aia-m-fly{position:absolute;left:50%;top:50%;width:135%;height:auto;max-width:none;transform:translate(-50%,-50%);opacity:0}
+.aia-launch-sec .aia-launch-mascot.is-waiting{opacity:0}
+.aia-launch-sec .aia-launch-mascot.is-flying .aia-mascot-float{opacity:0}
+.aia-launch-sec .aia-launch-mascot.is-flying .aia-m-fly{opacity:1;animation:aiaLaunchFly 1.3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes aiaLaunchFly{from{transform:translate(calc(-50% - 60vw),-10%) rotate(-6deg)}80%{transform:translate(calc(-50% + 8px),-56%) rotate(2deg)}to{transform:translate(-50%,-50%) rotate(0)}}
+@keyframes aiaLaunchFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (max-width:760px){.aia-launch-sec .aia-launch--mascot{grid-template-columns:1fr;grid-template-areas:"mascot" "text" "cta"}.aia-launch-sec .aia-launch-mascot{width:200px;margin:0 auto}}
+@media (prefers-reduced-motion:reduce){.aia-launch-sec .aia-mascot-float{animation:none}.aia-launch-sec .aia-m{transition:none}}

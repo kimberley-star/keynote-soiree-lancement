@@ -34,6 +34,9 @@ decor_src = "data:image/svg+xml;base64," + base64.b64encode(decor.encode()).deco
 def mod(slug, over=None, i=0):
     m = {f["name"]: f.get("default") for f in spec[slug]}
     m.update(over or {})
+    if slug == "agent-ia-lancement":
+        for k, f in [("mascot_idle", "neutre"), ("mascot_wave", "salut"), ("mascot_wink", "clin-oeil"), ("mascot_fly", "vol")]:
+            m[k] = {"src": b64(f"{HS}/visuels/mascotte-{f}.webp", "image/webp")}
     if slug == "agent-ia-hero":
         m["decor_image"] = {"src": decor_src}
         for k, f in [("mascot_idle", "neutre"), ("mascot_wave", "salut"), ("mascot_wink", "clin-oeil"), ("mascot_fly", "vol")]:

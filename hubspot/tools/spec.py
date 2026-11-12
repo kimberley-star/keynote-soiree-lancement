@@ -105,6 +105,10 @@ MODULES = [
    T("cta1_url", "Bouton 1 : lien", FREE),
    T("cta2_text", "Bouton 2 : texte", "Demander une démo"),
    T("cta2_url", "Bouton 2 : lien", "https://www.flatchr.io/demo"),
+   {"name": "mascot_idle", "label": "Mascotte – pose neutre (active la mascotte)", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "mascot_wave", "label": "Mascotte – pose qui salue", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "mascot_wink", "label": "Mascotte – pose clin d'œil", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "mascot_fly", "label": "Mascotte – pose en vol (arrivée)", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
  ]),
 ]
 
