@@ -30,7 +30,7 @@
 /* Mascotte animée : posée sur le coin du champ de saisie */
 .aia-hero .aia-prompt-zone{position:relative;max-width:46rem;margin:2.25rem auto 0}
 .aia-hero .aia-prompt-zone .aia-prompt{margin:0}
-.aia-hero .aia-mascot{position:absolute;right:-215px;bottom:-12px;width:190px;aspect-ratio:520/460;z-index:2;pointer-events:none}
+.aia-hero .aia-mascot{position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);width:clamp(220px,calc((100vw - 46rem) / 2 - 32px),380px);aspect-ratio:560/615;z-index:2;pointer-events:none}
 .aia-hero .aia-mascot-float{position:absolute;inset:0;animation:aiaFloat 4s ease-in-out infinite}
 .aia-hero .aia-m{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;opacity:0;transition:opacity .25s ease}
 .aia-hero .aia-m.is-on{opacity:1}
@@ -39,6 +39,6 @@
 .aia-hero .aia-mascot.is-flying .aia-m-fly{opacity:1;animation:aiaFlyIn 1.3s cubic-bezier(.2,.8,.2,1) both}
 @keyframes aiaFlyIn{from{transform:translate(calc(-50% - 70vw),-30%) rotate(-6deg)}80%{transform:translate(calc(-50% + 8px),-56%) rotate(2deg)}to{transform:translate(-50%,-50%) rotate(0)}}
 @keyframes aiaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@media (max-width:1180px){.aia-hero .aia-prompt-zone:has(.aia-mascot){margin-top:8.5rem}.aia-hero .aia-mascot{right:-6px;bottom:auto;top:-128px;width:150px}}
-@media (max-width:520px){.aia-hero .aia-prompt-zone:has(.aia-mascot){margin-top:6.5rem}.aia-hero .aia-mascot{right:-2px;top:-98px;width:116px}}
+@media (max-width:1180px){.aia-hero .aia-prompt-zone:has(.aia-mascot){margin-top:12.5rem}.aia-hero .aia-mascot{left:auto;right:-6px;top:-186px;transform:none;width:180px}}
+@media (max-width:520px){.aia-hero .aia-prompt-zone:has(.aia-mascot){margin-top:9rem}.aia-hero .aia-mascot{right:-2px;top:-133px;width:130px}}
 @media (prefers-reduced-motion:reduce){.aia-hero .aia-mascot-float{animation:none}.aia-hero .aia-m{transition:none}}
