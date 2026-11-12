@@ -49,7 +49,9 @@ def fmt(f, v):
     if f["type"] == "number": return f'<span class="val">{v}</span> (70 = voile assez couvrant ; baisse pour voir davantage la photo)'
     if f["type"] == "color": return f'<span class="val">{e(v["color"])}</span> (bleu nuit Flatchr par défaut)'
     if f["type"] == "richtext": return f'<div class="val">{v}</div>'
-    if f["type"] == "image": return "Choisis ton image dans le gestionnaire de fichiers (facultatif)"
+    if f["type"] == "image":
+        if f["name"].startswith("mascot_"): return {"mascot_idle": "mascotte-neutre.webp", "mascot_wave": "mascotte-salut.webp", "mascot_wink": "mascotte-clin-oeil.webp", "mascot_fly": "mascotte-vol.webp"}[f["name"]] + " (dossier hubspot/visuels)"
+        return "Choisis ton image dans le gestionnaire de fichiers (facultatif)"
     return f'<span class="val">{e(str(v))}</span>'
 
 def code(label, path, lang, src=None):

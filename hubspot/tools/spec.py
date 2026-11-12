@@ -25,6 +25,10 @@ MODULES = [
    T("note", "Mention sous le bouton", "Sans carte bancaire · Accès gratuit"),
    {"name": "decor_image", "label": "Illustration de fond (facultatif)", "type": "image", "default": {"src": "", "alt": "", "loading": "eager"}},
    CH("decor_side", "Côté de l'illustration", [["left", "Gauche"], ["right", "Droite"]], "left"),
+   {"name": "mascot_idle", "label": "Mascotte – pose neutre (active la mascotte)", "type": "image", "default": {"src": "", "alt": "", "loading": "eager"}},
+   {"name": "mascot_wave", "label": "Mascotte – pose qui salue", "type": "image", "default": {"src": "", "alt": "", "loading": "eager"}},
+   {"name": "mascot_wink", "label": "Mascotte – pose clin d'œil", "type": "image", "default": {"src": "", "alt": "", "loading": "eager"}},
+   {"name": "mascot_fly", "label": "Mascotte – pose en vol (arrivée)", "type": "image", "default": {"src": "", "alt": "", "loading": "eager"}},
  ]),
  ("flatchr-video", "Flatchr - Vidéo", "Module vidéo réutilisable sur toutes les pages (miniature, bouton lecture, fond au choix)", [
    T("eyebrow", "Surtitre (facultatif)", "Notre vision"),

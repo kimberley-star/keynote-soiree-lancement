@@ -4,6 +4,7 @@
     {% if module.badge %}<span class="aia-badge">{{ module.badge }}</span>{% endif %}
     <h1 class="aia-h1">{{ module.title }} <span class="aia-hl">{{ module.title_highlight }}</span></h1>
     <p class="aia-lead">{{ module.lead }}</p>
+    <div class="aia-prompt-zone">
     <form class="aia-prompt" data-aia-form>
       <label class="aia-sr" for="aia-prompt-{{ name }}">Décrivez votre besoin de recrutement</label>
       <textarea id="aia-prompt-{{ name }}" rows="2" placeholder="{{ module.placeholder|escape }}" required></textarea>
@@ -12,6 +13,17 @@
         <button class="aia-send" type="submit" aria-label="Envoyer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
       </div>
     </form>
+    {% if module.mascot_idle.src %}
+    <div class="aia-mascot" aria-hidden="true" data-aia-mascot>
+      <div class="aia-mascot-float">
+        <img class="aia-m aia-m-idle is-on" src="{{ module.mascot_idle.src }}" alt="">
+        {% if module.mascot_wave.src %}<img class="aia-m aia-m-wave" src="{{ module.mascot_wave.src }}" alt="">{% endif %}
+        {% if module.mascot_wink.src %}<img class="aia-m aia-m-wink" src="{{ module.mascot_wink.src }}" alt="">{% endif %}
+      </div>
+      {% if module.mascot_fly.src %}<img class="aia-m-fly" src="{{ module.mascot_fly.src }}" alt="">{% endif %}
+    </div>
+    {% endif %}
+    </div>
     {% if module.chips %}<div class="aia-chips">{% for item in module.chips %}<button class="aia-chip" type="button">{{ item }}</button>{% endfor %}</div>{% endif %}
     <div class="aia-cta">
       <a class="aia-btn" href="{{ module.cta_url|escape }}" target="_blank" rel="noopener">{{ module.cta_text }}</a>

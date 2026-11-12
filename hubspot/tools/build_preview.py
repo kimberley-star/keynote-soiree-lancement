@@ -36,6 +36,8 @@ def mod(slug, over=None, i=0):
     m.update(over or {})
     if slug == "agent-ia-hero":
         m["decor_image"] = {"src": decor_src}
+        for k, f in [("mascot_idle", "neutre"), ("mascot_wave", "salut"), ("mascot_wink", "clin-oeil"), ("mascot_fly", "vol")]:
+            m[k] = {"src": b64(f"{HS}/visuels/mascotte-{f}.webp", "image/webp")}
     return env.from_string(open(f"{HS}/modules/{slug}.module/module.html").read()).render(module=m, name=f"m{i}")
 
 
