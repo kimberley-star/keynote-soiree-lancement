@@ -1,5 +1,31 @@
 [
   {
+    "name": "bg_color",
+    "label": "Couleur de fond",
+    "type": "color",
+    "default": {
+      "color": "#12435e",
+      "opacity": 100
+    }
+  },
+  {
+    "name": "text_style",
+    "label": "Couleur du texte",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "dark",
+        "Texte blanc (fond foncé)"
+      ],
+      [
+        "light",
+        "Texte foncé (fond clair)"
+      ]
+    ],
+    "default": "dark"
+  },
+  {
     "name": "eyebrow",
     "label": "Surtitre",
     "type": "text",

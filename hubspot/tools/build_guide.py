@@ -6,7 +6,7 @@ import json
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 e = html.escape
-TYPE = {"image": "Image", "richtext": "Texte enrichi", "text": "Texte", "boolean": "Booléen (case à cocher)", "choice": "Choix", "group": "Groupe (répéteur)"}
+TYPE = {"color": "Couleur", "image": "Image", "richtext": "Texte enrichi", "text": "Texte", "boolean": "Booléen (case à cocher)", "choice": "Choix", "group": "Groupe (répéteur)"}
 
 def fields_rows(fields, indent=False):
     out = []
@@ -46,6 +46,7 @@ def content_list(fields, values):
 def fmt(f, v):
     if f["type"] == "boolean": return "✅ coché" if v else "☐ non coché"
     if f["type"] == "choice": return e(dict(f["choices"])[v])
+    if f["type"] == "color": return f'<span class="val">{e(v["color"])}</span> (bleu nuit Flatchr par défaut)'
     if f["type"] == "richtext": return f'<div class="val">{v}</div>'
     if f["type"] == "image": return "Choisis ton illustration (ex. les tentacules) dans le gestionnaire de fichiers"
     return f'<span class="val">{e(str(v))}</span>'
