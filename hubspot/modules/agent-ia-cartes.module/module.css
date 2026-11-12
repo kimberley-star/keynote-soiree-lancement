@@ -7,10 +7,11 @@
 .aia-cards-sec .aia-h2{font-family:inherit;font-size:clamp(1.75rem,3.8vw,2.6rem);font-weight:700;line-height:1.15;margin:.5rem 0 0;color:#182534;text-wrap:balance}
 .aia-cards-sec .aia-sub{color:#5b6b7d;margin:.8rem 0 0;font-size:1.05rem}
 .aia-cards-sec .aia-cards{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem;counter-reset:aia}
-.aia-cards-sec .aia-card-item{background:#fff;border:1px solid #dee5ed;border-radius:20px;padding:2rem 1.75rem;margin:0;transition:transform .2s,box-shadow .2s;counter-increment:aia}
+.aia-cards-sec .aia-cards:not(.aia-numbered) .aia-card-item:before{content:none;display:none}
+.aia-cards-sec .aia-card-item{list-style:none;background:#fff;border:1px solid #dee5ed;border-radius:20px;padding:2rem 1.75rem;margin:0;transition:transform .2s,box-shadow .2s;counter-increment:aia}
 .aia-cards-sec .aia-card-item:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(24,37,52,.08)}
 .aia-cards-sec .aia-icon{width:52px;height:52px;border-radius:14px;background:#dbfaff;display:grid;place-items:center;font-size:1.5rem;margin-bottom:1.25rem}
-.aia-cards-sec .aia-numbered .aia-card-item:before{content:counter(aia);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#01aec8;color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:1.1rem}
+.aia-cards-sec .aia-numbered .aia-card-item:before{content:counter(aia);position:static;line-height:1;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#01aec8;color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:1.1rem}
 .aia-cards-sec .aia-tag{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#ea8f10}
 .aia-cards-sec h3{font-family:inherit;font-size:1.25rem;font-weight:700;line-height:1.2;margin:.35rem 0 0;color:#182534}
 .aia-cards-sec .aia-card-item p{color:#5b6b7d;margin:.6rem 0 0}

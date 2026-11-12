@@ -7,8 +7,8 @@
 .aia-demo .aia-h2{font-family:inherit;font-size:clamp(1.75rem,3.8vw,2.6rem);font-weight:700;line-height:1.15;margin:.5rem 0 0;color:#182534;text-wrap:balance}
 .aia-demo .aia-demo-lead{color:#5b6b7d;margin:1rem 0 0;font-size:1.05rem}
 .aia-demo .aia-demo-list{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:.75rem}
-.aia-demo .aia-demo-list li{display:flex;gap:.75rem;align-items:flex-start;margin:0}
-.aia-demo .aia-demo-list li:before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:#dbfaff;color:#016d7d;font-weight:700;font-size:.8rem;display:grid;place-items:center;margin-top:.1rem}
+.aia-demo .aia-demo-list li{display:flex;gap:.75rem;align-items:flex-start;margin:0;padding:0;list-style:none}
+.aia-demo .aia-demo-list li:before{content:"\2713";position:static;flex:none;width:24px;height:24px;line-height:1;border-radius:50%;background:#dbfaff;color:#016d7d;font-weight:700;font-size:.8rem;display:grid;place-items:center;margin-top:.1rem}
 .aia-demo .aia-phone{width:100%;max-width:360px;border-radius:40px;background:#0f1a24;padding:12px;box-shadow:0 24px 60px rgba(24,37,52,.25)}
 .aia-demo .aia-screen{border-radius:30px;overflow:hidden;background:#efeae2;display:flex;flex-direction:column;height:600px}
 .aia-demo .aia-wa-top{background:#075e54;color:#fff;display:flex;align-items:center;gap:.7rem;padding:1.1rem 1rem .8rem}
