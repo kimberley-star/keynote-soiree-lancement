@@ -48,11 +48,11 @@
 /* Variante « tentacule » : une grande tentacule arrive par la droite et pose sa pointe sur le bord du téléphone */
 .aia-demo .aia-phone-stage--arm{container-type:inline-size}
 .aia-demo .aia-phone-stage--arm:before{content:"";position:absolute;z-index:0;width:120%;aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(1,174,200,.22) 0%,rgba(1,174,200,0) 68%)}
-.aia-demo .aia-phone-stage--arm .aia-hold--side{z-index:2;width:150cqw;left:84cqw;top:calc(46% - 16cqw);aspect-ratio:640/292}
+.aia-demo .aia-phone-stage--arm .aia-hold--side{z-index:2;width:150cqw;left:86cqw;top:calc(44% - 12cqw);aspect-ratio:700/327}
 .aia-demo .aia-demo-grid:has(.aia-phone-stage--arm){grid-template-columns:1fr minmax(0,360px) 12rem}
 @media (max-width:1100px){.aia-demo .aia-demo-grid:has(.aia-phone-stage--arm){grid-template-columns:1fr minmax(0,340px) 7rem}}
 @media (max-width:860px){.aia-demo .aia-demo-grid:has(.aia-phone-stage--arm){grid-template-columns:1fr}.aia-demo .aia-phone-stage--arm{max-width:268px;justify-self:start;margin-left:0}}
-.aia-demo .aia-hold--side img{transform:scaleX(-1) rotate(-24deg);transform-origin:50% 30%;filter:drop-shadow(-10px 18px 22px rgba(24,37,52,.22))}
+.aia-demo .aia-hold--side img{transform:rotate(14deg);transform-origin:6% 35%;filter:drop-shadow(-10px 18px 22px rgba(24,37,52,.22))}
 .aia-demo .aia-demo-grid:has(.aia-phone-stage--mascot){column-gap:14rem}
 @media (max-width:1100px){.aia-demo .aia-demo-grid:has(.aia-phone-stage--mascot){column-gap:9.5rem}.aia-demo .aia-hold{--w:46%}}
 @keyframes aiaHold{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
