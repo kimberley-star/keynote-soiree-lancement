@@ -38,8 +38,7 @@ def mod(slug, over=None, i=0):
         for k, f in [("peek_face", "face"), ("peek_left", "gauche"), ("peek_right", "droite"), ("peek_up", "haut")]:
             m[k] = {"src": b64(f"{HS}/visuels/mascotte-coucou-{f}.webp", "image/webp")}
     if slug == "agent-ia-lancement":
-        for k, f in [("mascot_idle", "neutre"), ("mascot_wave", "salut"), ("mascot_wink", "clin-oeil"), ("mascot_fly", "vol")]:
-            m[k] = {"src": b64(f"{HS}/visuels/mascotte-{f}.webp", "image/webp")}
+        m["mascot_idle"] = {"src": b64(f"{HS}/visuels/mascotte-neutre.webp", "image/webp")}
     if slug == "agent-ia-hero":
         m["decor_image"] = {"src": decor_src}
         for k, f in [("mascot_idle", "neutre"), ("mascot_wave", "salut"), ("mascot_wink", "clin-oeil"), ("mascot_fly", "vol")]:

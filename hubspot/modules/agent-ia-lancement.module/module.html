@@ -18,13 +18,8 @@
         {% if module.cta2_text %}<a class="aia-btn-ghost" href="{{ module.cta2_url|escape }}">{{ module.cta2_text }}</a>{% endif %}
       </div>
       {% if module.mascot_idle.src %}
-      <div class="aia-launch-mascot" aria-hidden="true" data-aia-mascot>
-        <div class="aia-mascot-float">
-          <img class="aia-m aia-m-idle is-on" src="{{ module.mascot_idle.src }}" alt="">
-          {% if module.mascot_wave.src %}<img class="aia-m aia-m-wave" src="{{ module.mascot_wave.src }}" alt="">{% endif %}
-          {% if module.mascot_wink.src %}<img class="aia-m aia-m-wink" src="{{ module.mascot_wink.src }}" alt="">{% endif %}
-        </div>
-        {% if module.mascot_fly.src %}<img class="aia-m-fly" src="{{ module.mascot_fly.src }}" alt="">{% endif %}
+      <div class="aia-launch-mascot" aria-hidden="true">
+        <img src="{{ module.mascot_idle.src }}" alt="" loading="lazy">
       </div>
       {% endif %}
     </div>

@@ -19,19 +19,10 @@
 .aia-launch-sec .aia-btn-ghost{color:#fff;border-color:rgba(255,255,255,.6)}
 .aia-launch-sec .aia-btn-ghost:hover{background:#fff;color:#016d7d}
 @media (max-width:760px){.aia-launch-sec .aia-launch{grid-template-columns:1fr}}
-/* Mascotte animée à droite du texte (les boutons passent sous le texte) */
+/* Mascotte (image fixe) à droite du texte ; les boutons passent sous le texte */
 .aia-launch-sec .aia-launch--mascot{grid-template-columns:1fr 320px;grid-template-areas:"text mascot" "cta mascot";row-gap:1.75rem;align-items:center}
 .aia-launch-sec .aia-launch--mascot .aia-launch-text{grid-area:text}
 .aia-launch-sec .aia-launch--mascot .aia-launch-cta{grid-area:cta;flex-direction:row;flex-wrap:wrap;position:relative;z-index:1}
-.aia-launch-sec .aia-launch-mascot{grid-area:mascot;position:relative;z-index:1;width:100%;aspect-ratio:520/460;pointer-events:none}
-.aia-launch-sec .aia-mascot-float{position:absolute;inset:0;animation:aiaLaunchFloat 4s ease-in-out infinite}
-.aia-launch-sec .aia-m{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;opacity:0;transition:opacity .25s ease}
-.aia-launch-sec .aia-m.is-on{opacity:1}
-.aia-launch-sec .aia-m-fly{position:absolute;left:50%;top:50%;width:135%;height:auto;max-width:none;transform:translate(-50%,-50%);opacity:0}
-.aia-launch-sec .aia-launch-mascot.is-waiting{opacity:0}
-.aia-launch-sec .aia-launch-mascot.is-flying .aia-mascot-float{opacity:0}
-.aia-launch-sec .aia-launch-mascot.is-flying .aia-m-fly{opacity:1;animation:aiaLaunchFly 1.3s cubic-bezier(.2,.8,.2,1) both}
-@keyframes aiaLaunchFly{from{transform:translate(calc(-50% - 60vw),-10%) rotate(-6deg)}80%{transform:translate(calc(-50% + 8px),-56%) rotate(2deg)}to{transform:translate(-50%,-50%) rotate(0)}}
-@keyframes aiaLaunchFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.aia-launch-sec .aia-launch-mascot{grid-area:mascot;position:relative;z-index:1;width:100%;pointer-events:none}
+.aia-launch-sec .aia-launch-mascot img{display:block;width:100%;height:auto;max-width:none}
 @media (max-width:760px){.aia-launch-sec .aia-launch--mascot{grid-template-columns:1fr;grid-template-areas:"mascot" "text" "cta"}.aia-launch-sec .aia-launch-mascot{width:200px;margin:0 auto}}
-@media (prefers-reduced-motion:reduce){.aia-launch-sec .aia-mascot-float{animation:none}.aia-launch-sec .aia-m{transition:none}}
