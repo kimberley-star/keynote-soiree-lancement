@@ -66,7 +66,9 @@ MODULES = [
       {"card_icon": "🏬", "card_tag": "Réseaux de franchise", "card_title": "Un réseau autonome, une marque cohérente", "card_text": "Chaque point de vente recrute en autonomie, avec vos modèles d'annonces et vos process. Le siège garde une vision consolidée."}]),
  ]),
  ("agent-ia-confiance", "Agent IA - Confiance", "Bloc souveraineté des données, RGPD et AI Act", [
-   {"name": "bg_color", "label": "Couleur de fond", "type": "color", "default": {"color": "#12435e", "opacity": 100}},
+   {"name": "bg_color", "label": "Couleur de fond (ou teinte du voile si image)", "type": "color", "default": {"color": "#12435e", "opacity": 100}},
+   {"name": "bg_image", "label": "Image de fond (facultatif)", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "overlay_opacity", "label": "Opacité du voile sur l'image (%)", "type": "number", "display": "slider", "min": 0, "max": 100, "step": 5, "default": 70},
    CH("text_style", "Couleur du texte", [["dark", "Texte blanc (fond foncé)"], ["light", "Texte foncé (fond clair)"]], "dark"),
    T("eyebrow", "Surtitre", "Souveraineté et conformité"),
    T("title", "Titre", "Un agent IA de recrutement de confiance, avec vos données en France"),

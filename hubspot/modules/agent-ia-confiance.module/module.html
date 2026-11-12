@@ -1,4 +1,6 @@
-<section class="aia-trust{% if module.text_style == 'light' %} aia-trust--light{% endif %}" id="confiance"{% if module.bg_color.color %} style="background:{{ module.bg_color.color }}"{% endif %}>
+{% set aia_bg = module.bg_color.color or '#12435e' %}
+<section class="aia-trust{% if module.text_style == 'light' %} aia-trust--light{% endif %}{% if module.bg_image.src %} aia-trust--img{% endif %}" id="confiance"
+  {% if module.bg_image.src %}style="background:{{ aia_bg }} url('{{ module.bg_image.src }}') center/cover no-repeat;--aia-overlay:{{ aia_bg }};--aia-overlay-op:{{ (module.overlay_opacity|default(70)) / 100 }}"{% elif module.bg_color.color %}style="background:{{ module.bg_color.color }}"{% endif %}>
   <div class="aia-wrap">
     <div class="aia-head">
       {% if module.eyebrow %}<p class="aia-eyebrow">{{ module.eyebrow }}</p>{% endif %}
