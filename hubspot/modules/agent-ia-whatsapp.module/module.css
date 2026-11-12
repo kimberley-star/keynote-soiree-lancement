@@ -34,3 +34,14 @@
 @keyframes aiaBlink{50%{opacity:.3}}
 @media (max-width:860px){.aia-demo .aia-demo-grid{grid-template-columns:1fr}.aia-demo .aia-phone{margin:0 auto}}
 @media (prefers-reduced-motion:reduce){.aia-demo .aia-msg.aia-in,.aia-demo .aia-typing i{animation:none}}
+/* Mascotte qui présente le téléphone */
+.aia-demo{overflow:hidden}
+.aia-demo .aia-phone-stage{position:relative;justify-self:center;width:100%;max-width:360px}
+.aia-demo .aia-phone-stage .aia-phone{position:relative;z-index:1}
+.aia-demo .aia-phone-stage--mascot:before{content:"";position:absolute;z-index:0;width:120%;aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(1,174,200,.22) 0%,rgba(1,174,200,0) 68%)}
+.aia-demo .aia-demo-mascot{position:absolute;z-index:2;left:-46%;bottom:-3%;width:64%;height:auto;max-width:none;pointer-events:none;filter:drop-shadow(0 18px 24px rgba(24,37,52,.18));animation:aiaDemoFloat 4s ease-in-out infinite}
+@keyframes aiaDemoFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+.aia-demo .aia-wa-avatar{overflow:hidden}
+.aia-demo .aia-wa-avatar img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 12%;transform:scale(1.6);transform-origin:50% 20%;background:#dbfaff}
+@media (max-width:860px){.aia-demo .aia-phone-stage--mascot{margin-left:auto;margin-right:auto;padding-left:18%}.aia-demo .aia-demo-mascot{left:0;bottom:-5%;width:40%}}
+@media (prefers-reduced-motion:reduce){.aia-demo .aia-demo-mascot{animation:none}}

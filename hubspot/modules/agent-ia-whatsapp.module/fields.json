@@ -38,6 +38,16 @@
     "default": "Agent IA Flatchr"
   },
   {
+    "name": "mascot_image",
+    "label": "Mascotte à côté du téléphone + avatar (facultatif)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
     "name": "messages",
     "label": "Messages de la conversation",
     "type": "group",

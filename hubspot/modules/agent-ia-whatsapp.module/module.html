@@ -6,10 +6,11 @@
       <p class="aia-demo-lead">{{ module.intro }}</p>
       {% if module.points %}<ul class="aia-demo-list">{% for item in module.points %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
     </div>
+    <div class="aia-phone-stage{% if module.mascot_image.src %} aia-phone-stage--mascot{% endif %}">
     <div class="aia-phone" aria-label="Démonstration d'une conversation WhatsApp avec l'agent IA Flatchr">
       <div class="aia-screen">
         <div class="aia-wa-top">
-          <div class="aia-wa-avatar">F</div>
+          <div class="aia-wa-avatar">{% if module.mascot_image.src %}<img src="{{ module.mascot_image.src }}" alt="">{% else %}F{% endif %}</div>
           <div><strong>{{ module.agent_name }}</strong><span>en ligne</span></div>
         </div>
         <div class="aia-wa-chat" data-aia-chat aria-live="polite">
@@ -19,6 +20,8 @@
         </div>
         <div class="aia-wa-input"><span>Écrire un message</span><b aria-hidden="true"></b></div>
       </div>
+    </div>
+    {% if module.mascot_image.src %}<img class="aia-demo-mascot" src="{{ module.mascot_image.src }}" alt="" aria-hidden="true" loading="lazy">{% endif %}
     </div>
   </div>
 </section>
