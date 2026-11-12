@@ -6,7 +6,15 @@
       {% if module.link_text %}<a href="{{ module.link_url|escape }}">{{ module.link_text }}</a>{% endif %}
     </div>
     {% endif %}
-    {% if module.peek_face.src %}
+    {% if module.peek_eyes.src %}
+    <div class="flp-peek" aria-hidden="true">
+      <div class="flp-head flp-head--gaze" data-flp-gaze>
+        <img class="flp-base" src="{{ module.peek_eyes.src }}" alt="">
+        <span class="flp-eye flp-eye--l"><i class="flp-pupil"></i></span>
+        <span class="flp-eye flp-eye--r"><i class="flp-pupil"></i></span>
+      </div>
+    </div>
+    {% elif module.peek_face.src %}
     <div class="flp-peek" aria-hidden="true">
       <div class="flp-head">
         <img class="flp-p{% if not module.peek_up.src %} is-on{% endif %}" data-pose="face" src="{{ module.peek_face.src }}" alt="">

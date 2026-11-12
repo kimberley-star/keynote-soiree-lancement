@@ -39,3 +39,68 @@ document.querySelectorAll('[data-flp]').forEach(function (sec) {
     });
   }
 });
+
+// Mode « regard » : chaque pupille vise précisément le pointeur (angle + distance), avec un léger amorti
+document.querySelectorAll('[data-flp-gaze]').forEach(function (head) {
+  var sec = head.closest('[data-flp]');
+  var eyes = Array.prototype.map.call(head.querySelectorAll('.flp-eye'), function (el) {
+    return { el: el, pupil: el.querySelector('.flp-pupil'), cur: { x: 0, y: -0.45 }, tgt: { x: 0, y: -0.45 } };
+  });
+  var rest = { x: 0, y: -0.45 }, visible = true, idle = null, mouse = null, hx = 0;
+  function aim() {
+    eyes.forEach(function (e) {
+      if (!mouse) { e.tgt.x = rest.x; e.tgt.y = rest.y; return; }
+      var r = e.el.getBoundingClientRect(), dx = mouse.x - (r.left + r.width / 2), dy = mouse.y - (r.top + r.height / 2);
+      var d = Math.sqrt(dx * dx + dy * dy) || 1, k = d / (d + r.width * 0.6); // proche = petit écart, loin = bord du verre
+      e.tgt.x = dx / d * k; e.tgt.y = dy / d * k;
+    });
+  }
+  function apply() {
+    var sx = 0;
+    eyes.forEach(function (e) {
+      var w = e.el.offsetWidth, h = e.el.offsetHeight;
+      e.pupil.style.setProperty('--px', (e.cur.x * w * 0.24).toFixed(1) + 'px');
+      e.pupil.style.setProperty('--py', (e.cur.y * h * 0.26).toFixed(1) + 'px');
+      sx += e.cur.x;
+    });
+    hx += (sx / eyes.length - hx) * 0.08;
+    head.style.setProperty('--hx', (hx * 6).toFixed(2) + 'px');
+    head.style.setProperty('--hr', (hx * 3).toFixed(2) + 'deg');
+  }
+  apply();
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  head.querySelectorAll('.flp-pupil').forEach(function (p) { p.style.transition = 'none'; });
+  function tick() {
+    if (visible) {
+      eyes.forEach(function (e) { e.cur.x += (e.tgt.x - e.cur.x) * 0.3; e.cur.y += (e.tgt.y - e.cur.y) * 0.3; });
+      apply();
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }, { threshold: 0 }).observe(sec);
+  // Clignement des yeux toutes les 3 à 6 secondes
+  (function blink() {
+    setTimeout(function () {
+      eyes.forEach(function (e) { e.pupil.style.setProperty('--blink', '0.08'); });
+      setTimeout(function () { eyes.forEach(function (e) { e.pupil.style.setProperty('--blink', '1'); }); blink(); }, 130);
+    }, 3000 + Math.random() * 3000);
+  })();
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var onMove = function (x, y) {
+      mouse = { x: x, y: y }; aim();
+      clearTimeout(idle); idle = setTimeout(function () { mouse = null; aim(); }, 4000);
+    };
+    document.addEventListener('mousemove', function (e) { onMove(e.clientX, e.clientY); });
+    window.addEventListener('scroll', function () { if (mouse) aim(); }, { passive: true });
+    document.addEventListener('mouseleave', function () { mouse = null; aim(); });
+  } else {
+    // Mobile : le regard se promène tout seul
+    var spots = [[-0.9, 0.1], [0, -0.8], [0.9, 0], [0.4, -0.6], [-0.5, -0.5], [0, 0.2]], k = 0;
+    setInterval(function () {
+      if (!visible) return;
+      var s = spots[k++ % spots.length];
+      eyes.forEach(function (e) { e.tgt.x = s[0]; e.tgt.y = s[1]; });
+    }, 1700);
+  }
+});

@@ -60,8 +60,18 @@
     "default": "white"
   },
   {
+    "name": "peek_eyes",
+    "label": "Tête sans pupilles (regard qui suit la souris en continu) — recommandé",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
     "name": "peek_face",
-    "label": "Mascotte – regarde de face (active le module)",
+    "label": "Mascotte – regarde de face (mode 4 poses, si pas de tête sans pupilles)",
     "type": "image",
     "default": {
       "src": "",

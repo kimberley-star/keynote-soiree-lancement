@@ -35,6 +35,7 @@ def mod(slug, over=None, i=0):
     m = {f["name"]: f.get("default") for f in spec[slug]}
     m.update(over or {})
     if slug == "flatchr-mascotte-coucou":
+        m["peek_eyes"] = {"src": b64(f"{HS}/visuels/mascotte-coucou-yeux.webp", "image/webp")}
         for k, f in [("peek_face", "face"), ("peek_left", "gauche"), ("peek_right", "droite"), ("peek_up", "haut")]:
             m[k] = {"src": b64(f"{HS}/visuels/mascotte-coucou-{f}.webp", "image/webp")}
     if slug == "agent-ia-whatsapp":
