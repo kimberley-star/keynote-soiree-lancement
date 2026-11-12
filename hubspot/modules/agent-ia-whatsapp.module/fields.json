@@ -39,7 +39,7 @@
   },
   {
     "name": "mascot_image",
-    "label": "Mascotte à côté du téléphone + avatar (facultatif)",
+    "label": "Mascotte qui tient le téléphone + avatar (pose qui salue, facultatif)",
     "type": "image",
     "default": {
       "src": "",
