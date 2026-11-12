@@ -1,0 +1,20 @@
+<section class="flp flp--{{ module.background or 'white' }} flp--{{ module.align or 'center' }}" data-flp>
+  <div class="flp-wrap">
+    {% if module.bubble_text %}
+    <div class="flp-bubble">
+      <p>{{ module.bubble_text }}</p>
+      {% if module.link_text %}<a href="{{ module.link_url|escape }}">{{ module.link_text }}</a>{% endif %}
+    </div>
+    {% endif %}
+    {% if module.peek_face.src %}
+    <div class="flp-peek" aria-hidden="true">
+      <div class="flp-head">
+        <img class="flp-p is-on" data-pose="face" src="{{ module.peek_face.src }}" alt="">
+        {% if module.peek_left.src %}<img class="flp-p" data-pose="left" src="{{ module.peek_left.src }}" alt="">{% endif %}
+        {% if module.peek_right.src %}<img class="flp-p" data-pose="right" src="{{ module.peek_right.src }}" alt="">{% endif %}
+        {% if module.peek_up.src %}<img class="flp-p" data-pose="up" src="{{ module.peek_up.src }}" alt="">{% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>

@@ -95,6 +95,17 @@ MODULES = [
    T("cta_text", "Texte du lien", "Découvrir notre politique de sécurité"),
    T("cta_url", "Lien", "https://www.flatchr.io/security"),
  ]),
+ ("flatchr-mascotte-coucou", "Flatchr - Mascotte coucou", "Tête de la mascotte qui sort du bord en bas de page et suit la souris du regard (module réutilisable)", [
+   T("bubble_text", "Texte de la bulle (facultatif)", "Une autre question sur l'agent IA ?"),
+   T("link_text", "Texte du lien dans la bulle", "Parlons-en"),
+   T("link_url", "Lien", "https://www.flatchr.io/demo"),
+   CH("align", "Position", [["center", "Centre"], ["left", "Gauche"], ["right", "Droite"]], "center"),
+   CH("background", "Fond (le même que la section du dessus)", [["white", "Blanc"], ["soft", "Gris clair"], ["navy", "Bleu nuit"]], "white"),
+   {"name": "peek_face", "label": "Mascotte – regarde de face (active le module)", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "peek_left", "label": "Mascotte – regarde à gauche", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "peek_right", "label": "Mascotte – regarde à droite", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+   {"name": "peek_up", "label": "Mascotte – regarde en l'air", "type": "image", "default": {"src": "", "alt": "", "loading": "lazy"}},
+ ]),
  ("agent-ia-lancement", "Agent IA - Lancement", "Bloc « Disponible le 1er janvier » avec compte à rebours", [
    T("eyebrow", "Surtitre", "Lancement"),
    T("title", "Titre (début)", "Disponible le"),

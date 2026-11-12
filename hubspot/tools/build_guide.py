@@ -50,6 +50,7 @@ def fmt(f, v):
     if f["type"] == "color": return f'<span class="val">{e(v["color"])}</span> (bleu nuit Flatchr par défaut)'
     if f["type"] == "richtext": return f'<div class="val">{v}</div>'
     if f["type"] == "image":
+        if f["name"].startswith("peek_"): return {"peek_face": "mascotte-coucou-face.webp", "peek_left": "mascotte-coucou-gauche.webp", "peek_right": "mascotte-coucou-droite.webp", "peek_up": "mascotte-coucou-haut.webp"}[f["name"]] + " (dossier hubspot/visuels)"
         if f["name"].startswith("mascot_"): return {"mascot_idle": "mascotte-neutre.webp", "mascot_wave": "mascotte-salut.webp", "mascot_wink": "mascotte-clin-oeil.webp", "mascot_fly": "mascotte-vol.webp"}[f["name"]] + " (dossier hubspot/visuels)"
         return "Choisis ton image dans le gestionnaire de fichiers (facultatif)"
     return f'<span class="val">{e(str(v))}</span>'
@@ -59,7 +60,7 @@ def code(label, path, lang, src=None):
     if not src: return f'<div class="code empty"><div class="code-bar"><span>{label}</span></div><p>Rien à coller : laisse ce panneau vide.</p></div>'
     return f'<div class="code"><div class="code-bar"><span>{label}</span><button class="copy" type="button">Copier</button></div><pre><code>{e(src)}</code></pre></div>'
 
-order_note = {"flatchr-video": "Module générique, réutilisable sur toutes tes pages fonctionnalités (il remplace « Agent IA - Vidéo de vision »). Crée-le de préférence dans le dossier du thème Flatchr.", "agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche ».", "agent-ia-confiance": "⚠️ " + TRUST_A_VALIDER}
+order_note = {"flatchr-mascotte-coucou": "Module générique, réutilisable en bas de n'importe quelle page. Crée-le dans le dossier du thème Flatchr. Place-le juste avant le pied de page, avec le même fond que la section du dessus.", "flatchr-video": "Module générique, réutilisable sur toutes tes pages fonctionnalités (il remplace « Agent IA - Vidéo de vision »). Crée-le de préférence dans le dossier du thème Flatchr.", "agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche ».", "agent-ia-confiance": "⚠️ " + TRUST_A_VALIDER}
 mods = []
 for i, (slug, label, desc, fields) in enumerate(MODULES, 1):
     d = os.path.join(ROOT, "modules", slug + ".module")
@@ -103,7 +104,8 @@ page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("flatchr-
               ("agent-ia-confiance", {}, "Souveraineté, RGPD et AI Act"),
               ("theme:Three col cards with stroke cta (thème Flatchr)", theme_discover, "Découvrez la suite"),
               ("agent-ia-lancement", {}, "Disponible le 1er janvier"),
-              ("theme:Faq two col (thème Flatchr)", theme_faq, "FAQ, tout en bas")]
+              ("theme:Faq two col (thème Flatchr)", theme_faq, "FAQ"),
+              ("flatchr-mascotte-coucou", {}, "Mascotte qui fait coucou, juste au-dessus du pied de page")]
 content = []
 for i, (slug, over, what) in enumerate(page_order, 1):
     if slug.startswith("theme:"):

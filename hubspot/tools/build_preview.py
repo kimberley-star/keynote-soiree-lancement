@@ -34,6 +34,9 @@ decor_src = "data:image/svg+xml;base64," + base64.b64encode(decor.encode()).deco
 def mod(slug, over=None, i=0):
     m = {f["name"]: f.get("default") for f in spec[slug]}
     m.update(over or {})
+    if slug == "flatchr-mascotte-coucou":
+        for k, f in [("peek_face", "face"), ("peek_left", "gauche"), ("peek_right", "droite"), ("peek_up", "haut")]:
+            m[k] = {"src": b64(f"{HS}/visuels/mascotte-coucou-{f}.webp", "image/webp")}
     if slug == "agent-ia-lancement":
         for k, f in [("mascot_idle", "neutre"), ("mascot_wave", "salut"), ("mascot_wink", "clin-oeil"), ("mascot_fly", "vol")]:
             m[k] = {"src": b64(f"{HS}/visuels/mascotte-{f}.webp", "image/webp")}
@@ -75,7 +78,7 @@ def faq():
 
 order = [mod("agent-ia-hero", i=0), mod("flatchr-video", i=1), mod("agent-ia-whatsapp", i=2), zigzag(),
          mod("agent-ia-cartes", i=3), mod("agent-ia-cartes", STEPS, i=4), mod("agent-ia-confiance", i=6), discover(),
-         mod("agent-ia-lancement", i=5), faq()]
+         mod("agent-ia-lancement", i=5), faq(), mod("flatchr-mascotte-coucou", i=7)]
 css = "".join(open(f"{HS}/modules/{s}.module/module.css").read() for s in spec)
 js = "".join(open(f"{HS}/modules/{s}.module/module.js").read() for s in spec)
 # Dans l'aperçu claude.ai, window.open est bloqué : on passe par un vrai lien
