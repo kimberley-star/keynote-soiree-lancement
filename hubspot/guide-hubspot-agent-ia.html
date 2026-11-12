@@ -626,10 +626,10 @@ document.querySelectorAll(&#x27;.aia-demo&#x27;).forEach(function (sec) {
     {% if module.peek_face.src %}
     &lt;div class=&quot;flp-peek&quot; aria-hidden=&quot;true&quot;&gt;
       &lt;div class=&quot;flp-head&quot;&gt;
-        &lt;img class=&quot;flp-p is-on&quot; data-pose=&quot;face&quot; src=&quot;{{ module.peek_face.src }}&quot; alt=&quot;&quot;&gt;
+        &lt;img class=&quot;flp-p{% if not module.peek_up.src %} is-on{% endif %}&quot; data-pose=&quot;face&quot; src=&quot;{{ module.peek_face.src }}&quot; alt=&quot;&quot;&gt;
         {% if module.peek_left.src %}&lt;img class=&quot;flp-p&quot; data-pose=&quot;left&quot; src=&quot;{{ module.peek_left.src }}&quot; alt=&quot;&quot;&gt;{% endif %}
         {% if module.peek_right.src %}&lt;img class=&quot;flp-p&quot; data-pose=&quot;right&quot; src=&quot;{{ module.peek_right.src }}&quot; alt=&quot;&quot;&gt;{% endif %}
-        {% if module.peek_up.src %}&lt;img class=&quot;flp-p&quot; data-pose=&quot;up&quot; src=&quot;{{ module.peek_up.src }}&quot; alt=&quot;&quot;&gt;{% endif %}
+        {% if module.peek_up.src %}&lt;img class=&quot;flp-p is-on&quot; data-pose=&quot;up&quot; src=&quot;{{ module.peek_up.src }}&quot; alt=&quot;&quot;&gt;{% endif %}
       &lt;/div&gt;
     &lt;/div&gt;
     {% endif %}
@@ -642,45 +642,40 @@ document.querySelectorAll(&#x27;.aia-demo&#x27;).forEach(function (sec) {
 .flp .flp-wrap{max-width:72rem;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem);display:flex;flex-direction:column;align-items:center}
 .flp--left .flp-wrap{align-items:flex-start}
 .flp--right .flp-wrap{align-items:flex-end}
-.flp .flp-bubble{position:relative;max-width:22rem;margin:0 0 14px;padding:1rem 1.25rem;background:#fff;border:1px solid #dee5ed;border-radius:18px;box-shadow:0 12px 30px rgba(24,37,52,.1);text-align:center;opacity:0;transform:translateY(10px) scale(.96);transition:opacity .35s ease,transform .35s ease}
+.flp .flp-bubble{position:relative;max-width:22rem;margin:0 0 14px;padding:1rem 1.25rem;background:#fff;border:1px solid #dee5ed;border-radius:18px;box-shadow:0 12px 30px rgba(24,37,52,.1);text-align:center;}
 .flp .flp-bubble:after{content:&quot;&quot;;position:absolute;left:50%;bottom:-9px;width:16px;height:16px;background:#fff;border-right:1px solid #dee5ed;border-bottom:1px solid #dee5ed;transform:translateX(-50%) rotate(45deg)}
 .flp .flp-bubble p{margin:0;font-family:inherit;font-weight:600;font-size:1rem;line-height:1.4;color:#182534}
 .flp .flp-bubble a{display:inline-block;margin-top:.35rem;font-weight:600;color:#019bb2;text-decoration:none}
 .flp .flp-bubble a:after{content:&quot; →&quot;}
 .flp .flp-bubble a:hover{color:#016d7d}
-.flp.is-up .flp-bubble{opacity:1;transform:none;transition-delay:.55s}
 .flp .flp-peek{position:relative;width:clamp(300px,40vw,560px);aspect-ratio:720/418;overflow:hidden}
-.flp .flp-head{position:absolute;inset:0;transform:translateY(100%);transition:transform .8s cubic-bezier(.34,1.45,.64,1)}
-.flp.is-up .flp-head{transform:none}
+.flp .flp-head{position:absolute;inset:0}
 .flp .flp-p{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;object-position:bottom;opacity:0;transition:opacity .18s ease}
 .flp .flp-p.is-on{opacity:1}
-@media (prefers-reduced-motion:reduce){.flp .flp-head{transform:none;transition:none}.flp .flp-bubble{opacity:1;transform:none;transition:none}.flp .flp-p{transition:none}}</code></pre></div>
-    <div class="code"><div class="code-bar"><span>module.js</span><button class="copy" type="button">Copier</button></div><pre><code>// Mascotte « coucou » : la tête sort du bord quand la section devient visible.
+@media (prefers-reduced-motion:reduce){.flp .flp-p{transition:none}}</code></pre></div>
+    <div class="code"><div class="code-bar"><span>module.js</span><button class="copy" type="button">Copier</button></div><pre><code>// Mascotte « coucou » : la tête est en place dès le chargement et regarde en l&#x27;air.
 // Sur ordinateur, elle suit la souris du regard ; sur mobile, elle regarde autour d&#x27;elle toute seule.
 document.querySelectorAll(&#x27;[data-flp]&#x27;).forEach(function (sec) {
   var head = sec.querySelector(&#x27;.flp-head&#x27;);
-  if (!head) { sec.classList.add(&#x27;is-up&#x27;); return; }
+  if (!head) return;
   var poses = {};
   head.querySelectorAll(&#x27;.flp-p&#x27;).forEach(function (img) { poses[img.dataset.pose] = img; });
-  var current = &#x27;face&#x27;;
+  var rest = poses.up ? &#x27;up&#x27; : &#x27;face&#x27;, current = rest;
   function show(name) {
     if (!poses[name] || name === current) return;
     current = name;
     Object.keys(poses).forEach(function (k) { poses[k].classList.toggle(&#x27;is-on&#x27;, k === name); });
   }
-  if (window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches || !(&#x27;IntersectionObserver&#x27; in window)) { sec.classList.add(&#x27;is-up&#x27;); return; }
-  var fine = window.matchMedia(&#x27;(hover: hover) and (pointer: fine)&#x27;).matches, timer = null, idle = null, visible = false;
-  function lookAround() {
-    var seq = [&#x27;left&#x27;, &#x27;face&#x27;, &#x27;right&#x27;, &#x27;face&#x27;, &#x27;up&#x27;, &#x27;face&#x27;].filter(function (p) { return poses[p]; }), i = 0;
-    timer = setInterval(function () { if (visible) show(seq[i++ % seq.length]); }, 1600);
-  }
+  if (window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches || !(&#x27;IntersectionObserver&#x27; in window)) return;
+  var fine = window.matchMedia(&#x27;(hover: hover) and (pointer: fine)&#x27;).matches, idle = null, visible = false, started = false;
   new IntersectionObserver(function (entries) {
     visible = entries[0].isIntersecting;
-    if (visible &amp;&amp; !sec.classList.contains(&#x27;is-up&#x27;)) {
-      sec.classList.add(&#x27;is-up&#x27;);
-      if (!fine) setTimeout(lookAround, 1200);
+    if (visible &amp;&amp; !fine &amp;&amp; !started) {
+      started = true;
+      var seq = [&#x27;left&#x27;, &#x27;face&#x27;, &#x27;right&#x27;, &#x27;face&#x27;, &#x27;up&#x27;].filter(function (p) { return poses[p]; }), i = 0;
+      setInterval(function () { if (visible) show(seq[i++ % seq.length]); }, 1600);
     }
-  }, { threshold: 0.5 }).observe(sec);
+  }, { threshold: 0.3 }).observe(sec);
   if (fine) {
     var raf = 0;
     document.addEventListener(&#x27;mousemove&#x27;, function (e) {
@@ -694,7 +689,7 @@ document.querySelectorAll(&#x27;[data-flp]&#x27;).forEach(function (sec) {
         else if (dx &gt; r.width * 0.45) show(&#x27;right&#x27;);
         else show(&#x27;face&#x27;);
         clearTimeout(idle);
-        idle = setTimeout(function () { show(&#x27;face&#x27;); }, 3000);
+        idle = setTimeout(function () { show(rest); }, 3000);
       });
     });
   }

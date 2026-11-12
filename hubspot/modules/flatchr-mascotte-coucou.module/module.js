@@ -1,29 +1,26 @@
-// Mascotte « coucou » : la tête sort du bord quand la section devient visible.
+// Mascotte « coucou » : la tête est en place dès le chargement et regarde en l'air.
 // Sur ordinateur, elle suit la souris du regard ; sur mobile, elle regarde autour d'elle toute seule.
 document.querySelectorAll('[data-flp]').forEach(function (sec) {
   var head = sec.querySelector('.flp-head');
-  if (!head) { sec.classList.add('is-up'); return; }
+  if (!head) return;
   var poses = {};
   head.querySelectorAll('.flp-p').forEach(function (img) { poses[img.dataset.pose] = img; });
-  var current = 'face';
+  var rest = poses.up ? 'up' : 'face', current = rest;
   function show(name) {
     if (!poses[name] || name === current) return;
     current = name;
     Object.keys(poses).forEach(function (k) { poses[k].classList.toggle('is-on', k === name); });
   }
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { sec.classList.add('is-up'); return; }
-  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches, timer = null, idle = null, visible = false;
-  function lookAround() {
-    var seq = ['left', 'face', 'right', 'face', 'up', 'face'].filter(function (p) { return poses[p]; }), i = 0;
-    timer = setInterval(function () { if (visible) show(seq[i++ % seq.length]); }, 1600);
-  }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches, idle = null, visible = false, started = false;
   new IntersectionObserver(function (entries) {
     visible = entries[0].isIntersecting;
-    if (visible && !sec.classList.contains('is-up')) {
-      sec.classList.add('is-up');
-      if (!fine) setTimeout(lookAround, 1200);
+    if (visible && !fine && !started) {
+      started = true;
+      var seq = ['left', 'face', 'right', 'face', 'up'].filter(function (p) { return poses[p]; }), i = 0;
+      setInterval(function () { if (visible) show(seq[i++ % seq.length]); }, 1600);
     }
-  }, { threshold: 0.5 }).observe(sec);
+  }, { threshold: 0.3 }).observe(sec);
   if (fine) {
     var raf = 0;
     document.addEventListener('mousemove', function (e) {
@@ -37,7 +34,7 @@ document.querySelectorAll('[data-flp]').forEach(function (sec) {
         else if (dx > r.width * 0.45) show('right');
         else show('face');
         clearTimeout(idle);
-        idle = setTimeout(function () { show('face'); }, 3000);
+        idle = setTimeout(function () { show(rest); }, 3000);
       });
     });
   }
