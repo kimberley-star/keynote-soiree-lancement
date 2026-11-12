@@ -1,0 +1,110 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Surtitre (facultatif)",
+    "type": "text",
+    "default": "Notre vision"
+  },
+  {
+    "name": "title",
+    "label": "Titre H2 (facultatif)",
+    "type": "text",
+    "default": "Notre vision de l'agent IA de recrutement"
+  },
+  {
+    "name": "subtitle",
+    "label": "Sous-titre (facultatif)",
+    "type": "text",
+    "default": "Le RH pilote, le manager recrute, l'IA accélère. Pourquoi nous l'avons conçu pour celles et ceux qui recrutent sur le terrain."
+  },
+  {
+    "name": "video_url",
+    "label": "Lien de la vidéo (YouTube, Vimeo ou .mp4) — vide = encart « bientôt disponible »",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "video_title",
+    "label": "Titre de la vidéo (accessibilité)",
+    "type": "text",
+    "default": "Vidéo de vision de l'agent IA de recrutement Flatchr"
+  },
+  {
+    "name": "thumbnail",
+    "label": "Miniature personnalisée (facultatif, 16:9)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "duration",
+    "label": "Durée affichée (facultatif, ex. 2 min)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "placeholder_text",
+    "label": "Texte si pas encore de vidéo",
+    "type": "text",
+    "default": "Vidéo bientôt disponible"
+  },
+  {
+    "name": "caption",
+    "label": "Légende sous la vidéo (facultatif)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "background",
+    "label": "Fond de la section",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "white",
+        "Blanc"
+      ],
+      [
+        "soft",
+        "Gris clair"
+      ],
+      [
+        "navy",
+        "Bleu nuit"
+      ]
+    ],
+    "default": "white"
+  },
+  {
+    "name": "size",
+    "label": "Largeur de la vidéo",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "normal",
+        "Normale"
+      ],
+      [
+        "large",
+        "Large"
+      ]
+    ],
+    "default": "normal"
+  },
+  {
+    "name": "cta_text",
+    "label": "Texte du bouton (facultatif)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "cta_url",
+    "label": "Lien du bouton",
+    "type": "text",
+    "default": ""
+  }
+]

@@ -14,7 +14,7 @@ Textes et champs : source unique `hubspot/tools/spec.py` (relancer `python3 hubs
 
 ## Modules, dans l'ordre
 1. **Agent IA - Hero prompt** (nouveau module) : code dans `hubspot/modules/hero-prompt.*`
-2. **Agent IA - Vidéo de vision** (nouveau) : surtitre, titre, sous-titre, lien vidéo (YouTube / Vimeo / .mp4)
+2. **Flatchr - Vidéo** (module générique, réutilisable sur toutes les pages) : surtitre, titre, sous-titre, lien vidéo, miniature, durée, fond, largeur, bouton
 3. **Agent IA - Démo WhatsApp** (nouveau) : titre, texte, 3 puces, nom de l'agent, messages répétables (expéditeur manager/agent, texte, carte, heure)
 4. **Bénéfices** : module « Agent IA - Cartes » (icônes)
 5. **Comment ça marche** : module « Agent IA - Cartes » (numéroté, fond gris)

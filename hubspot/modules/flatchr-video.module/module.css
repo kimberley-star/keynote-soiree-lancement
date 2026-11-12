@@ -1,0 +1,32 @@
+.flv,.flv *{box-sizing:border-box}
+.flv{padding:clamp(3.5rem,8vw,6rem) 0;background:#fff;color:#182534;font-family:Poppins,"Segoe UI",system-ui,sans-serif}
+.flv--soft{background:#f1f4f8}
+.flv--navy{background:linear-gradient(160deg,#12435e 0%,#0d3247 100%);color:#fff}
+.flv .flv-wrap{max-width:60rem;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+.flv .flv-wrap--large{max-width:76rem}
+.flv .flv-head{text-align:center;max-width:44rem;margin:0 auto clamp(2rem,5vw,2.75rem)}
+.flv .flv-eyebrow{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#01aec8;margin:0}
+.flv .flv-title{font-family:inherit;font-size:clamp(1.75rem,3.8vw,2.6rem);font-weight:700;line-height:1.15;margin:.5rem 0 0;color:inherit;text-wrap:balance}
+.flv .flv-sub{margin:.85rem 0 0;font-size:1.05rem;line-height:1.6;color:#5b6b7d}
+.flv--navy .flv-eyebrow{color:#5fd6e8}
+.flv--navy .flv-sub,.flv--navy .flv-caption{color:#c9dde6}
+.flv .flv-player{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#016d7d,#12435e);box-shadow:0 24px 60px rgba(24,37,52,.18)}
+.flv--navy .flv-player{box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.flv .flv-player iframe,.flv .flv-player video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.flv .flv-thumb{position:absolute;inset:0;width:100%;height:100%;padding:0;margin:0;border:0;background:transparent;cursor:pointer;display:block}
+.flv .flv-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.flv .flv-thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,67,94,0) 50%,rgba(18,67,94,.45) 100%);pointer-events:none}
+.flv .flv-thumb:hover img{transform:scale(1.03)}
+.flv .flv-play{position:absolute;left:50%;top:50%;z-index:1;width:clamp(64px,9vw,88px);height:clamp(64px,9vw,88px);margin:0;transform:translate(-50%,-50%);border-radius:50%;background:#ff9c11;box-shadow:0 0 0 10px rgba(255,156,17,.25),0 12px 30px rgba(0,0,0,.25);transition:transform .2s ease,box-shadow .2s ease}
+.flv .flv-play:before{content:"";position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.flv .flv-thumb:hover .flv-play,.flv .flv-thumb:focus-visible .flv-play{transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 14px rgba(255,156,17,.3),0 12px 30px rgba(0,0,0,.25)}
+.flv .flv-thumb:focus-visible{outline:3px solid #ff9c11;outline-offset:-3px}
+.flv .flv-duration{position:absolute;right:16px;bottom:16px;z-index:1;font-size:.8rem;font-weight:600;color:#fff;background:rgba(18,37,52,.75);border-radius:999px;padding:.3rem .7rem}
+.flv .flv-soon{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:1rem;color:#fff;text-align:center}
+.flv .flv-soon .flv-play{position:relative;left:auto;top:auto;transform:none;opacity:.9}
+.flv .flv-soon p{margin:0;font-weight:600;color:#fff}
+.flv .flv-caption{margin:1rem 0 0;text-align:center;font-size:.9rem;color:#5b6b7d}
+.flv .flv-cta{margin:1.75rem 0 0;text-align:center}
+.flv .flv-btn{display:inline-flex;font:600 1rem/1 Poppins,sans-serif;padding:.95rem 1.6rem;border-radius:999px;background:#ff9c11;color:#fff;text-decoration:none}
+.flv .flv-btn:hover{background:#ea8f10;color:#fff}
+@media (prefers-reduced-motion:reduce){.flv .flv-thumb img,.flv .flv-play{transition:none}}

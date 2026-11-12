@@ -57,7 +57,7 @@ def code(label, path, lang, src=None):
     if not src: return f'<div class="code empty"><div class="code-bar"><span>{label}</span></div><p>Rien à coller : laisse ce panneau vide.</p></div>'
     return f'<div class="code"><div class="code-bar"><span>{label}</span><button class="copy" type="button">Copier</button></div><pre><code>{e(src)}</code></pre></div>'
 
-order_note = {"agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche ».", "agent-ia-confiance": "⚠️ " + TRUST_A_VALIDER}
+order_note = {"flatchr-video": "Module générique, réutilisable sur toutes tes pages fonctionnalités (il remplace « Agent IA - Vidéo de vision »). Crée-le de préférence dans le dossier du thème Flatchr.", "agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche ».", "agent-ia-confiance": "⚠️ " + TRUST_A_VALIDER}
 mods = []
 for i, (slug, label, desc, fields) in enumerate(MODULES, 1):
     d = os.path.join(ROOT, "modules", slug + ".module")
@@ -95,7 +95,7 @@ def theme_faq():
     return (f'<p class="note">Module du thème « Faq two col » (celui de ta page /faq). Laisse les champs « Heading » et « Text » du module VIDES : sinon un 2e titre H1 apparaît. Une seule colonne dans « Faq Column Group ».</p>'
             f'<div class="kv"><dt>Title (de la colonne)</dt><dd><span class="val">{e(FAQ_TITLE)}</span></dd></div><ol class="items">{rows}</ol>')
 
-page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("agent-ia-video", {}, "Vidéo de vision"),
+page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("flatchr-video", {}, "Vidéo de vision"),
               ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "7 fonctionnalités en détail"),
               ("agent-ia-cartes", {}, "3 bénéfices"), ("agent-ia-cartes", STEPS, "Comment ça marche"),
               ("agent-ia-confiance", {}, "Souveraineté, RGPD et AI Act"),
