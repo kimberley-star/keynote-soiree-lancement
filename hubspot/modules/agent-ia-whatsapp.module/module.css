@@ -47,18 +47,16 @@
 .aia-demo .aia-hold--front img{clip-path:inset(31% 10% 53.5% 79.5% round 0 40% 40% 0)}
 .aia-demo .aia-demo-grid:has(.aia-phone-stage--mascot){column-gap:14rem}
 @media (max-width:1100px){.aia-demo .aia-demo-grid:has(.aia-phone-stage--mascot){column-gap:9.5rem}.aia-demo .aia-hold{--w:46%}}
-/* Variante « tentacule » : la tentacule passe sous le téléphone et sa pointe le tient par le bas */
+/* Variante « tentacule » : seule la tentacule tient le téléphone par en dessous */
 .aia-demo .aia-phone-stage--arm{container-type:inline-size}
-.aia-demo .aia-phone-stage--arm .aia-hold--back{width:64cqw;left:-52cqw;top:auto;bottom:-17cqw;z-index:1}
+.aia-demo .aia-phone-stage--arm:before{content:"";position:absolute;z-index:0;width:120%;aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(1,174,200,.22) 0%,rgba(1,174,200,0) 68%)}
 .aia-demo .aia-phone-stage--arm .aia-hold--arm,.aia-demo .aia-phone-stage--arm .aia-hold--hand{width:64cqw;left:-30cqw;top:auto;bottom:-15.2cqw;aspect-ratio:640/292}
 .aia-demo .aia-hold--arm{z-index:0}
-.aia-demo .aia-hold--arm img{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%);mask-image:linear-gradient(90deg,transparent 0%,#000 30%)}
+.aia-demo .aia-hold--arm img{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%)}
 .aia-demo .aia-hold--hand{z-index:2}
 .aia-demo .aia-hold--hand img{clip-path:ellipse(12.5% 28% at 89% 25%)}
-@media (max-width:1100px){.aia-demo .aia-phone-stage--arm .aia-hold--back{width:52cqw;left:-42cqw;bottom:-16cqw}}
-@media (max-width:860px){.aia-demo .aia-phone-stage--arm.aia-phone-stage--mascot{max-width:250px;margin-left:auto;margin-right:0;padding-left:0}
-.aia-demo .aia-phone-stage--arm.aia-phone-stage--mascot .aia-hold--back{width:56cqw;left:-46cqw;top:auto;bottom:-18cqw}
-.aia-demo .aia-phone-stage--arm.aia-phone-stage--mascot .aia-hold--arm,.aia-demo .aia-phone-stage--arm.aia-phone-stage--mascot .aia-hold--hand{width:64cqw;left:-30cqw;top:auto;bottom:-15.2cqw}}
+.aia-demo .aia-demo-grid:has(.aia-phone-stage--mascot){column-gap:14rem}
+@media (max-width:1100px){.aia-demo .aia-demo-grid:has(.aia-phone-stage--mascot){column-gap:9.5rem}.aia-demo .aia-hold{--w:46%}}
 @keyframes aiaHold{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .aia-demo .aia-wa-avatar{overflow:hidden}
 .aia-demo .aia-wa-avatar img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 12%;transform:scale(1.6);transform-origin:50% 20%;background:#dbfaff}
