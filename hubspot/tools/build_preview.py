@@ -78,7 +78,7 @@ def faq():
     return f'<section class="fqtc-sec"><div class="zz-container"><div class="faq-column"><div class="title"><h2>{H.escape(FAQ_TITLE)}</h2></div><div class="faq">{items}</div></div></div></section>'
 
 
-order = [mod("agent-ia-hero", i=0), mod("flatchr-video", i=1), mod("agent-ia-whatsapp", i=2), zigzag(),
+order = [mod("agent-ia-hero", i=0), mod("flatchr-video", i=1), mod("agent-ia-whatsapp-proto", {"proto_url": "agent-ia-whatsapp-vitrine.html"}, i=2), zigzag(),
          mod("agent-ia-cartes", i=3), mod("agent-ia-cartes", STEPS, i=4), mod("agent-ia-confiance", i=6), discover(),
          mod("agent-ia-lancement", i=5), faq(), mod("flatchr-mascotte-coucou", i=7)]
 css = "".join(open(f"{HS}/modules/{s}.module/module.css").read() for s in spec)

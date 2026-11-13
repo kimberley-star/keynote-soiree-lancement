@@ -63,7 +63,7 @@ def code(label, path, lang, src=None):
     if not src: return f'<div class="code empty"><div class="code-bar"><span>{label}</span></div><p>Rien à coller : laisse ce panneau vide.</p></div>'
     return f'<div class="code"><div class="code-bar"><span>{label}</span><button class="copy" type="button">Copier</button></div><pre><code>{e(src)}</code></pre></div>'
 
-order_note = {"flatchr-mascotte-coucou": "Module générique, réutilisable en bas de n'importe quelle page. Crée-le dans le dossier du thème Flatchr. Place-le juste avant le pied de page, avec le même fond que la section du dessus.", "flatchr-video": "Module générique, réutilisable sur toutes tes pages fonctionnalités (il remplace « Agent IA - Vidéo de vision »). Crée-le de préférence dans le dossier du thème Flatchr.", "agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche ».", "agent-ia-confiance": "⚠️ " + TRUST_A_VALIDER}
+order_note = {"agent-ia-whatsapp-proto": "Copie du module « Agent IA - Démo WhatsApp » (qui reste intact pour tes autres pages) : même colonne de texte, mais le téléphone est remplacé par le prototype de l'équipe produit, sans tentacule. Le plus rapide : dans le Gestionnaire de design, clic droit sur « Agent IA - Démo WhatsApp » → Cloner, renomme-le, supprime les champs agent_name, mascot_image, arm_image et messages, ajoute ceux du tableau, puis remplace les 3 panneaux de code. Avant ça : importe le fichier agent-ia-whatsapp-vitrine.html dans le Gestionnaire de fichiers (Marketing → Fichiers), copie son URL et colle-la dans le champ proto_url de la page. Si l'URL télécharge le fichier au lieu de l'afficher, dis-le moi : on passera par une page HubSpot dédiée non indexée.", "flatchr-mascotte-coucou": "Module générique, réutilisable en bas de n'importe quelle page. Crée-le dans le dossier du thème Flatchr. Place-le juste avant le pied de page, avec le même fond que la section du dessus.", "flatchr-video": "Module générique, réutilisable sur toutes tes pages fonctionnalités (il remplace « Agent IA - Vidéo de vision »). Crée-le de préférence dans le dossier du thème Flatchr.", "agent-ia-cartes": "Utilisé 2 fois sur la page : bénéfices, puis « Comment ça marche ».", "agent-ia-confiance": "⚠️ " + TRUST_A_VALIDER}
 mods = []
 for i, (slug, label, desc, fields) in enumerate(MODULES, 1):
     d = os.path.join(ROOT, "modules", slug + ".module")
@@ -102,7 +102,7 @@ def theme_faq():
             f'<div class="kv"><dt>Title (de la colonne)</dt><dd><span class="val">{e(FAQ_TITLE)}</span></dd></div><ol class="items">{rows}</ol>')
 
 page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("flatchr-video", {}, "Vidéo de vision"),
-              ("agent-ia-whatsapp", {}, "Démo WhatsApp"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "7 fonctionnalités en détail"),
+              ("agent-ia-whatsapp-proto", {}, "Prototype WhatsApp interactif (remplace la démo animée sur cette page)"), ("theme:Zig zag (thème Flatchr)", theme_zigzag, "7 fonctionnalités en détail"),
               ("agent-ia-cartes", {}, "3 bénéfices"), ("agent-ia-cartes", STEPS, "Comment ça marche"),
               ("agent-ia-confiance", {}, "Souveraineté, RGPD et AI Act"),
               ("theme:Three col cards with stroke cta (thème Flatchr)", theme_discover, "Découvrez la suite"),

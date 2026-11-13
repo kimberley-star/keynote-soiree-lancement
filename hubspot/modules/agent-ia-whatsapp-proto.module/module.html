@@ -1,0 +1,19 @@
+<section class="aip aip--{{ module.background or 'soft' }} aip--{{ module.layout or 'side' }}" id="demo">
+  <div class="aip-wrap aip-grid">
+    <div class="aip-text">
+      {% if module.eyebrow %}<p class="aip-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+      <h2 class="aip-h2">{{ module.title }}</h2>
+      {% if module.intro %}<p class="aip-lead">{{ module.intro }}</p>{% endif %}
+      {% if module.points %}<ul class="aip-list">{% for item in module.points %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
+      {% if module.cta_text and module.cta_url %}<a class="aip-cta" href="{{ module.cta_url|escape }}">{{ module.cta_text }}</a>{% endif %}
+    </div>
+    <div class="aip-stage">
+      {% if module.hint %}<p class="aip-hint">{{ module.hint }}</p>{% endif %}
+      {% if module.proto_url %}
+      <iframe class="aip-frame" data-aip-frame src="{{ module.proto_url|escape }}" title="{{ module.proto_title|escape }}" loading="lazy" style="height:{{ module.height or 900 }}px"></iframe>
+      {% else %}
+      <div class="aip-empty">Ajoute l'URL du prototype dans les réglages du module.</div>
+      {% endif %}
+    </div>
+  </div>
+</section>

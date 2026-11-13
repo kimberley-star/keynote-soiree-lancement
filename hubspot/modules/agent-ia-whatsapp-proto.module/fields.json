@@ -1,0 +1,108 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Surtitre",
+    "type": "text",
+    "default": "Démo interactive"
+  },
+  {
+    "name": "title",
+    "label": "Titre",
+    "type": "text",
+    "default": "Essayez l'agent IA de recrutement sur WhatsApp"
+  },
+  {
+    "name": "intro",
+    "label": "Texte d'introduction",
+    "type": "text",
+    "default": "Pas de nouveau logiciel à apprendre : vos managers écrivent à leur agent IA de recrutement comme à un collègue, depuis l'appli qu'ils utilisent déjà. Testez par vous-même."
+  },
+  {
+    "name": "points",
+    "label": "Points clés",
+    "type": "text",
+    "occurrence": {
+      "min": 0,
+      "default": 3
+    },
+    "default": [
+      "Une offre rédigée à partir d'une simple phrase",
+      "Des candidats trouvés dans votre CVthèque et au-delà",
+      "Un entretien planifié et son compte rendu rédigé pour vous"
+    ]
+  },
+  {
+    "name": "hint",
+    "label": "Consigne au-dessus du prototype (facultatif)",
+    "type": "text",
+    "default": "👉 Choisissez un scénario, puis touchez la suggestion pour faire avancer la conversation."
+  },
+  {
+    "name": "cta_text",
+    "label": "Texte du lien (facultatif)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "cta_url",
+    "label": "Lien",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "proto_url",
+    "label": "URL du prototype (fichier HTML du Gestionnaire de fichiers)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "proto_title",
+    "label": "Titre du prototype (accessibilité)",
+    "type": "text",
+    "default": "Prototype interactif de l'agent IA Flatchr sur WhatsApp"
+  },
+  {
+    "name": "height",
+    "label": "Hauteur de départ (px) — s'ajuste ensuite toute seule",
+    "type": "number",
+    "display": "text",
+    "min": 400,
+    "max": 1400,
+    "step": 10,
+    "default": 900
+  },
+  {
+    "name": "layout",
+    "label": "Disposition",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "side",
+        "Texte à gauche, prototype à droite"
+      ],
+      [
+        "stack",
+        "Texte au-dessus, prototype centré"
+      ]
+    ],
+    "default": "side"
+  },
+  {
+    "name": "background",
+    "label": "Fond de la section",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "soft",
+        "Gris clair"
+      ],
+      [
+        "white",
+        "Blanc"
+      ]
+    ],
+    "default": "soft"
+  }
+]
