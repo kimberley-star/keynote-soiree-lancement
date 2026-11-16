@@ -79,7 +79,6 @@ MODULES = [
    T("proto_title", "Titre du prototype (accessibilité)", "Prototype interactif de l'agent IA Flatchr sur WhatsApp"),
    {"name": "height", "label": "Hauteur de départ (px) — s'ajuste ensuite toute seule", "type": "number", "display": "text", "min": 400, "max": 1400, "step": 10, "default": 900},
    CH("layout", "Disposition", [["side", "Texte à gauche, prototype à droite"], ["stack", "Texte au-dessus, prototype centré"]], "side"),
-   CH("background", "Fond de la section", [["soft", "Gris clair"], ["white", "Blanc"]], "soft"),
  ]),
  ("agent-ia-cartes", "Agent IA - Cartes", "3 cartes : bénéfices (icônes) ou étapes (numérotées)", [
    T("eyebrow", "Surtitre", "Pour le terrain"),

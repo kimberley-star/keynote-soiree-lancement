@@ -3,7 +3,7 @@
 Usage : python3 tools/build_proto_vitrine.py <prototype.html> <sortie.html>
 Le fichier d'origine n'est pas modifié : on ajoute seulement un bloc <style> + <script> dans le <head> qui
 - masque les éléments internes (titre « Proto cliquable », badge MEP, « Recommencer », bloc « Si diffuser… », consigne),
-- rend le fond transparent et compacte les onglets de scénarios,
+- rend le fond blanc (comme la section HubSpot, pour éviter tout effet d'encadré) et compacte les onglets de scénarios,
 - réduit le téléphone sur les écrans étroits,
 - envoie sa hauteur à la page HubSpot pour que l'iframe s'ajuste toute seule.
 """
@@ -12,8 +12,8 @@ import sys
 INJECT = r"""
 <!-- Flatchr : mode vitrine (ajouté pour l'intégration HubSpot) -->
 <style id="flatchr-vitrine-src">
-  html, body { background: transparent !important; min-height: 0 !important; display: block !important; overflow: hidden !important; }
-  #__bundler_thumbnail { background: transparent !important; }
+  html, body { background: #fff !important; color-scheme: light; min-height: 0 !important; display: block !important; overflow: hidden !important; }
+  #__bundler_thumbnail { background: #fff !important; }
   #__bundler_loading { display: none !important; }
   .sc-host > div { min-height: 0 !important; padding: 4px 8px 48px !important; background: transparent !important; gap: 16px !important; }
   .flv-hide { display: none !important; }
@@ -30,7 +30,7 @@ INJECT = r"""
     if (!document.getElementById('flatchr-vitrine')) document.head.insertAdjacentHTML('beforeend', CSS);
     wrap.style.setProperty('min-height', '0', 'important');
     wrap.style.setProperty('padding', '4px 8px 48px', 'important');
-    wrap.style.setProperty('background', 'transparent', 'important');
+    wrap.style.setProperty('background', '#fff', 'important');
     Array.prototype.forEach.call(wrap.children, function (el) {
       var t = (el.innerText || '').trim();
       if (el.querySelector('h1') || /^SI\s*«/i.test(t) || el.tagName === 'P') el.classList.add('flv-hide');

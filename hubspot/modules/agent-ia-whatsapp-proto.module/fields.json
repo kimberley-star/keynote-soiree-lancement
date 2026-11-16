@@ -87,22 +87,5 @@
       ]
     ],
     "default": "side"
-  },
-  {
-    "name": "background",
-    "label": "Fond de la section",
-    "type": "choice",
-    "display": "select",
-    "choices": [
-      [
-        "soft",
-        "Gris clair"
-      ],
-      [
-        "white",
-        "Blanc"
-      ]
-    ],
-    "default": "soft"
   }
 ]
