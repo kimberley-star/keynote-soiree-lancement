@@ -10,7 +10,8 @@
     <div class="aip-stage">
       {% if module.hint %}<p class="aip-hint">{{ module.hint }}</p>{% endif %}
       {% if module.proto_url %}
-      <iframe class="aip-frame" data-aip-frame src="{{ module.proto_url|escape }}" title="{{ module.proto_title|escape }}" loading="lazy" style="height:{{ module.height or 900 }}px"></iframe>
+      <iframe class="aip-frame" data-aip-frame data-src="{{ module.proto_url|escape }}" title="{{ module.proto_title|escape }}" style="height:{{ module.height or 900 }}px"></iframe>
+      <p class="aip-error">Le prototype n'a pas pu se charger. Vérifie l'URL du fichier dans les réglages du module.</p>
       {% else %}
       <div class="aip-empty">Ajoute l'URL du prototype dans les réglages du module.</div>
       {% endif %}

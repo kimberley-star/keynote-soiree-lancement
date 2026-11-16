@@ -477,7 +477,7 @@ document.querySelectorAll(&#x27;.aia-demo&#x27;).forEach(function (sec) {
 <details class="module" id="m-agent-ia-whatsapp-proto">
   <summary><span class="badge">Module 4</span><span class="mname">Agent IA - Prototype WhatsApp</span><span class="mdesc">Texte + prototype interactif de l&#x27;équipe produit intégré en iframe (copie du module Démo WhatsApp, sans tentacule)</span></summary>
   <div class="mbody">
-    <p class="note">Copie du module « Agent IA - Démo WhatsApp » (qui reste intact pour tes autres pages) : même colonne de texte, mais le téléphone est remplacé par le prototype de l'équipe produit, sans tentacule. Le plus rapide : dans le Gestionnaire de design, clic droit sur « Agent IA - Démo WhatsApp » → Cloner, renomme-le, supprime les champs agent_name, mascot_image, arm_image et messages, ajoute ceux du tableau, puis remplace les 3 panneaux de code. Avant ça : importe le fichier agent-ia-whatsapp-vitrine.html dans le Gestionnaire de fichiers (Marketing → Fichiers), copie son URL et colle-la dans le champ proto_url de la page. Si l'URL télécharge le fichier au lieu de l'afficher, dis-le moi : on passera par une page HubSpot dédiée non indexée.</p>
+    <p class="note">Copie du module « Agent IA - Démo WhatsApp » (qui reste intact pour tes autres pages) : même colonne de texte, mais le téléphone est remplacé par le prototype de l'équipe produit, sans tentacule. Le plus rapide : dans le Gestionnaire de design, clic droit sur « Agent IA - Démo WhatsApp » → Cloner, renomme-le, supprime les champs agent_name, mascot_image, arm_image et messages, ajoute ceux du tableau, puis remplace les 3 panneaux de code. Avant ça : importe le fichier agent-ia-whatsapp-vitrine.html dans le Gestionnaire de fichiers (Marketing → Fichiers), copie son URL et colle-la dans le champ proto_url de la page. HubSpot sert les fichiers .html en texte brut (ouvrir l'URL seule affiche du code, c'est normal) : le module lit le fichier et l'affiche lui-même. Teste dans l'aperçu ou sur la page publiée.</p>
     <ol class="mini">
       <li><b>Fichier → Nouveau fichier → Module</b>. Utilisé dans : <b>Pages</b>. Type : module <b>local</b> (pas global). Dossier : <b>Agent IA</b>. Nom : <code class="cp">Agent IA - Prototype WhatsApp</code></li>
       <li>Colle le code ci-dessous dans les 3 panneaux de l'éditeur : <b>module.html</b>, <b>module.css</b>, <b>module.js</b>.</li>
@@ -497,7 +497,8 @@ document.querySelectorAll(&#x27;.aia-demo&#x27;).forEach(function (sec) {
     &lt;div class=&quot;aip-stage&quot;&gt;
       {% if module.hint %}&lt;p class=&quot;aip-hint&quot;&gt;{{ module.hint }}&lt;/p&gt;{% endif %}
       {% if module.proto_url %}
-      &lt;iframe class=&quot;aip-frame&quot; data-aip-frame src=&quot;{{ module.proto_url|escape }}&quot; title=&quot;{{ module.proto_title|escape }}&quot; loading=&quot;lazy&quot; style=&quot;height:{{ module.height or 900 }}px&quot;&gt;&lt;/iframe&gt;
+      &lt;iframe class=&quot;aip-frame&quot; data-aip-frame data-src=&quot;{{ module.proto_url|escape }}&quot; title=&quot;{{ module.proto_title|escape }}&quot; style=&quot;height:{{ module.height or 900 }}px&quot;&gt;&lt;/iframe&gt;
+      &lt;p class=&quot;aip-error&quot;&gt;Le prototype n&#x27;a pas pu se charger. Vérifie l&#x27;URL du fichier dans les réglages du module.&lt;/p&gt;
       {% else %}
       &lt;div class=&quot;aip-empty&quot;&gt;Ajoute l&#x27;URL du prototype dans les réglages du module.&lt;/div&gt;
       {% endif %}
@@ -524,11 +525,42 @@ document.querySelectorAll(&#x27;.aia-demo&#x27;).forEach(function (sec) {
 .aip .aip-hint{margin:0 0 .75rem;font-size:.9rem;color:#5b6b7d;text-align:center}
 .aip .aip-frame{display:block;width:100%;max-width:900px;border:0;background:#fff;color-scheme:light;transition:height .25s ease}
 .aip .aip-empty{width:100%;max-width:400px;padding:3rem 1.5rem;border:2px dashed #c7d2dd;border-radius:24px;text-align:center;color:#5b6b7d}
-@media (max-width:960px){.aip--side .aip-grid{grid-template-columns:1fr}}</code></pre></div>
-    <div class="code"><div class="code-bar"><span>module.js</span><button class="copy" type="button">Copier</button></div><pre><code>// Le prototype envoie sa hauteur : l&#x27;iframe s&#x27;ajuste pour éviter toute barre de défilement
+@media (max-width:960px){.aip--side .aip-grid{grid-template-columns:1fr}}
+.aip .aip-error{display:none;margin:.5rem 0 0;color:#c56f00;font-size:.9rem;text-align:center}
+.aip .aip-failed .aip-error{display:block}
+.aip .aip-failed .aip-frame{display:none}</code></pre></div>
+    <div class="code"><div class="code-bar"><span>module.js</span><button class="copy" type="button">Copier</button></div><pre><code>// Le Gestionnaire de fichiers HubSpot sert les .html en texte brut : on lit donc le fichier
+// et on l&#x27;injecte dans l&#x27;iframe (srcdoc). Chargement quand la section approche de l&#x27;écran.
 (function () {
   var frames = document.querySelectorAll(&#x27;[data-aip-frame]&#x27;);
   if (!frames.length) return;
+
+  function candidates(url) {
+    var list = [], i = url.indexOf(&#x27;/hubfs/&#x27;);
+    // Même domaine que le site (www.flatchr.io/hubfs/...) en priorité : pas de blocage CORS
+    if (i &gt; -1 &amp;&amp; /^https?:/.test(url)) list.push(location.origin + url.slice(i));
+    list.push(url);
+    return list;
+  }
+  function load(frame) {
+    if (frame.dataset.loaded) return;
+    frame.dataset.loaded = &#x27;1&#x27;;
+    var urls = candidates(frame.getAttribute(&#x27;data-src&#x27;));
+    (function next(k) {
+      if (k &gt;= urls.length) { frame.closest(&#x27;.aip-stage&#x27;).classList.add(&#x27;aip-failed&#x27;); return; }
+      fetch(urls[k], { credentials: &#x27;omit&#x27; })
+        .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+        .then(function (html) { if (!/&lt;html|&lt;!doctype/i.test(html.slice(0, 500))) throw 0; frame.srcdoc = html; })
+        .catch(function () { next(k + 1); });
+    })(0);
+  }
+  frames.forEach(function (f) {
+    if (!(&#x27;IntersectionObserver&#x27; in window)) return load(f);
+    var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); load(f); } }, { rootMargin: &#x27;600px 0px&#x27; });
+    io.observe(f);
+  });
+
+  // Le prototype envoie sa hauteur : l&#x27;iframe s&#x27;ajuste pour éviter toute barre de défilement
   window.addEventListener(&#x27;message&#x27;, function (e) {
     var d = e.data;
     if (!d || d.type !== &#x27;flatchr-proto-height&#x27; || typeof d.height !== &#x27;number&#x27;) return;
