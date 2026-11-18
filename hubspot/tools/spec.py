@@ -72,7 +72,7 @@ MODULES = [
    T("title", "Titre", "Essayez l'agent IA de recrutement sur WhatsApp"),
    TA("intro", "Texte d'introduction", "Pas de nouveau logiciel à apprendre : vos managers écrivent à leur agent IA de recrutement comme à un collègue, depuis l'appli qu'ils utilisent déjà. Testez par vous-même."),
    R("points", "Points clés", ["Une offre rédigée à partir d'une simple phrase", "Des candidats trouvés dans votre CVthèque et au-delà", "Un entretien planifié et son compte rendu rédigé pour vous"]),
-   T("hint", "Consigne au-dessus du prototype (facultatif)", "👉 Touchez la suggestion pour faire avancer la conversation. Changez de scénario sous le téléphone."),
+   T("hint", "Consigne sous le prototype (facultatif)", "👆 Touchez la suggestion dans le téléphone pour faire avancer la conversation, ou choisissez un autre scénario."),
    T("cta_text", "Texte du lien (facultatif)", ""),
    T("cta_url", "Lien", ""),
    T("proto_url", "URL du prototype (fichier HTML du Gestionnaire de fichiers)", ""),

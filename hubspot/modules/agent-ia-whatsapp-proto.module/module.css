@@ -15,7 +15,7 @@
 .aip .aip-cta:after{content:" →"}
 .aip .aip-cta:hover{color:#016d7d}
 .aip .aip-stage{min-width:0;display:flex;flex-direction:column;align-items:center}
-.aip .aip-hint{margin:0 0 .75rem;font-size:.9rem;color:#5b6b7d;text-align:center}
+.aip .aip-hint{position:relative;margin:-1.75rem 0 0;max-width:30rem;font-size:.9rem;color:#5b6b7d;text-align:center}
 .aip .aip-frame{display:block;width:100%;max-width:900px;border:0;background:#fff;color-scheme:light;transition:height .25s ease}
 .aip .aip-empty{width:100%;max-width:400px;padding:3rem 1.5rem;border:2px dashed #c7d2dd;border-radius:24px;text-align:center;color:#5b6b7d}
 @media (max-width:960px){.aip--side .aip-grid{grid-template-columns:1fr}}
