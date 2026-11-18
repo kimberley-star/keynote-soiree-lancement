@@ -27,7 +27,7 @@
     {% if module.chips %}<div class="aia-chips">{% for item in module.chips %}<button class="aia-chip" type="button">{{ item }}</button>{% endfor %}</div>{% endif %}
     <div class="aia-cta">
       <a class="aia-btn" href="{{ module.cta_url|escape }}" target="_blank" rel="noopener">{{ module.cta_text }}</a>
-      {% if module.note %}<small>{{ module.note }}</small>{% endif %}
+      {% if module.note %}<small>{% if module.note_link %}<a class="aia-note-link" href="{{ module.note_link|escape }}">{{ module.note }}</a>{% else %}{{ module.note }}{% endif %}</small>{% endif %}
     </div>
   </div>
 </section>

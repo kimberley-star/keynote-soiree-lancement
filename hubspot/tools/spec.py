@@ -22,7 +22,8 @@ MODULES = [
    R("chips", "Exemples de demandes", ["Rédige une offre de serveur pour ce week-end", "Trouve un vendeur dans ma CVthèque", "Aide-moi à choisir parmi les candidats"]),
    T("cta_text", "Texte du bouton", "Essayer gratuitement"),
    T("cta_url", "Lien de l'accès gratuit", FREE),
-   T("note", "Mention sous le bouton", "Sans carte bancaire · Accès gratuit pendant 6 mois*"),
+   T("note", "Mention sous le bouton", "Sans carte bancaire · Accès gratuit pendant 3 mois*"),
+   T("note_link", "Lien de la mention (ancre vers les conditions, facultatif)", "#conditions-offre"),
    {"name": "decor_image", "label": "Illustration de fond (facultatif)", "type": "image", "default": {"src": "", "alt": "", "loading": "eager"}},
    CH("decor_side", "Côté de l'illustration", [["left", "Gauche"], ["right", "Droite"]], "left"),
    {"name": "mascot_idle", "label": "Mascotte – pose neutre (active la mascotte)", "type": "image", "default": {"src": "", "alt": "", "loading": "eager"}},
@@ -186,7 +187,7 @@ DISCOVER = {"title": "Découvrez la suite", "cards": [
 # Champs « Heading » et « Text » du module laissés VIDES (sinon titre en H1) ; le titre passe par la colonne (H2).
 # Mention sous la FAQ (module « Texte enrichi » standard de HubSpot), renvoyée par les astérisques de la page
 OFFER_NOTE = ("* Offre de lancement valable pour toute activation entre le 1er décembre 2026 et le 28 février 2027 inclus : "
-              "accès gratuit à l'agent IA de recrutement Flatchr pendant 6 mois à compter de la date d'activation. "
+              "accès gratuit à l'agent IA de recrutement Flatchr pendant 3 mois à compter de la date d'activation. "
               "Offre soumise aux conditions générales de services de Flatchr.")
 OFFER_CGS = "http://www.flatchr.io/cgv"
 FAQ_TITLE = "Questions fréquentes sur l'agent IA de recrutement"

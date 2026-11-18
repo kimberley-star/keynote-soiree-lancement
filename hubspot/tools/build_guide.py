@@ -100,7 +100,7 @@ def theme_note():
     src = f'<p id="conditions-offre" style="font-size:13px;line-height:1.5;color:#5b6b7d;max-width:56rem;margin:0 auto">{e(OFFER_NOTE[:-1])} (<a href="{OFFER_CGS}" target="_blank" rel="noopener">CGS</a>).</p>'
     return (f'<p class="note">Module standard « Texte enrichi » de HubSpot, juste sous la FAQ : rien à coder. Dans le module, clique sur « Avancé » → « Code source » et colle le code ci-dessous (petit texte gris + lien vers les CGS). '
             f'L\'astérisque se met à la main dans le hero (champ « Mention sous le bouton ») et dans la FAQ « Quand l\'agent sera-t-il disponible ? ».</p>'
-            f'<p class="note">⚠️ À valider avant publication : les 6 mois courent-ils à partir de l\'activation ? L\'offre est-elle réservée aux nouveaux clients ? Que se passe-t-il après les 6 mois (passage payant, arrêt sans engagement) ?</p>'
+            f'<p class="note">⚠️ À valider avant publication : les 3 mois courent-ils à partir de l\'activation ? L\'offre est-elle réservée aux nouveaux clients ? Que se passe-t-il après les 3 mois (passage payant, arrêt sans engagement) ?</p>'
             + code("Code source du Texte enrichi", None, "html", src))
 
 

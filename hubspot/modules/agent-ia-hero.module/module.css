@@ -42,3 +42,5 @@
 @media (max-width:1180px){.aia-hero .aia-prompt-zone:has(.aia-mascot){margin-top:12.5rem}.aia-hero .aia-mascot{left:auto;right:-6px;top:-186px;transform:none;width:180px}}
 @media (max-width:520px){.aia-hero .aia-prompt-zone:has(.aia-mascot){margin-top:9rem}.aia-hero .aia-mascot{right:-2px;top:-133px;width:130px}}
 @media (prefers-reduced-motion:reduce){.aia-hero .aia-mascot-float{animation:none}.aia-hero .aia-m{transition:none}}
+.aia-hero .aia-note-link{color:inherit;text-decoration:none}
+.aia-hero .aia-note-link:hover{color:#019bb2;text-decoration:underline}
