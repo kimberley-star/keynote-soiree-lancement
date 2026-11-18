@@ -1,0 +1,62 @@
+{# Module « Agent IA – encart home » · Flatchr #}
+{% set anchor = module.ancre|default("agent-ia") %}
+<section class="fa-agent" id="{{ anchor }}" aria-labelledby="{{ anchor }}-title" data-dur="{{ (module.duree|default(7)) * 1000 }}">
+  <div class="fa-wrap">
+
+    <header class="fa-head">
+      {% if module.surtitre %}<p class="fa-eyebrow"><span class="fa-dot" aria-hidden="true"></span>{{ module.surtitre }}</p>{% endif %}
+      <h2 id="{{ anchor }}-title">{{ module.titre }}<br><span class="fa-hl">{{ module.titre_accent }}</span></h2>
+      {% if module.intro %}<p class="fa-lead">{{ module.intro }}</p>{% endif %}
+    </header>
+
+    <div class="fa-grid">
+      <div class="fa-tabs" role="tablist" aria-label="Ce que fait l'agent IA">
+        {% for item in module.onglets %}
+        <button class="fa-tab" type="button" role="tab" id="{{ anchor }}-t{{ loop.index }}" aria-controls="{{ anchor }}-demo" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %}>
+          <span class="fa-tab-ic" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span>
+          <span><b>{{ item.titre }}</b>{% if item.description %}<small>{{ item.description }}</small>{% endif %}</span>
+        </button>
+        {% endfor %}
+      </div>
+
+      <div class="fa-demo" id="{{ anchor }}-demo" role="tabpanel" aria-labelledby="{{ anchor }}-t1" aria-live="polite">
+        <div class="fa-win">
+          <div class="fa-win-bar" aria-hidden="true"><i></i><i></i><i></i><span>Flatchr · Agent IA</span></div>
+          <div class="fa-chat">
+            <div class="fa-msg fa-user" data-q>{{ module.onglets[0].question if module.onglets }}</div>
+            <div class="fa-msg fa-bot">
+              <span class="fa-avatar" aria-hidden="true">IA</span>
+              <div class="fa-bot-body">
+                <div class="fa-typing" aria-hidden="true"><i></i><i></i><i></i></div>
+                <div data-a>{{ module.onglets[0].reponse if module.onglets }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if module.note_demo %}<p class="fa-demo-note">{{ module.note_demo }}</p>{% endif %}
+      </div>
+
+      {# Contenus des démos, lus par module.js #}
+      {% for item in module.onglets %}
+      <template class="fa-scene" data-q="{{ item.question|escape_attr }}">{{ item.reponse }}</template>
+      {% endfor %}
+    </div>
+
+    <div class="fa-foot">
+      <div class="fa-stat">
+        <b>{{ module.chiffre }}</b>
+        <span>{{ module.chiffre_texte }}{% if module.chiffre_source %}<small>{{ module.chiffre_source }}</small>{% endif %}</span>
+      </div>
+      <p class="fa-trust"><strong>{{ module.message_confiance }}</strong></p>
+      <div class="fa-ctas">
+        {% if module.bouton_1_texte %}
+        <a class="fa-btn fa-btn-primary" href="{{ module.bouton_1_lien.url.href }}"{% if module.bouton_1_lien.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ module.bouton_1_texte }}</a>
+        {% endif %}
+        {% if module.bouton_2_texte %}
+        <a class="fa-btn fa-btn-ghost" href="{{ module.bouton_2_lien.url.href }}"{% if module.bouton_2_lien.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>{{ module.bouton_2_texte }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>

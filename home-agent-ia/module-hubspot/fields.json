@@ -1,0 +1,207 @@
+[
+  {
+    "name": "surtitre",
+    "label": "Surtitre (pastille)",
+    "type": "text",
+    "required": false,
+    "default": "Nouveau · Agent IA"
+  },
+  {
+    "name": "titre",
+    "label": "Titre – ligne 1",
+    "type": "text",
+    "required": false,
+    "default": "Le RH pilote, le manager recrute,"
+  },
+  {
+    "name": "titre_accent",
+    "label": "Titre – ligne 2 (en turquoise)",
+    "type": "text",
+    "required": false,
+    "default": "l'agent IA accélère."
+  },
+  {
+    "name": "intro",
+    "label": "Phrase d'introduction",
+    "type": "text",
+    "required": false,
+    "default": "Intégré à Flatchr, il prépare le travail à chaque étape du recrutement. Vous gardez la décision."
+  },
+  {
+    "name": "onglets",
+    "label": "Onglets",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 5,
+      "sorting_label_field": "onglets.titre"
+    },
+    "children": [
+      {
+        "name": "titre",
+        "label": "Titre de l'onglet",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "name": "description",
+        "label": "Description (une ligne)",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "name": "question",
+        "label": "Démo – question posée à l'agent",
+        "type": "text",
+        "required": false,
+        "default": ""
+      },
+      {
+        "name": "reponse",
+        "label": "Démo – réponse de l'agent",
+        "type": "richtext",
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "titre": "Qualification des CV",
+        "description": "Les meilleurs profils, en priorité.",
+        "question": "Quels candidats correspondent au poste de Vendeur·se – Lyon ?",
+        "reponse": "<p>J'ai analysé <b>48 CV</b> face aux prérequis du poste. 3 profils à regarder en priorité :</p><ul class=\"fa-rows\"><li><span>Profil A <em>· 4 ans retail</em></span><span class=\"fa-tag\">Très bon match</span></li><li><span>Profil B <em>· 2 ans restauration</em></span><span class=\"fa-tag\">Bon match</span></li><li><span>Profil C <em>· reconversion</em></span><span class=\"fa-tag fa-o\">À examiner</span></li></ul>"
+      },
+      {
+        "titre": "CVthèque réactivée",
+        "description": "Vos viviers, enfin réexploités.",
+        "question": "Nouvelle offre : Chef·fe d'équipe – Bordeaux. On a déjà des profils ?",
+        "reponse": "<p>Oui ! <b>6 talents</b> de votre CVthèque correspondent aux critères de l'offre :</p><ul class=\"fa-rows\"><li><span>Profil D <em>· candidat 2025, finaliste</em></span><span class=\"fa-tag\">Très bon match</span></li><li><span>Profil E <em>· vivier « Encadrement »</em></span><span class=\"fa-tag\">Bon match</span></li></ul><p><span class=\"fa-act\">Inviter à postuler</span></p>"
+      },
+      {
+        "titre": "Offres d'emploi",
+        "description": "Une annonce prête en quelques clics.",
+        "question": "Rédige une offre pour un·e Hôte·sse d'accueil, ton chaleureux.",
+        "reponse": "<p><b>Hôte·sse d'accueil (H/F) – CDI</b></p><p>Vous aimez le contact ? Rejoignez une équipe soudée où votre sourire fait la différence…</p><p><span class=\"fa-act\">Diffuser sur les jobboards</span></p>"
+      },
+      {
+        "titre": "Préparation d'entretien",
+        "description": "Des questions adaptées à chaque candidat.",
+        "question": "Prépare mon entretien de demain avec le Profil A.",
+        "reponse": "<p>Voici 3 questions adaptées à son parcours :</p><ul><li>Racontez une vente difficile que vous avez transformée.</li><li>Comment gérez-vous un rush en boutique ?</li><li>Qu'attendez-vous d'un manager au quotidien ?</li></ul>"
+      },
+      {
+        "titre": "Synthèse d'entretien",
+        "description": "Points forts et vigilances, en un clic.",
+        "question": "Fais-moi la synthèse de l'entretien avec le Profil A.",
+        "reponse": "<div class=\"fa-cols\"><div class=\"fa-plus\"><b>Points forts</b>Excellent relationnel, expérience du rush, très motivé·e.</div><div class=\"fa-warn\"><b>Points de vigilance</b>Disponibilité le samedi à confirmer.</div></div><p><span class=\"fa-act\">Partager à l'équipe</span></p>"
+      }
+    ]
+  },
+  {
+    "name": "note_demo",
+    "label": "Mention sous la démo",
+    "type": "text",
+    "required": false,
+    "default": "Exemple illustratif · données fictives"
+  },
+  {
+    "name": "chiffre",
+    "label": "Chiffre clé",
+    "type": "text",
+    "required": false,
+    "default": "jusqu'à 70 %"
+  },
+  {
+    "name": "chiffre_texte",
+    "label": "Texte du chiffre",
+    "type": "text",
+    "required": false,
+    "default": "de temps gagné sur le tri des CV"
+  },
+  {
+    "name": "chiffre_source",
+    "label": "Source du chiffre",
+    "type": "text",
+    "required": false,
+    "default": "Source : Flatchr"
+  },
+  {
+    "name": "message_confiance",
+    "label": "Message de confiance",
+    "type": "text",
+    "required": false,
+    "default": "L'IA propose, vous décidez."
+  },
+  {
+    "name": "bouton_1_texte",
+    "label": "Bouton 1 – texte",
+    "type": "text",
+    "required": false,
+    "default": "Découvrir l'agent IA"
+  },
+  {
+    "name": "bouton_1_lien",
+    "label": "Bouton 1 – lien",
+    "type": "link",
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT"
+    ],
+    "show_advanced_rel_options": false,
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "href": "/agent-ia",
+        "content_id": null
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "name": "bouton_2_texte",
+    "label": "Bouton 2 – texte",
+    "type": "text",
+    "required": false,
+    "default": "Demander une démo"
+  },
+  {
+    "name": "bouton_2_lien",
+    "label": "Bouton 2 – lien",
+    "type": "link",
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT"
+    ],
+    "show_advanced_rel_options": false,
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "href": "https://www.flatchr.io/demo",
+        "content_id": null
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "name": "ancre",
+    "label": "Ancre (sans #)",
+    "type": "text",
+    "required": false,
+    "default": "agent-ia",
+    "help_text": "Permet de pointer vers l'encart avec #agent-ia"
+  },
+  {
+    "name": "duree",
+    "label": "Durée par onglet (secondes)",
+    "type": "number",
+    "display": "text",
+    "min": 3,
+    "max": 20,
+    "step": 1,
+    "default": 7
+  }
+]

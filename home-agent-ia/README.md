@@ -29,3 +29,9 @@ Si l'éditeur HubSpot retire le `<script>`, le coller dans Paramètres de la pag
 - Nom produit de l'agent : le texte dit « l'agent IA Flatchr ».
 - Les 5 capacités reprennent les fonctionnalités IA existantes. Si l'agent fait plus (actions autonomes, relances, planification), mettre les onglets à jour.
 - Démo : données fictives et anonymisées, mention « Exemple illustratif » affichée.
+
+## Module HubSpot (recommandé)
+`module-hubspot/` contient le module complet avec champs modifiables (module.html, module.css, module.js, fields.json, meta.json).
+- Création manuelle dans le gestionnaire de conception : suivre le guide publié en artefact.
+- Import CLI : renommer le dossier en `agent-ia-encart-home.module`, puis
+  `hs upload agent-ia-encart-home.module <theme-enfant>/modules/agent-ia-encart-home.module`

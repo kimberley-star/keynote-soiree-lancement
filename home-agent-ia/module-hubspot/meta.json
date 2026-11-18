@@ -1,0 +1,15 @@
+{
+  "label": "Agent IA – encart home",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Encart de présentation de l'agent IA Flatchr (onglets + démo animée).",
+  "host_template_types": [
+    "PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}
