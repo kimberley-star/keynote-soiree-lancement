@@ -1,7 +1,7 @@
 """Génère guide-hubspot-agent-ia.html (kit pas à pas + code à copier) à partir des modules et de spec.py."""
 import html, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE, FAQ_A_VALIDER, TRUST_A_VALIDER
+from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE, OFFER_NOTE, OFFER_CGS, FAQ_A_VALIDER, TRUST_A_VALIDER
 import json
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -96,6 +96,14 @@ def theme_zigzag():
 def theme_discover():
     rows = "".join(f'<li><span class="n">{k}</span><div><b>Icône</b> : <code class="cp">{e(c["icon"])}</code><br><b>Titre</b> : <span class="val">{e(c["title"])}</span><br><b>Texte</b> : <span class="val">{e(c["text"])}</span><br><b>Bouton</b> : En savoir plus · <code class="cp">{e(c["cta_link"])}</code></div></li>' for k, c in enumerate(DISCOVER["cards"], 1))
     return f'<p class="note">Module du thème « Three col cards with stroke cta » : le plus simple est de copier les cartes de la page /multidiffusion.</p><div class="kv"><dt>Titre</dt><dd><span class="val">{e(DISCOVER["title"])}</span></dd></div><ol class="items">{rows}</ol>'
+def theme_note():
+    src = f'<p id="conditions-offre" style="font-size:13px;line-height:1.5;color:#5b6b7d;max-width:56rem;margin:0 auto">{e(OFFER_NOTE[:-1])} (<a href="{OFFER_CGS}" target="_blank" rel="noopener">CGS</a>).</p>'
+    return (f'<p class="note">Module standard « Texte enrichi » de HubSpot, juste sous la FAQ : rien à coder. Dans le module, clique sur « Avancé » → « Code source » et colle le code ci-dessous (petit texte gris + lien vers les CGS). '
+            f'L\'astérisque se met à la main dans le hero (champ « Mention sous le bouton ») et dans la FAQ « Quand l\'agent sera-t-il disponible ? ».</p>'
+            f'<p class="note">⚠️ À valider avant publication : les 6 mois courent-ils à partir de l\'activation ? L\'offre est-elle réservée aux nouveaux clients ? Que se passe-t-il après les 6 mois (passage payant, arrêt sans engagement) ?</p>'
+            + code("Code source du Texte enrichi", None, "html", src))
+
+
 def theme_faq():
     rows = "".join(f'<li><span class="n">{k}</span><div><b>Question</b> : <span class="val">{e(q)}</span><br><b>Réponse</b> (texte enrichi) :<div class="val">{"".join(f"<p>{e(x)}</p>" for x in a)}</div>{('<p class="note">⚠️ À valider : ' + e(FAQ_A_VALIDER[q]) + '</p>') if q in FAQ_A_VALIDER else ''}</div></li>' for k, (q, a) in enumerate(FAQ, 1))
     return (f'<p class="note">Module du thème « Faq two col » (celui de ta page /faq). Laisse les champs « Heading » et « Text » du module VIDES : sinon un 2e titre H1 apparaît. Une seule colonne dans « Faq Column Group ».</p>'
@@ -108,6 +116,7 @@ page_order = [("agent-ia-hero", {}, "En-tête avec champ de saisie"), ("flatchr-
               ("theme:Three col cards with stroke cta (thème Flatchr)", theme_discover, "Découvrez la suite"),
               ("agent-ia-lancement", {}, "Disponible le 1er janvier"),
               ("theme:Faq two col (thème Flatchr)", theme_faq, "FAQ"),
+              ("theme:Texte enrichi (module HubSpot standard)", theme_note, "Conditions de l'offre (*)"),
               ("flatchr-mascotte-coucou", {}, "Mascotte qui fait coucou, juste au-dessus du pied de page")]
 content = []
 for i, (slug, over, what) in enumerate(page_order, 1):

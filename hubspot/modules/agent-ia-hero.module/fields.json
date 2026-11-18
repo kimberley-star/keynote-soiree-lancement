@@ -65,7 +65,7 @@
     "name": "note",
     "label": "Mention sous le bouton",
     "type": "text",
-    "default": "Sans carte bancaire · Accès gratuit"
+    "default": "Sans carte bancaire · Accès gratuit pendant 6 mois*"
   },
   {
     "name": "decor_image",

@@ -10,7 +10,7 @@ from PIL import Image
 TOOLS = os.path.dirname(os.path.abspath(__file__))
 HS = os.path.dirname(TOOLS)
 sys.path.insert(0, TOOLS)
-from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE
+from spec import MODULES, STEPS, ZIGZAG, DISCOVER, FAQ, FAQ_TITLE, OFFER_NOTE, OFFER_CGS
 
 ap = argparse.ArgumentParser()
 ap.add_argument("out")
@@ -73,6 +73,11 @@ def discover():
     return f'<section class="tcsc-sec"><div class="zz-container"><div class="main-title"><h2>{DISCOVER["title"]}</h2></div><div class="tcsc-wrap">{cards}</div></div></section>'
 
 
+def offer_note():
+    return (f'<section class="fl-note" id="conditions-offre"><div class="zz-container"><p>{H.escape(OFFER_NOTE[:-1])} '
+            f'(<a href="{OFFER_CGS}" target="_blank" rel="noopener">CGS</a>).</p></div></section>')
+
+
 def faq():
     items = "".join(f'<details class="faq-item"><summary class="q">{H.escape(q)}</summary><div class="a">{"".join(f"<p>{H.escape(x)}</p>" for x in a)}</div></details>' for q, a in FAQ)
     return f'<section class="fqtc-sec"><div class="zz-container"><div class="faq-column"><div class="title"><h2>{H.escape(FAQ_TITLE)}</h2></div><div class="faq">{items}</div></div></div></section>'
@@ -80,7 +85,7 @@ def faq():
 
 order = [mod("agent-ia-hero", i=0), mod("flatchr-video", i=1), mod("agent-ia-whatsapp-proto", {"proto_url": "agent-ia-whatsapp-vitrine.html"}, i=2), zigzag(),
          mod("agent-ia-cartes", i=3), mod("agent-ia-cartes", STEPS, i=4), mod("agent-ia-confiance", i=6), discover(),
-         mod("agent-ia-lancement", i=5), faq(), mod("flatchr-mascotte-coucou", i=7)]
+         mod("agent-ia-lancement", i=5), faq(), offer_note(), mod("flatchr-mascotte-coucou", i=7)]
 css = "".join(open(f"{HS}/modules/{s}.module/module.css").read() for s in spec)
 js = "".join(open(f"{HS}/modules/{s}.module/module.js").read() for s in spec)
 # Dans l'aperçu claude.ai, window.open est bloqué : on passe par un vrai lien
@@ -131,6 +136,7 @@ body{margin:0;background:#fff;color:#182534;font-family:Poppins,"Segoe UI",syste
 .tcsc-sec .icon img{width:48px;height:48px}
 .tcsc-sec h3{font-size:1.15rem;font-weight:700;margin:.75rem 0 0}
 .tcsc-sec .text{flex:1}.tcsc-sec .text p{margin:0;font-weight:300}
+.fl-note{background:#fff;padding:0 0 2rem}.fl-note p{max-width:56rem;margin:0 auto;font-size:.8rem;line-height:1.5;color:#5b6b7d}.fl-note a{color:#019bb2}
 .fqtc-sec{padding:clamp(3rem,7vw,4.5rem) 0 clamp(3.5rem,8vw,5rem);background:#fff}
 .fqtc-sec .faq-column{max-width:56rem;margin:0 auto}
 .fqtc-sec .title h2{font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:700;text-align:center;margin:0 0 2rem;text-wrap:balance}
