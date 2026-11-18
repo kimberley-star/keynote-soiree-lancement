@@ -12,49 +12,61 @@ import sys
 INJECT = r"""
 <!-- Flatchr : mode vitrine (ajouté pour l'intégration HubSpot) -->
 <style id="flatchr-vitrine-src">
+  /* Tout est géré en CSS pour éviter les sauts : un élément interne n'apparaît jamais, même une fraction de seconde */
   html, body { background: #fff !important; color-scheme: light; min-height: 0 !important; display: block !important; overflow: hidden !important; }
-  #__bundler_thumbnail { background: #fff !important; }
-  #__bundler_loading { display: none !important; }
-  .sc-host > div { min-height: 0 !important; padding: 4px 8px 48px !important; background: transparent !important; gap: 16px !important; }
-  .flv-hide { display: none !important; }
-  .sc-host > div { display: flex !important; flex-direction: column !important; align-items: center !important; }
-  .flv-phone { order: 1 !important; }
-  .flv-tabs { order: 2 !important; }
-  .flv-tabs > div { box-shadow: none !important; padding: 6px !important; gap: 4px !important; }
-  .flv-tabs button { height: 30px !important; padding: 0 11px !important; font-size: 13px !important; }
+  html.flv-wait body { visibility: hidden; }
+  #__bundler_thumbnail, #__bundler_loading { display: none !important; }
+  .sc-host > div { min-height: 0 !important; padding: 4px 8px 48px !important; background: #fff !important; gap: 16px !important;
+                   display: flex !important; flex-direction: column !important; align-items: center !important; }
+  /* On ne garde que le téléphone (il contient le champ de saisie) et la barre de scénarios (4 boutons ou plus) */
+  .sc-host > div > :not(:has(input)):not(:has(button ~ button ~ button ~ button)) { display: none !important; }
+  .sc-host > div > :has(input) { order: 1 !important; }
+  .sc-host > div > :not(:has(input)):has(button ~ button ~ button ~ button) { order: 2 !important; }
+  .sc-host > div > :not(:has(input)):has(button ~ button ~ button ~ button) > div { box-shadow: none !important; padding: 6px !important; gap: 4px !important; }
+  .sc-host > div > :not(:has(input)):has(button ~ button ~ button ~ button) button { height: 30px !important; padding: 0 11px !important; font-size: 13px !important; }
 </style>
 <script>
 (function () {
   var last = 0, CSS = '<style id="flatchr-vitrine">' + document.getElementById('flatchr-vitrine-src').textContent + '</style>';
-  function tidy() {
-    var wrap = document.querySelector('.sc-host > div');
-    if (!wrap) return;
-    // Les styles de la page sont parfois réinjectés au démarrage : on force aussi en ligne
-    if (!document.getElementById('flatchr-vitrine')) document.head.insertAdjacentHTML('beforeend', CSS);
-    wrap.style.setProperty('min-height', '0', 'important');
-    wrap.style.setProperty('padding', '4px 8px 48px', 'important');
-    wrap.style.setProperty('background', '#fff', 'important');
+  document.documentElement.classList.add('flv-wait');
+  function wrapEl() { return document.querySelector('.sc-host > div'); }
+  function fit() {
+    // Le téléphone est réduit si l'iframe est plus étroite que lui (largeur de référence fixe : pas d'effet yoyo)
+    var wrap = wrapEl(); if (!wrap || window.innerWidth < 100) return;
     Array.prototype.forEach.call(wrap.children, function (el) {
-      el.classList.remove('flv-phone', 'flv-tabs', 'flv-hide');
-      // On ne garde que le téléphone et les onglets de scénarios : titres, badges et réglages internes sont masqués
-      if (el.querySelector('input')) {
-        el.classList.add('flv-phone');
-        // Le téléphone : réduit si l'iframe est plus étroite que lui
-        var w = el.offsetWidth || 372, k = Math.min(1, (window.innerWidth - 16) / w);
-        if (window.innerWidth > 100) el.style.zoom = k < 1 ? k.toFixed(3) : '';
-      } else if (el.querySelectorAll('button').length > 3 && !el.querySelector('h1')) el.classList.add('flv-tabs');
-      else el.classList.add('flv-hide');
+      if (!el.querySelector('input')) return;
+      var base = parseFloat(el.style.width) || 372, k = Math.min(1, (window.innerWidth - 16) / base);
+      var z = k < 1 ? k.toFixed(3) : '';
+      if (el.style.zoom !== z) el.style.zoom = z;
     });
+  }
+  function report() {
+    var wrap = wrapEl(); if (!wrap) return;
     var h = Math.ceil(wrap.getBoundingClientRect().height);
-    if (h && Math.abs(h - last) > 2 && window.parent !== window) {
+    if (h > 200 && Math.abs(h - last) > 2 && window.parent !== window) {
       last = h;
       window.parent.postMessage({ type: 'flatchr-proto-height', height: h }, '*');
     }
   }
-  var mo = new MutationObserver(function () { requestAnimationFrame(tidy); });
-  document.addEventListener('DOMContentLoaded', function () { mo.observe(document.body, { childList: true, subtree: true }); tidy(); });
-  window.addEventListener('resize', tidy);
-  setInterval(tidy, 1000);
+  function tick() {
+    var wrap = wrapEl(); if (!wrap) return;
+    // Les styles de la page sont parfois réinjectés au démarrage : on les remet si besoin
+    if (!document.getElementById('flatchr-vitrine')) document.head.insertAdjacentHTML('beforeend', CSS);
+    fit(); report();
+    // Le prototype remplace le document au démarrage : on cible toujours le document courant
+    var root = document.documentElement;
+    if (root.classList.contains('flv-wait')) {
+      var show = function () { fit(); report(); root.classList.remove('flv-wait'); };
+      (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () { requestAnimationFrame(show); });
+    }
+  }
+  var pending = false;
+  var mo = new MutationObserver(function () { if (!pending) { pending = true; requestAnimationFrame(function () { pending = false; tick(); }); } });
+  mo.observe(document, { childList: true, subtree: true });
+  document.addEventListener('DOMContentLoaded', tick);
+  window.addEventListener('resize', function () { fit(); report(); });
+  setTimeout(function () { document.documentElement.classList.remove('flv-wait'); }, 4000); // filet de sécurité
+  setInterval(tick, 2000);
 })();
 </script>
 """

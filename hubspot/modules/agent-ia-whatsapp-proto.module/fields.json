@@ -69,7 +69,7 @@
     "min": 400,
     "max": 1400,
     "step": 10,
-    "default": 900
+    "default": 960
   },
   {
     "name": "layout",
