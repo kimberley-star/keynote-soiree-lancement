@@ -155,14 +155,10 @@ if __name__ == "__main__":
 # Modules du thème Flatchr réutilisés tels quels (comme sur les pages fonctionnalités)
 # « Zig zag » (/Flatchr theme mar2024/pages/modules/zig-zag) : 4 blocs texte + visuel alternés
 ZIGZAG = [
- {"title": "Rédigez vos offres d'emploi en une phrase",
-  "caption": ["Décrivez le poste comme vous le feriez à un collègue : intitulé, contrat, lieu, date de démarrage. L'agent IA de recrutement rédige une offre complète à partir de vos modèles et de vos meilleures annonces.",
-              "Missions, profil recherché, avantages : tout y est, dans le ton de votre marque employeur. Vous relisez, ajustez si besoin et validez."],
+ {"title": "Rédigez et publiez vos offres d'emploi, à l'écrit ou à la voix",
+  "caption": ["Décrivez le poste comme à un collègue, par message ou en note vocale sur WhatsApp : « Crée une offre de fleuriste en CDI, profil confirmé ». L'agent IA de recrutement rédige une offre complète : missions, profil recherché, avantages.",
+              "Vous relisez l'aperçu, puis vous choisissez : la diffuser sur votre site carrière ou l'enregistrer en brouillon. Rien n'est publié sans votre accord."],
   "image": "agent-ia-redaction-offre.png", "cta_link": "https://www.flatchr.io/fonctionnalites-ia-flatchr"},
- {"title": "Donnez vos instructions à l'agent par la voix",
-  "caption": ["Entre deux clients ou sur la route, pas besoin d'écrire : envoyez une note vocale à l'agent, comme à un collègue.",
-              "L'agent comprend votre demande et passe à l'action : rédiger une offre, chercher un profil, préparer un message à un candidat."],
-  "image": "agent-ia-instructions-vocales.png", "cta_link": ""},
  {"title": "Retrouvez le bon profil dans votre CVthèque",
   "caption": ["Posez simplement la question : « Tu as un serveur dispo le week-end près de Lille ? ». L'agent fouille votre CVthèque et vous présente les profils qui correspondent.",
               "Vos anciens candidats deviennent une vraie source de recrutement : vous ne repartez plus de zéro à chaque nouveau poste."],
@@ -175,14 +171,10 @@ ZIGZAG = [
   "caption": ["L'agent compare chaque candidature aux critères de votre offre : expérience, compétences, disponibilités. Il vous aide à repérer les profils les plus pertinents, sans jamais décider à votre place.",
               "L'analyse repose uniquement sur des critères liés au poste, pour limiter les biais et respecter le RGPD. Aucun candidat n'est écarté automatiquement : vous gardez la main."],
   "image": "agent-ia-aide-selection-rgpd.png", "cta_link": "https://www.flatchr.io/matching-tri-cv-offre-emploi"},
- {"title": "Vos comptes rendus d'entretien en note vocale",
-  "caption": ["À la sortie d'un entretien, dictez vos impressions en quelques secondes. L'agent transforme votre note vocale en compte rendu structuré : points forts, points de vigilance, avis.",
-              "Le compte rendu est enregistré sur la fiche du candidat et partagé avec les RH. Fini les notes prises sur un coin de table."],
+ {"title": "Comptes rendus d'entretien et messages aux candidats : l'IA rédige pour vous",
+  "caption": ["À la sortie d'un entretien, dictez vos impressions en note vocale : l'agent en fait un compte rendu structuré, avec les points forts et les points de vigilance, enregistré sur la candidature.",
+              "Pour répondre à un candidat, écrivez votre message comme il vient : l'IA de Flatchr le reformule de façon claire, polie et fidèle à votre marque employeur. Vous relisez, puis vous envoyez."],
   "image": "agent-ia-compte-rendu-vocal.png", "cta_link": "https://www.flatchr.io/evaluation"},
- {"title": "Des messages aux candidats reformulés par l'IA",
-  "caption": ["Écrivez votre message comme il vient : l'agent le reformule pour vos candidats, de façon claire, polie et fidèle à votre marque employeur.",
-              "Réponse positive, refus ou demande d'information : vous relisez et envoyez en un clic. Chaque candidat reçoit une réponse soignée, même quand le temps manque."],
-  "image": "agent-ia-reformulation-messages.png", "cta_link": "https://www.flatchr.io/messagerie"},
 ]
 # « Three col cards with stroke cta » : bloc « Découvrez la suite » (mêmes cartes que sur /multidiffusion)
 DISCOVER = {"title": "Découvrez la suite", "cards": [
