@@ -35,7 +35,7 @@
     "name": "hint",
     "label": "Consigne au-dessus du prototype (facultatif)",
     "type": "text",
-    "default": "👉 Choisissez un scénario, puis touchez la suggestion pour faire avancer la conversation."
+    "default": "👉 Touchez la suggestion pour faire avancer la conversation. Changez de scénario sous le téléphone."
   },
   {
     "name": "cta_text",

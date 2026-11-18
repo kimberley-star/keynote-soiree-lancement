@@ -3,7 +3,7 @@
 Usage : python3 tools/build_proto_vitrine.py <prototype.html> <sortie.html>
 Le fichier d'origine n'est pas modifié : on ajoute seulement un bloc <style> + <script> dans le <head> qui
 - masque les éléments internes (titre « Proto cliquable », badge MEP, « Recommencer », bloc « Si diffuser… », consigne),
-- rend le fond blanc (comme la section HubSpot, pour éviter tout effet d'encadré) et compacte les onglets de scénarios,
+- rend le fond blanc (comme la section HubSpot, pour éviter tout effet d'encadré) et compacte les onglets de scénarios et les place sous le téléphone,
 - réduit le téléphone sur les écrans étroits,
 - envoie sa hauteur à la page HubSpot pour que l'iframe s'ajuste toute seule.
 """
@@ -17,6 +17,9 @@ INJECT = r"""
   #__bundler_loading { display: none !important; }
   .sc-host > div { min-height: 0 !important; padding: 4px 8px 48px !important; background: transparent !important; gap: 16px !important; }
   .flv-hide { display: none !important; }
+  .sc-host > div { display: flex !important; flex-direction: column !important; align-items: center !important; }
+  .flv-phone { order: 1 !important; }
+  .flv-tabs { order: 2 !important; }
   .flv-tabs > div { box-shadow: none !important; padding: 6px !important; gap: 4px !important; }
   .flv-tabs button { height: 30px !important; padding: 0 11px !important; font-size: 13px !important; }
 </style>
@@ -32,14 +35,15 @@ INJECT = r"""
     wrap.style.setProperty('padding', '4px 8px 48px', 'important');
     wrap.style.setProperty('background', '#fff', 'important');
     Array.prototype.forEach.call(wrap.children, function (el) {
-      var t = (el.innerText || '').trim();
-      if (el.querySelector('h1') || /^SI\s*«/i.test(t) || el.tagName === 'P') el.classList.add('flv-hide');
-      else if (el.querySelectorAll('button').length > 3 && !el.querySelector('input')) el.classList.add('flv-tabs');
-      else if (el.querySelector('input')) {
+      el.classList.remove('flv-phone', 'flv-tabs', 'flv-hide');
+      // On ne garde que le téléphone et les onglets de scénarios : titres, badges et réglages internes sont masqués
+      if (el.querySelector('input')) {
+        el.classList.add('flv-phone');
         // Le téléphone : réduit si l'iframe est plus étroite que lui
         var w = el.offsetWidth || 372, k = Math.min(1, (window.innerWidth - 16) / w);
-        el.style.zoom = k < 1 ? k.toFixed(3) : '';
-      }
+        if (window.innerWidth > 100) el.style.zoom = k < 1 ? k.toFixed(3) : '';
+      } else if (el.querySelectorAll('button').length > 3 && !el.querySelector('h1')) el.classList.add('flv-tabs');
+      else el.classList.add('flv-hide');
     });
     var h = Math.ceil(wrap.getBoundingClientRect().height);
     if (h && Math.abs(h - last) > 2 && window.parent !== window) {
